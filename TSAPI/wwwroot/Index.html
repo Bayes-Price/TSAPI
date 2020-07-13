@@ -1,0 +1,758 @@
+﻿
+<!doctype html>
+<html>
+<head profile="https://gmpg.org/xfn/11">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Triple-S: the international standard for survey interchange</title>
+    <meta name="description" content="
+Triple-S is the international standard for transferring data and variables between different survey systems." />
+    <link rel="stylesheet" href="https://www.triple-s.org/wp-content/themes/tripleS/style.css" type="text/css" media="screen" />
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' />
+    <link rel="alternate" type="application/rss+xml" title="Triple-S RSS Feed" href="https://www.triple-s.org/feed/" />
+
+    <script>document.addEventListener("touchstart", function(){}, true);</script>
+
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel='stylesheet' id='wp-block-library-css' href='https://www.triple-s.org/wp-includes/css/dist/block-library/style.min.css?ver=5.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpdm-font-awesome-css' href='https://www.triple-s.org/wp-content/plugins/download-manager/assets/fontawesome/css/all.min.css?ver=5.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpdm-front-bootstrap-css' href='https://www.triple-s.org/wp-content/plugins/download-manager/assets/bootstrap/css/bootstrap.min.css?ver=5.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpdm-front-css' href='https://www.triple-s.org/wp-content/plugins/download-manager/assets/css/front.css?ver=5.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='tablepress-default-css' href='https://www.triple-s.org/wp-content/tablepress-combined.min.css?ver=7' type='text/css' media='all' />
+    <script type='text/javascript' src='https://www.triple-s.org/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+    <script type='text/javascript' src='https://www.triple-s.org/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type='text/javascript' src='https://www.triple-s.org/wp-content/plugins/download-manager/assets/bootstrap/js/bootstrap.bundle.min.js?ver=5.4'></script>
+    <script type='text/javascript'>
+/* <![CDATA[ */
+var wpdm_url = {"home":"https:\/\/www.triple-s.org\/","site":"https:\/\/www.triple-s.org\/","ajax":"https:\/\/www.triple-s.org\/wp-admin\/admin-ajax.php"};
+var wpdm_asset = {"spinner":"<i class=\"fas fa-sun fa-spin\"><\/i>"};
+/* ]]> */
+    </script>
+    <script type='text/javascript' src='https://www.triple-s.org/wp-content/plugins/download-manager/assets/js/front.js?ver=5.4'></script>
+    <script type='text/javascript' src='https://www.triple-s.org/wp-content/plugins/download-manager/assets/js/chosen.jquery.min.js?ver=5.4'></script>
+    <link rel='https://api.w.org/' href='https://www.triple-s.org/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.triple-s.org/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.triple-s.org/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.4" />
+    <link rel="canonical" href="https://www.triple-s.org/" />
+    <link rel='shortlink' href='https://www.triple-s.org/' />
+    <link rel="alternate" type="application/json+oembed" href="https://www.triple-s.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.triple-s.org%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://www.triple-s.org/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.triple-s.org%2F&#038;format=xml" />
+
+    <script>
+            var wpdm_site_url = 'https://www.triple-s.org/';
+            var wpdm_home_url = 'https://www.triple-s.org/';
+            var ajax_url = 'https://www.triple-s.org/wp-admin/admin-ajax.php';
+            var wpdm_ajax_url = 'https://www.triple-s.org/wp-admin/admin-ajax.php';
+            var wpdm_ajax_popup = '0';
+    </script>
+    <style>
+        .wpdm-download-link.btn.btn-primary. {
+            border-radius: 4px;
+        }
+    </style>
+
+
+    <script type="text/javascript">
+(function(url){
+	if(/(?:Chrome\/26\.0\.1410\.63 Safari\/537\.31|WordfenceTestMonBot)/.test(navigator.userAgent)){ return; }
+	var addEvent = function(evt, handler) {
+		if (window.addEventListener) {
+			document.addEventListener(evt, handler, false);
+		} else if (window.attachEvent) {
+			document.attachEvent('on' + evt, handler);
+		}
+	};
+	var removeEvent = function(evt, handler) {
+		if (window.removeEventListener) {
+			document.removeEventListener(evt, handler, false);
+		} else if (window.detachEvent) {
+			document.detachEvent('on' + evt, handler);
+		}
+	};
+	var evts = 'contextmenu dblclick drag dragend dragenter dragleave dragover dragstart drop keydown keypress keyup mousedown mousemove mouseout mouseover mouseup mousewheel scroll'.split(' ');
+	var logHuman = function() {
+		if (window.wfLogHumanRan) { return; }
+		window.wfLogHumanRan = true;
+		var wfscr = document.createElement('script');
+		wfscr.type = 'text/javascript';
+		wfscr.async = true;
+		wfscr.src = url + '&r=' + Math.random();
+		(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(wfscr);
+		for (var i = 0; i < evts.length; i++) {
+			removeEvent(evts[i], logHuman);
+		}
+	};
+	for (var i = 0; i < evts.length; i++) {
+		addEvent(evts[i], logHuman);
+	}
+})('//www.triple-s.org/?wordfence_lh=1&hid=F4C8E711578FAD9980CB3EBB2A7AC8B4');
+    </script>
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+    <style>
+        button#responsive-menu-button, #responsive-menu-container {
+            display: none;
+            -webkit-text-size-adjust: 100%
+        }
+
+        @media screen and (max-width: 768px) {
+            #responsive-menu-container {
+                display: block;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                z-index: 99998;
+                padding-bottom: 5px;
+                margin-bottom: -5px;
+                outline: 1px solid transparent;
+                overflow-y: auto;
+                overflow-x: hidden
+            }
+
+                #responsive-menu-container .responsive-menu-search-box {
+                    width: 100%;
+                    padding: 0 2%;
+                    border-radius: 2px;
+                    height: 50px;
+                    -webkit-appearance: none
+                }
+
+                #responsive-menu-container.push-left, #responsive-menu-container.slide-left {
+                    transform: translateX(-100%);
+                    -ms-transform: translateX(-100%);
+                    -webkit-transform: translateX(-100%);
+                    -moz-transform: translateX(-100%)
+                }
+
+            .responsive-menu-open #responsive-menu-container.push-left, .responsive-menu-open #responsive-menu-container.slide-left {
+                transform: translateX(0);
+                -ms-transform: translateX(0);
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0)
+            }
+
+            #responsive-menu-container.push-top, #responsive-menu-container.slide-top {
+                transform: translateY(-100%);
+                -ms-transform: translateY(-100%);
+                -webkit-transform: translateY(-100%);
+                -moz-transform: translateY(-100%)
+            }
+
+            .responsive-menu-open #responsive-menu-container.push-top, .responsive-menu-open #responsive-menu-container.slide-top {
+                transform: translateY(0);
+                -ms-transform: translateY(0);
+                -webkit-transform: translateY(0);
+                -moz-transform: translateY(0)
+            }
+
+            #responsive-menu-container.push-right, #responsive-menu-container.slide-right {
+                transform: translateX(100%);
+                -ms-transform: translateX(100%);
+                -webkit-transform: translateX(100%);
+                -moz-transform: translateX(100%)
+            }
+
+            .responsive-menu-open #responsive-menu-container.push-right, .responsive-menu-open #responsive-menu-container.slide-right {
+                transform: translateX(0);
+                -ms-transform: translateX(0);
+                -webkit-transform: translateX(0);
+                -moz-transform: translateX(0)
+            }
+
+            #responsive-menu-container.push-bottom, #responsive-menu-container.slide-bottom {
+                transform: translateY(100%);
+                -ms-transform: translateY(100%);
+                -webkit-transform: translateY(100%);
+                -moz-transform: translateY(100%)
+            }
+
+            .responsive-menu-open #responsive-menu-container.push-bottom, .responsive-menu-open #responsive-menu-container.slide-bottom {
+                transform: translateY(0);
+                -ms-transform: translateY(0);
+                -webkit-transform: translateY(0);
+                -moz-transform: translateY(0)
+            }
+
+            #responsive-menu-container, #responsive-menu-container:before, #responsive-menu-container:after, #responsive-menu-container *, #responsive-menu-container *:before, #responsive-menu-container *:after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0
+            }
+
+                #responsive-menu-container #responsive-menu-search-box, #responsive-menu-container #responsive-menu-additional-content, #responsive-menu-container #responsive-menu-title {
+                    padding: 25px 5%
+                }
+
+                #responsive-menu-container #responsive-menu, #responsive-menu-container #responsive-menu ul {
+                    width: 100%
+                }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu {
+                        display: none
+                    }
+
+                        #responsive-menu-container #responsive-menu ul.responsive-menu-submenu.responsive-menu-submenu-open {
+                            display: block
+                        }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-1 a.responsive-menu-item-link {
+                        padding-left: 10%
+                    }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-2 a.responsive-menu-item-link {
+                        padding-left: 15%
+                    }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-3 a.responsive-menu-item-link {
+                        padding-left: 20%
+                    }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-4 a.responsive-menu-item-link {
+                        padding-left: 25%
+                    }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu-depth-5 a.responsive-menu-item-link {
+                        padding-left: 30%
+                    }
+
+                #responsive-menu-container li.responsive-menu-item {
+                    width: 100%;
+                    list-style: none
+                }
+
+                    #responsive-menu-container li.responsive-menu-item a {
+                        width: 100%;
+                        display: block;
+                        text-decoration: none;
+                        position: relative
+                    }
+
+                #responsive-menu-container #responsive-menu li.responsive-menu-item a {
+                    padding: 0 5%
+                }
+
+                #responsive-menu-container .responsive-menu-submenu li.responsive-menu-item a {
+                    padding: 0 5%
+                }
+
+                #responsive-menu-container li.responsive-menu-item a .fa {
+                    margin-right: 15px
+                }
+
+                #responsive-menu-container li.responsive-menu-item a .responsive-menu-subarrow {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    text-align: center;
+                    overflow: hidden
+                }
+
+                    #responsive-menu-container li.responsive-menu-item a .responsive-menu-subarrow.fa {
+                        margin-right: 0
+                    }
+
+            button#responsive-menu-button .responsive-menu-button-icon-inactive {
+                display: none
+            }
+
+            button#responsive-menu-button {
+                z-index: 99999;
+                display: none;
+                overflow: hidden;
+                outline: none
+            }
+
+                button#responsive-menu-button img {
+                    max-width: 100%
+                }
+
+            .responsive-menu-label {
+                display: inline-block;
+                font-weight: 600;
+                margin: 0 5px;
+                vertical-align: middle
+            }
+
+                .responsive-menu-label .responsive-menu-button-text-open {
+                    display: none
+                }
+
+            .responsive-menu-accessible {
+                display: inline-block
+            }
+
+                .responsive-menu-accessible .responsive-menu-box {
+                    display: inline-block;
+                    vertical-align: middle
+                }
+
+            .responsive-menu-label.responsive-menu-label-top, .responsive-menu-label.responsive-menu-label-bottom {
+                display: block;
+                margin: 0 auto
+            }
+
+            button#responsive-menu-button {
+                padding: 0 0;
+                display: inline-block;
+                cursor: pointer;
+                transition-property: opacity, filter;
+                transition-duration: 0.15s;
+                transition-timing-function: linear;
+                font: inherit;
+                color: inherit;
+                text-transform: none;
+                background-color: transparent;
+                border: 0;
+                margin: 0;
+                overflow: visible
+            }
+
+            .responsive-menu-box {
+                width: 33px;
+                height: 27px;
+                display: inline-block;
+                position: relative
+            }
+
+            .responsive-menu-inner {
+                display: block;
+                top: 50%;
+                margin-top: -2.5px
+            }
+
+                .responsive-menu-inner, .responsive-menu-inner::before, .responsive-menu-inner::after {
+                    width: 33px;
+                    height: 5px;
+                    background-color: #FFFFFF;
+                    border-radius: 4px;
+                    position: absolute;
+                    transition-property: transform;
+                    transition-duration: 0.15s;
+                    transition-timing-function: ease
+                }
+
+            .responsive-menu-open .responsive-menu-inner, .responsive-menu-open .responsive-menu-inner::before, .responsive-menu-open .responsive-menu-inner::after {
+                background-color: #FFFFFF
+            }
+
+            button#responsive-menu-button:hover .responsive-menu-inner, button#responsive-menu-button:hover .responsive-menu-inner::before, button#responsive-menu-button:hover .responsive-menu-inner::after, button#responsive-menu-button:hover .responsive-menu-open .responsive-menu-inner, button#responsive-menu-button:hover .responsive-menu-open .responsive-menu-inner::before, button#responsive-menu-button:hover .responsive-menu-open .responsive-menu-inner::after, button#responsive-menu-button:focus .responsive-menu-inner, button#responsive-menu-button:focus .responsive-menu-inner::before, button#responsive-menu-button:focus .responsive-menu-inner::after, button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner, button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner::before, button#responsive-menu-button:focus .responsive-menu-open .responsive-menu-inner::after {
+                background-color: #FFFFFF
+            }
+
+            .responsive-menu-inner::before, .responsive-menu-inner::after {
+                content: "";
+                display: block
+            }
+
+            .responsive-menu-inner::before {
+                top: -11px
+            }
+
+            .responsive-menu-inner::after {
+                bottom: -11px
+            }
+
+            .responsive-menu-boring .responsive-menu-inner, .responsive-menu-boring .responsive-menu-inner::before, .responsive-menu-boring .responsive-menu-inner::after {
+                transition-property: none
+            }
+
+            .responsive-menu-boring.is-active .responsive-menu-inner {
+                transform: rotate(45deg)
+            }
+
+                .responsive-menu-boring.is-active .responsive-menu-inner::before {
+                    top: 0;
+                    opacity: 0
+                }
+
+                .responsive-menu-boring.is-active .responsive-menu-inner::after {
+                    bottom: 0;
+                    transform: rotate(-90deg)
+                }
+
+            button#responsive-menu-button {
+                width: 55px;
+                height: 55px;
+                position: fixed;
+                top: 3px;
+                right: 7%;
+                background: #66cc33
+            }
+
+            .responsive-menu-open button#responsive-menu-button {
+                background: #66cc33
+            }
+
+                .responsive-menu-open button#responsive-menu-button:hover, .responsive-menu-open button#responsive-menu-button:focus, button#responsive-menu-button:hover, button#responsive-menu-button:focus {
+                    background: #000
+                }
+
+            button#responsive-menu-button .responsive-menu-box {
+                color: #FFFFFF
+            }
+
+            .responsive-menu-open button#responsive-menu-button .responsive-menu-box {
+                color: #FFFFFF
+            }
+
+            .responsive-menu-label {
+                color: #fff;
+                font-size: 13px;
+                line-height: 13px
+            }
+
+            button#responsive-menu-button {
+                display: inline-block;
+                transition: transform 0.1s, background-color 0.1s
+            }
+
+            #responsive-menu-container {
+                width: 75%;
+                left: 0;
+                transition: transform 0.1s;
+                text-align: left;
+                background: #e0f4d7
+            }
+
+                #responsive-menu-container #responsive-menu-wrapper {
+                    background: #e0f4d7
+                }
+
+                #responsive-menu-container #responsive-menu-additional-content {
+                    color: #fff
+                }
+
+                #responsive-menu-container .responsive-menu-search-box {
+                    background: #fff;
+                    border: 2px solid #dadada;
+                    color: #333
+                }
+
+                    #responsive-menu-container .responsive-menu-search-box:-ms-input-placeholder {
+                        color: #C7C7CD
+                    }
+
+                    #responsive-menu-container .responsive-menu-search-box::-webkit-input-placeholder {
+                        color: #C7C7CD
+                    }
+
+                    #responsive-menu-container .responsive-menu-search-box:-moz-placeholder {
+                        color: #C7C7CD;
+                        opacity: 1
+                    }
+
+                    #responsive-menu-container .responsive-menu-search-box::-moz-placeholder {
+                        color: #C7C7CD;
+                        opacity: 1
+                    }
+
+                #responsive-menu-container .responsive-menu-item-link, #responsive-menu-container #responsive-menu-title, #responsive-menu-container .responsive-menu-subarrow {
+                    transition: background-color 0.1s, border-color 0.1s, color 0.1s
+                }
+
+                #responsive-menu-container #responsive-menu-title {
+                    background-color: #b7e89f;
+                    color: #006633;
+                    font-size: 14px;
+                    text-align: left
+                }
+
+                    #responsive-menu-container #responsive-menu-title a {
+                        color: #006633;
+                        font-size: 14px;
+                        text-decoration: none
+                    }
+
+                        #responsive-menu-container #responsive-menu-title a:hover {
+                            color: #FFFFFF
+                        }
+
+                    #responsive-menu-container #responsive-menu-title:hover {
+                        background-color: #b7e89f;
+                        color: #FFFFFF
+                    }
+
+                        #responsive-menu-container #responsive-menu-title:hover a {
+                            color: #FFFFFF
+                        }
+
+                    #responsive-menu-container #responsive-menu-title #responsive-menu-title-image {
+                        display: inline-block;
+                        vertical-align: middle;
+                        max-width: 100%;
+                        margin-bottom: 15px
+                    }
+
+                        #responsive-menu-container #responsive-menu-title #responsive-menu-title-image img {
+                            max-width: 100%
+                        }
+
+                #responsive-menu-container #responsive-menu > li.responsive-menu-item:first-child > a {
+                    border-top: 1px solid #66cc33
+                }
+
+                #responsive-menu-container #responsive-menu li.responsive-menu-item .responsive-menu-item-link {
+                    font-size: 13px
+                }
+
+                #responsive-menu-container #responsive-menu li.responsive-menu-item a {
+                    line-height: 44px;
+                    border-bottom: 1px solid #66cc33;
+                    color: #006633;
+                    background-color: #e0f4d7;
+                    height: 44px
+                }
+
+                    #responsive-menu-container #responsive-menu li.responsive-menu-item a:hover {
+                        color: #FFFFFF;
+                        background-color: #b7e89f;
+                        border-color: #66cc33
+                    }
+
+                        #responsive-menu-container #responsive-menu li.responsive-menu-item a:hover .responsive-menu-subarrow {
+                            color: #FFFFFF;
+                            border-color: #66cc33;
+                            background-color: #b7e89f
+                        }
+
+                            #responsive-menu-container #responsive-menu li.responsive-menu-item a:hover .responsive-menu-subarrow.responsive-menu-subarrow-active {
+                                color: #fff;
+                                border-color: #fff;
+                                background-color: #3f3f3f
+                            }
+
+                    #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow {
+                        right: 0;
+                        height: 44px;
+                        line-height: 44px;
+                        width: 44px;
+                        color: #006633;
+                        border-left: 1px solid #66cc33;
+                        background-color: #e0f4d7
+                    }
+
+                        #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active {
+                            color: #fff;
+                            border-color: #212121;
+                            background-color: #212121
+                        }
+
+                            #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active:hover {
+                                color: #fff;
+                                border-color: #fff;
+                                background-color: #3f3f3f
+                            }
+
+                        #responsive-menu-container #responsive-menu li.responsive-menu-item a .responsive-menu-subarrow:hover {
+                            color: #FFFFFF;
+                            border-color: #66cc33;
+                            background-color: #b7e89f
+                        }
+
+                #responsive-menu-container #responsive-menu li.responsive-menu-current-item > .responsive-menu-item-link {
+                    background-color: #e0f4d7;
+                    color: #006633;
+                    border-color: #212121
+                }
+
+                    #responsive-menu-container #responsive-menu li.responsive-menu-current-item > .responsive-menu-item-link:hover {
+                        background-color: #b7e89f;
+                        color: #FFFFFF;
+                        border-color: #3f3f3f
+                    }
+
+                #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item .responsive-menu-item-link {
+                    font-size: 13px;
+                    text-align: left
+                }
+
+                #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a {
+                    height: 44px;
+                    line-height: 44px;
+                    border-bottom: 1px solid #66cc33;
+                    color: #006633;
+                    background-color: #e0f4d7
+                }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a:hover {
+                        color: #FFFFFF;
+                        background-color: #b7e89f;
+                        border-color: #66cc33
+                    }
+
+                        #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a:hover .responsive-menu-subarrow {
+                            color: #FFFFFF;
+                            border-color: #66cc33;
+                            background-color: #b7e89f
+                        }
+
+                            #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a:hover .responsive-menu-subarrow.responsive-menu-subarrow-active {
+                                color: #fff;
+                                border-color: #fff;
+                                background-color: #3f3f3f
+                            }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a .responsive-menu-subarrow {
+                        left: unset;
+                        right: 0;
+                        height: 44px;
+                        line-height: 44px;
+                        width: 44px;
+                        color: #006633;
+                        border-left: 1px solid #66cc33 !important;
+                        border-right: unset !important;
+                        background-color: #e0f4d7
+                    }
+
+                        #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active {
+                            color: #fff;
+                            border-color: #212121;
+                            background-color: #212121
+                        }
+
+                            #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a .responsive-menu-subarrow.responsive-menu-subarrow-active:hover {
+                                color: #fff;
+                                border-color: #fff;
+                                background-color: #3f3f3f
+                            }
+
+                        #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-item a .responsive-menu-subarrow:hover {
+                            color: #FFFFFF;
+                            border-color: #66cc33;
+                            background-color: #b7e89f
+                        }
+
+                #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-current-item > .responsive-menu-item-link {
+                    background-color: #e0f4d7;
+                    color: #006633;
+                    border-color: #212121
+                }
+
+                    #responsive-menu-container #responsive-menu ul.responsive-menu-submenu li.responsive-menu-current-item > .responsive-menu-item-link:hover {
+                        background-color: #b7e89f;
+                        color: #FFFFFF;
+                        border-color: #3f3f3f
+                    }
+        }
+    </style>
+    <meta name="generator" content="WordPress Download Manager 3.0.95" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Rubik:400,500');
+
+
+
+        .w3eden .fetfont,
+        .w3eden .btn,
+        .w3eden .btn.wpdm-front h3.title,
+        .w3eden .wpdm-social-lock-box .IN-widget a span:last-child,
+        .w3eden #xfilelist .panel-heading,
+        .w3eden .wpdm-frontend-tabs a,
+        .w3eden .alert:before,
+        .w3eden .panel .panel-heading,
+        .w3eden .discount-msg,
+        .w3eden .panel.dashboard-panel h3,
+        .w3eden #wpdm-dashboard-sidebar .list-group-item,
+        .w3eden #package-description .wp-switch-editor,
+        .w3eden .w3eden.author-dashbboard .nav.nav-tabs li a,
+        .w3eden .wpdm_cart thead th,
+        .w3eden #csp .list-group-item,
+        .w3eden .modal-title {
+            font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .w3eden #csp .list-group-item {
+            text-transform: unset;
+        }
+    </style>
+    <style>
+
+        :root {
+            --color-primary: #4a8eff;
+            --color-primary-rgb: 74, 142, 255;
+            --color-primary-hover: #4a8eff;
+            --color-primary-active: #4a8eff;
+            --color-secondary: #4a8eff;
+            --color-secondary-rgb: 74, 142, 255;
+            --color-secondary-hover: #4a8eff;
+            --color-secondary-active: #4a8eff;
+            --color-success: #18ce0f;
+            --color-success-rgb: 24, 206, 15;
+            --color-success-hover: #4a8eff;
+            --color-success-active: #4a8eff;
+            --color-info: #2CA8FF;
+            --color-info-rgb: 44, 168, 255;
+            --color-info-hover: #2CA8FF;
+            --color-info-active: #2CA8FF;
+            --color-warning: #f29e0f;
+            --color-warning-rgb: 242, 158, 15;
+            --color-warning-hover: orange;
+            --color-warning-active: orange;
+            --color-danger: #ff5062;
+            --color-danger-rgb: 255, 80, 98;
+            --color-danger-hover: #ff5062;
+            --color-danger-active: #ff5062;
+            --color-green: #30b570;
+            --color-blue: #0073ff;
+            --color-purple: #8557D3;
+            --color-red: #ff5062;
+            --color-muted: rgba(69, 89, 122, 0.6);
+            --wpdm-font: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .wpdm-download-link.btn.btn-primary {
+            border-radius: 4px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="masthead-wrap">
+        <div class="filler40" style="clear: both"></div><!-- as the menu is position fixed-->
+
+        <div class="fillermasthead" style="clear: both"></div>
+        <div id="header-background">
+            <div id="topheader">
+                <div id="header-left">
+                    <div id="header-logo"><img src="tsapi-logo.png" alt="Triple-S logo" width="100%" /></div>
+                    <div id="header-words1">
+                        The standard for transferring data and variables between survey system apis
+                    </div>
+                </div><!-- end headerleft-->
+                <div id="header-right">
+                    <img src="https://www.triple-s.org/wp-content/themes/tripleS/images/data-interchange-illustration.jpg" alt="Illustration of international data interchange" width="100%" />
+                </div><!-- end header-right-->
+            </div><!-- end top header-->
+
+            <div style="clear: both"></div>
+        </div>  <!-- end of header-background div  -->
+
+        <div class="fillermasthead" style="clear: both"></div>
+        <div class="line"><img src="https://www.triple-s.org/wp-content/themes/tripleS/images/divider-line-2.png" width="100%" /> </div>
+    </div><!--end mastheadwrap-->
+
+    
+
+    <script type='text/javascript' src='https://www.triple-s.org/wp-includes/js/jquery/jquery.form.min.js?ver=4.2.1'></script>
+    <script type='text/javascript' src='https://www.triple-s.org/wp-includes/js/wp-embed.min.js?ver=5.4'></script>
+    <script>jQuery(document).ready(function($){var ResponsiveMenu ={trigger: '#responsive-menu-button',animationSpeed: 100,breakpoint: 768,pushButton: 'off',animationType: 'slide',animationSide: 'left',pageWrapper: '',isOpen: false,triggerTypes: 'click',activeClass: 'is-active',container: '#responsive-menu-container',openClass: 'responsive-menu-open',accordion: 'off',activeArrow: '▲',inactiveArrow: '▼',wrapper: '#responsive-menu-wrapper',closeOnBodyClick: 'off',closeOnLinkClick: 'off',itemTriggerSubMenu: 'off',linkElement: '.responsive-menu-item-link',subMenuTransitionTime: 200,openMenu: function(){$(this.trigger).addClass(this.activeClass);$('html').addClass(this.openClass);$('.responsive-menu-button-icon-active').hide();$('.responsive-menu-button-icon-inactive').show();this.setButtonTextOpen();this.setWrapperTranslate();this.isOpen = true},closeMenu: function(){$(this.trigger).removeClass(this.activeClass);$('html').removeClass(this.openClass);$('.responsive-menu-button-icon-inactive').hide();$('.responsive-menu-button-icon-active').show();this.setButtonText();this.clearWrapperTranslate();this.isOpen = false},setButtonText: function(){if($('.responsive-menu-button-text-open').length > 0 && $('.responsive-menu-button-text').length > 0){$('.responsive-menu-button-text-open').hide();$('.responsive-menu-button-text').show()}},setButtonTextOpen: function(){if($('.responsive-menu-button-text').length > 0 && $('.responsive-menu-button-text-open').length > 0){$('.responsive-menu-button-text').hide();$('.responsive-menu-button-text-open').show()}},triggerMenu: function(){this.isOpen ? this.closeMenu() : this.openMenu()},triggerSubArrow: function(subarrow){var sub_menu = $(subarrow).parent().siblings('.responsive-menu-submenu');var self = this;if(this.accordion == 'on'){var top_siblings = sub_menu.parents('.responsive-menu-item-has-children').last().siblings('.responsive-menu-item-has-children');var first_siblings = sub_menu.parents('.responsive-menu-item-has-children').first().siblings('.responsive-menu-item-has-children');top_siblings.children('.responsive-menu-submenu').slideUp(self.subMenuTransitionTime, 'linear').removeClass('responsive-menu-submenu-open');top_siblings.each(function(){$(this).find('.responsive-menu-subarrow').first().html(self.inactiveArrow);$(this).find('.responsive-menu-subarrow').first().removeClass('responsive-menu-subarrow-active')});first_siblings.children('.responsive-menu-submenu').slideUp(self.subMenuTransitionTime, 'linear').removeClass('responsive-menu-submenu-open');first_siblings.each(function(){$(this).find('.responsive-menu-subarrow').first().html(self.inactiveArrow);$(this).find('.responsive-menu-subarrow').first().removeClass('responsive-menu-subarrow-active')})}if(sub_menu.hasClass('responsive-menu-submenu-open')){sub_menu.slideUp(self.subMenuTransitionTime, 'linear').removeClass('responsive-menu-submenu-open');$(subarrow).html(this.inactiveArrow);$(subarrow).removeClass('responsive-menu-subarrow-active')}else{sub_menu.slideDown(self.subMenuTransitionTime, 'linear').addClass('responsive-menu-submenu-open');$(subarrow).html(this.activeArrow);$(subarrow).addClass('responsive-menu-subarrow-active')}},menuHeight: function(){return $(this.container).height()},menuWidth: function(){return $(this.container).width()},wrapperHeight: function(){return $(this.wrapper).height()},setWrapperTranslate: function(){switch(this.animationSide){case 'left':translate = 'translateX(' + this.menuWidth() + 'px)';break;case 'right':translate = 'translateX(-' + this.menuWidth() + 'px)';break;case 'top':translate = 'translateY(' + this.wrapperHeight() + 'px)';break;case 'bottom':translate = 'translateY(-' + this.menuHeight() + 'px)';break}if(this.animationType == 'push'){$(this.pageWrapper).css({'transform':translate});$('html, body').css('overflow-x', 'hidden')}if(this.pushButton == 'on'){$('#responsive-menu-button').css({'transform':translate})}},clearWrapperTranslate: function(){var self = this;if(this.animationType == 'push'){$(this.pageWrapper).css({'transform':''});setTimeout(function(){$('html, body').css('overflow-x', '')}, self.animationSpeed)}if(this.pushButton == 'on'){$('#responsive-menu-button').css({'transform':''})}},init: function(){var self = this;$(this.trigger).on(this.triggerTypes, function(e){e.stopPropagation();self.triggerMenu()});$(this.trigger).mouseup(function(){$(self.trigger).blur()});$('.responsive-menu-subarrow').on('click', function(e){e.preventDefault();e.stopPropagation();self.triggerSubArrow(this)});$(window).resize(function(){if($(window).width() > self.breakpoint){if(self.isOpen){self.closeMenu()}}else{if($('.responsive-menu-open').length>0){self.setWrapperTranslate()}}});if(this.closeOnLinkClick == 'on'){$(this.linkElement).on('click', function(e){e.preventDefault();if(self.itemTriggerSubMenu == 'on' && $(this).is('.responsive-menu-item-has-children > ' + self.linkElement)){return}old_href = $(this).attr('href');old_target = typeof $(this).attr('target') == 'undefined' ? '_self' : $(this).attr('target');if(self.isOpen){if($(e.target).closest('.responsive-menu-subarrow').length){return}self.closeMenu();setTimeout(function(){window.open(old_href, old_target)}, self.animationSpeed)}})}if(this.closeOnBodyClick == 'on'){$(document).on('click', 'body', function(e){if(self.isOpen){if($(e.target).closest('#responsive-menu-container').length || $(e.target).closest('#responsive-menu-button').length){return}}self.closeMenu()})}if(this.itemTriggerSubMenu == 'on'){$('.responsive-menu-item-has-children > ' + this.linkElement).on('click', function(e){e.preventDefault();self.triggerSubArrow($(this).children('.responsive-menu-subarrow').first())})}if (jQuery('#responsive-menu-button').css('display') != 'none'){$('#responsive-menu-button,#responsive-menu a.responsive-menu-item-link, #responsive-menu-wrapper input').focus( function(){$(this).addClass('is-active');$('html').addClass('responsive-menu-open');$('#responsive-menu li').css({"opacity": "1", "margin-left": "0"})});$('#responsive-menu-button, a.responsive-menu-item-link,#responsive-menu-wrapper input').focusout( function(){if ( $(this).last('#responsive-menu-button a.responsive-menu-item-link') ){$(this).removeClass('is-active');$('html').removeClass('responsive-menu-open')}})}$('#responsive-menu a.responsive-menu-item-link').keydown(function(event){console.log( event.keyCode );if ( [13,27,32,35,36,37,38,39,40].indexOf( event.keyCode) == -1){return}var link = $(this);switch(event.keyCode){case 13:link.click();break;case 27:var dropdown = link.parent('li').parents('.responsive-menu-submenu');if ( dropdown.length > 0 ){dropdown.hide();dropdown.prev().focus()}break;case 32:var dropdown = link.parent('li').find('.responsive-menu-submenu');if ( dropdown.length > 0 ){dropdown.show();dropdown.find('a, input, button, textarea').first().focus()}break;case 35:var dropdown = link.parent('li').find('.responsive-menu-submenu');if ( dropdown.length > 0 ){dropdown.hide()}$(this).parents('#responsive-menu').find('a.responsive-menu-item-link').filter(':visible').last().focus();break;case 36:var dropdown = link.parent('li').find('.responsive-menu-submenu');if( dropdown.length > 0 ){dropdown.hide()}$(this).parents('#responsive-menu').find('a.responsive-menu-item-link').filter(':visible').first().focus();break;case 37:case 38:event.preventDefault();event.stopPropagation();if ( link.parent('li').prevAll('li').filter(':visible').first().length == 0){link.parent('li').nextAll('li').filter(':visible').last().find('a').first().focus()}else{link.parent('li').prevAll('li').filter(':visible').first().find('a').first().focus()}break;case 39:case 40:event.preventDefault();event.stopPropagation();if( link.parent('li').nextAll('li').filter(':visible').first().length == 0){link.parent('li').prevAll('li').filter(':visible').last().find('a').first().focus()}else{link.parent('li').nextAll('li').filter(':visible').first().find('a').first().focus()}break}})}};ResponsiveMenu.init()});</script><!-- for menus to work - very important to leave in-->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-3741213-56', 'auto');
+  ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+Data.Common/bin/
+Data.Common/obj/
+Data/bin/
+Data/obj/
+Domain/bin/
+Domain/obj/
+Logic/bin/
+Logic/obj/
+TSAPI/.vs/
+TSAPI/bin/
+TSAPI/obj/

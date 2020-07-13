@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TSAPI</name>
+    </assembly>
+    <members>
+        <member name="M:TSAPI.Controllers.SurveysController.Surveys">
+            <summary>Returns a list of available Surveys</summary>
+        </member>
+        <member name="M:TSAPI.Controllers.SurveysController.Metadata(System.Guid)">
+            <summary>Fetches the metadata for a specific survey</summary>
+        </member>
+        <member name="M:TSAPI.Controllers.SurveysController.Interviews(System.Guid,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>Fetches some interview records for a specific survey</summary>
+        </member>
+    </members>
+</doc>
