@@ -4,6 +4,12 @@
         <name>TSAPI</name>
     </assembly>
     <members>
+        <member name="T:TSAPI.Controllers.DemoController">
+            <summary>Contains methods for demo purposes - the methods are NOT part of the TSAPI spec</summary>
+        </member>
+        <member name="M:TSAPI.Controllers.DemoController.CreateAccount(System.String)">
+            <summary>Creates an account in the Demo system</summary>
+        </member>
         <member name="M:TSAPI.Controllers.SurveysController.Surveys">
             <summary>Returns a list of available Surveys</summary>
         </member>

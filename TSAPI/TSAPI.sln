@@ -5,11 +5,15 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSAPI", "TSAPI.csproj", "{1D50E43E-4238-4C9B-B18B-752209B00F18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "..\Data\Data.csproj", "{7FC03694-1394-4CDE-BDF1-15A1D00AE012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{7FC03694-1394-4CDE-BDF1-15A1D00AE012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{B8D5D35F-4387-4376-B4D3-40AE6B9E7BD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\Domain\Domain.csproj", "{B8D5D35F-4387-4376-B4D3-40AE6B9E7BD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Common", "..\Data.Common\Data.Common.csproj", "{44CFE7F1-2FB6-4351-AD29-4578877270F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data.Common", "..\Data.Common\Data.Common.csproj", "{44CFE7F1-2FB6-4351-AD29-4578877270F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "..\Tests\Tests.csproj", "{A7A99761-41E2-4C62-A783-F22180FAEAD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "..\Logic\Logic.csproj", "{6F34FDE6-4270-4C25-8215-CFDC238E565C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{44CFE7F1-2FB6-4351-AD29-4578877270F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44CFE7F1-2FB6-4351-AD29-4578877270F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44CFE7F1-2FB6-4351-AD29-4578877270F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A99761-41E2-4C62-A783-F22180FAEAD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A99761-41E2-4C62-A783-F22180FAEAD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A99761-41E2-4C62-A783-F22180FAEAD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A99761-41E2-4C62-A783-F22180FAEAD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F34FDE6-4270-4C25-8215-CFDC238E565C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F34FDE6-4270-4C25-8215-CFDC238E565C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F34FDE6-4270-4C25-8215-CFDC238E565C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F34FDE6-4270-4C25-8215-CFDC238E565C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
