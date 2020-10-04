@@ -1,7 +1,13 @@
-﻿namespace Data.Common.Repos
+﻿using System;
+using System.Threading.Tasks;
+using Domain.Config;
+
+namespace Data.Common.Repos
 {
     public interface IConfigRepo
     {
-        string CreateAccount(string companyName);
+        Task<bool> AccountExists(string companyName);
+        Task<Guid> CreateAccount(string companyName);
+        Account GetAccount(Guid apiKey);
     }
 }

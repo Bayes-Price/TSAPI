@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Threading.Tasks;
 using Data.Repos;
-using Domain.Survey;
 using Microsoft.AspNetCore.Mvc;
+using TSAPI.ViewModels.Results.Demo;
 
 namespace TSAPI.Controllers
 {
@@ -14,11 +13,11 @@ namespace TSAPI.Controllers
         ///<summary>Creates an account in the Demo system</summary>
         [HttpGet]
         [Route("/CreateAccount/")]
-        public void CreateAccount(string companyName)
+        public async Task<CreateAccountResult> CreateAccount(string companyName)
         {
-            
             var repo = new ConfigRepo();
-            repo.CreateAccount(companyName);
+            var result = await repo.CreateAccount(companyName);
+            return new CreateAccountResult {ApiKey = result};
         }
     }
 }

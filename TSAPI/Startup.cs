@@ -36,6 +36,26 @@ namespace TSAPI
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
                 c.IncludeXmlComments(xmlPath, true);
+
+                c.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.ApiKey,
+                    In = ParameterLocation.Header,
+                    Name = "x-api-key",
+                    Description = "API Key for your Account"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "ApiKey" }
+                        },
+                        new string[] { }
+                    }
+                });
+
             });
 
             services.AddScoped<ISurveyRepo, SurveyRepo>();
@@ -62,6 +82,7 @@ namespace TSAPI
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TSAPI V1");
+
             });
 
 
