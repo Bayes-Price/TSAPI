@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Data.Common.Repos;
+﻿using Data.Common.Repos;
 using Domain.Interviews;
 using Domain.Metadata;
+using Logic.Query.Queries.NewFolder;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Data.Repos
 {
@@ -28,15 +29,15 @@ namespace Data.Repos
             }
         }
 
-        public List<Interview> ReadSurveydata(Guid id, int? start, int? numberOfRecords)
+        public List<Interview> ReadSurveydata(InterviewsQuery query)
         {
-            if (start == null && numberOfRecords != null || start != null && numberOfRecords == null)
+            if (query.Start == null && query.MaxLength != null || query.Start != null && query.MaxLength == null)
                 throw new ArgumentException("Invalid paging arguments");
 
             List<Interview> allInterviews;
 
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
-            switch (id.ToString())
+            switch (query.SurveyId.ToString())
             {
                 case SP5201Id:
                     allInterviews = Sp5201.LoadAllInterviews();
@@ -45,18 +46,53 @@ namespace Data.Repos
                 //    allInterviews = PR9012_HOUSEHOLD.LoadAllInterviews();
                     //break;
                 default:
-                    throw new ArgumentException($"Unrecognised survey id {id}");
+                    throw new ArgumentException($"Unrecognised survey id {query.SurveyId}");
             }
 
-            if (start > allInterviews.Count)
+
+            //Filtering
+            allInterviews = ApplyFiltering(allInterviews, query);
+
+            if (query.Start > allInterviews.Count)
                 throw new ArgumentException($"Invalid paging arguments");
 
+            //Paging
             return allInterviews
-                .Skip((start ?? 1) - 1)  //-1 to convert 1-based start argument into zero based skip argument
-                .Take(numberOfRecords ?? allInterviews.Count)
+                .Skip((query.Start ?? 1) - 1)  //-1 to convert 1-based start argument into zero based skip argument
+                .Take(query.MaxLength ?? allInterviews.Count)
                 .ToList();
         }
         #endregion
+
+        #region "Private Methods"
+        /// <summary>Crude simple filtering function</summary>
+        private List<Interview> ApplyFiltering(List<Interview> allInterviews, InterviewsQuery query)
+        {
+            //Interview Ids
+            if (query.InterviewIdents != null && query.InterviewIdents.Any())
+                allInterviews = allInterviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
+
+            //Date 
+            //TODO:
+
+            //Complete
+            if (query.CompleteOnly)
+                allInterviews = allInterviews.Where(i => i.Ident != "520001").ToList(); //Pretend that interview 1 is incomplete
+
+            //Questions
+            if (query.Variables != null && query.Variables.Any())
+            {
+                foreach (var interview in allInterviews)
+                {
+                    interview.DataItems = interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
+                }
+            }
+            
+            return allInterviews;
+
+        }
+        #endregion
+
     }
 }
  

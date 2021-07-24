@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using Domain.Interviews;
 using Domain.Metadata;
+using Logic.Query.Queries.NewFolder;
 
 namespace Data.Common.Repos
 {
     public interface ISurveyRepo
     {
         SurveyMetadata ReadSurveyMetadata(Guid id);
-        List<Interview> ReadSurveydata(Guid id, int? start, int? numberOfRecords);
+        List<Interview> ReadSurveydata(InterviewsQuery query);
     }
 }

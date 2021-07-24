@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Data.Common.Repos;
 using Domain.Interviews;
 using Domain.Metadata;
+using Logic.Query.Queries.NewFolder;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TSAPI.Controllers
@@ -54,13 +55,13 @@ namespace TSAPI.Controllers
         }
 
         /// <summary>Fetches some interview records for a specific survey</summary>
-        [HttpGet]
+        [HttpPost]
         [Route("/Surveys/{surveyId}/Interviews")]
-        public ActionResult<List<Interview>> Interviews(Guid surveyId, int? start, int? maxLength)
+        public ActionResult<List<Interview>> Interviews(InterviewsQuery query)
         {
             try
             {
-                var data = _surveyRepo.ReadSurveydata(surveyId, start, maxLength);
+                var data = _surveyRepo.ReadSurveydata(query);
                 return Ok(data);
             }
             catch (Exception e)
