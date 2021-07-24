@@ -133,7 +133,7 @@ namespace Data.Repos
                     }
                 },
                 //Q3.a
-                Questions = new List<Variable>
+                Variables = new List<Variable>
                 {
                     new Variable
                     {
@@ -267,7 +267,7 @@ namespace Data.Repos
                     }
                 },
 
-                Questions = new List<Variable>
+                Variables = new List<Variable>
                 {
                     //Q10
                     new Variable
@@ -363,7 +363,7 @@ namespace Data.Repos
                         new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
                     }
                 },
-                Questions = new List<Variable>
+                Variables = new List<Variable>
                 {
                     //Q17
                     new Variable
