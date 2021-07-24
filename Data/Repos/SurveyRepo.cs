@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data.Common.Repos;
-using Domain.Survey;
-using Domain.TripleS.V2;
+using Domain.Interviews;
+using Domain.Metadata;
 
 namespace Data.Repos
 {
@@ -20,9 +20,9 @@ namespace Data.Repos
             switch (id.ToString())
             {
                 case SP5201Id:
-                    return SP5201.ReadMetadata();
-                case PR9012Id:
-                    return PR9012_HOUSEHOLD.ReadMetadata();
+                    return Sp5201.ReadMetadata();
+                //case PR9012Id:
+                //    return PR9012_HOUSEHOLD.ReadMetadata();
                 default:
                     throw new ArgumentException($"Unrecognised survey id {id}");
             }
@@ -39,11 +39,11 @@ namespace Data.Repos
             switch (id.ToString())
             {
                 case SP5201Id:
-                    allInterviews = SP5201.LoadAllInterviews();
+                    allInterviews = Sp5201.LoadAllInterviews();
                     break;
-                case PR9012Id:
-                    allInterviews = PR9012_HOUSEHOLD.LoadAllInterviews();
-                    break;
+                //case PR9012Id:
+                //    allInterviews = PR9012_HOUSEHOLD.LoadAllInterviews();
+                    //break;
                 default:
                     throw new ArgumentException($"Unrecognised survey id {id}");
             }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain.Survey;
-using Domain.TripleS.V2;
+using Domain.Interviews;
+using Domain.Metadata;
 
 namespace Data.Common.Repos
 {
