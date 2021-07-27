@@ -8,7 +8,8 @@ namespace Data.Common.Repos
 {
     public interface ISurveyRepo
     {
-        SurveyMetadata ReadSurveyMetadata(Guid id);
+        List<SurveyDetail> ListSurveys();
+        SurveyMetadata ReadSurveyMetadata(string id);
         List<Interview> ReadSurveydata(InterviewsQuery query);
     }
 }
