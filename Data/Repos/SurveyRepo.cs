@@ -1,14 +1,14 @@
-﻿using Data.Common.Repos;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Data.Common.Repos;
 using Domain.Interviews;
 using Domain.Metadata;
 using Logic.Query.Queries.NewFolder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Data.Repos
 {
-    public class SurveyRepo : ISurveyRepo
+	public class SurveyRepo : ISurveyRepo
     {
         #region "Constants"
         private const string SP5201Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2";
@@ -16,7 +16,18 @@ namespace Data.Repos
         #endregion
 
         #region "Public Methods"
-        public SurveyMetadata ReadSurveyMetadata(Guid id)
+
+
+        public List<SurveyDetail> ListSurveys()
+        {
+            return new List<SurveyDetail>()
+            {
+                new SurveyDetail { Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2", Name = "SP5201-1", Title = "Historic House Exit Survey<br/>First Wave" } //,
+                //new SurveyDetail { Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e", Name = "PR9012-HOUSEHOLD", Title = "Regional Travel Survey<br/>Households"  }
+            };
+        }
+        
+        public SurveyMetadata ReadSurveyMetadata(string id)
         {
             switch (id.ToString())
             {

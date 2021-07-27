@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using Data.Common.Repos;
 using Domain.Interviews;
 using Domain.Metadata;
@@ -25,22 +25,23 @@ namespace TSAPI.Controllers
         #endregion
 
         #region "Public Methods"
-        ///<summary>Returns a list of available Surveys</summary>
+
+        /// <summary>
+        /// Lists summary information for all surveys.
+        /// </summary>
+        /// <returns>A serialized array of <c>SurveyDetail.</c></returns>
+		/// <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
         [HttpGet]
         [Route("/Surveys/")]
-        public List<SurveyDetail> Surveys()
+        public SurveyDetail[] Surveys()
         {
-            return new List<SurveyDetail>
-            {
-                new SurveyDetail {Id = new Guid("1e6cb0a1-2289-4650-9148-9fc3e6e129b2"), Name = "SP5201-1", Title = "Historic House Exit Survey<br/>First Wave" } //,
-                //new SurveyDetail {Id = new Guid("e36c93b8-d9df-42a9-8d4e-42b647944a5e"), Name = "PR9012-HOUSEHOLD", Title = "Regional Travel Survey<br/>Households"  }
-            };
+            return _surveyRepo.ListSurveys().ToArray();
         }
 
         /// <summary>Fetches the metadata for a specific survey</summary>
         [HttpGet]
         [Route("/Surveys/{surveyId}/Metadata")]
-        public ActionResult<SurveyMetadata> Metadata(Guid surveyId)
+        public ActionResult<SurveyMetadata> Metadata(string surveyId)
         {
             try
             {
@@ -56,12 +57,12 @@ namespace TSAPI.Controllers
 
         /// <summary>Fetches some interview records for a specific survey</summary>
         [HttpPost]
-        [Route("/Surveys/{surveyId}/Interviews")]
-        public ActionResult<List<Interview>> Interviews(InterviewsQuery query)
+        [Route("/Surveys/Interviews")]
+        public ActionResult<Interview[]> Interviews(InterviewsQuery query)
         {
             try
             {
-                var data = _surveyRepo.ReadSurveydata(query);
+                var data = _surveyRepo.ReadSurveydata(query).ToArray();
                 return Ok(data);
             }
             catch (Exception e)
