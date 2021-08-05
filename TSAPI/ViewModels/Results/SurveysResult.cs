@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
 
 namespace TSAPI.ViewModels.Result
 {

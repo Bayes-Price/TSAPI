@@ -12,23 +12,7 @@
     <PackageReleaseNotes>TODO Under development</PackageReleaseNotes>
     <PackageIcon>TSAPI.Domain.png</PackageIcon>
     <DocumentationFile>TSPAI.Domain.xml</DocumentationFile>
-    <ApplicationIcon>TSAPI.Domain.ico</ApplicationIcon>
     <PackageIconUrl />
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="TSAPI.Domain.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="TSAPI.Domain.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="TSAPI.Domain.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 
 </Project>

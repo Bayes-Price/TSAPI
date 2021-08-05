@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Data.Common.Repos;
 using Data.Repos;
-using Logic.Command.CommandDispatch;
-using Logic.Command.Common;
+using DemoApp.Data.Common.Repos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -66,7 +64,6 @@ namespace TSAPI
 
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
-            services.AddScoped<ICommandDispatcher, CommandDispatcher>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

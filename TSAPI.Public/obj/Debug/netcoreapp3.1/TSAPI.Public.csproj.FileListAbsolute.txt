@@ -1,0 +1,8 @@
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\netcoreapp3.1\TSAPI.Public.deps.json
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\netcoreapp3.1\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\netcoreapp3.1\TSAPI.Public.pdb
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\netcoreapp3.1\TSAPI.Public.AssemblyInfoInputs.cache
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\netcoreapp3.1\TSAPI.Public.AssemblyInfo.cs
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\netcoreapp3.1\TSAPI.Public.csproj.CoreCompileInputs.cache
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\netcoreapp3.1\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\netcoreapp3.1\TSAPI.Public.pdb

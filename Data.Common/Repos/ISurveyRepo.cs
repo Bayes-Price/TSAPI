@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Domain.Interviews;
-using Domain.Metadata;
-using Logic.Query.Queries.NewFolder;
+﻿using System.Collections.Generic;
+using TSAPI.Public.Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
+using TSAPI.Public.Queries;
 
-namespace Data.Common.Repos
+namespace DemoApp.Data.Common.Repos
 {
     public interface ISurveyRepo
     {

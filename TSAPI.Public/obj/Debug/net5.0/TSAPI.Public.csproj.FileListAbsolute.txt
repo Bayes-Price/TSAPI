@@ -1,0 +1,12 @@
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\net5.0\TSAPI.Public.deps.json
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\net5.0\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\net5.0\ref\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\bin\Debug\net5.0\TSAPI.Public.pdb
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.csprojAssemblyReference.cache
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.AssemblyInfoInputs.cache
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.AssemblyInfo.cs
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.csproj.CoreCompileInputs.cache
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\ref\TSAPI.Public.dll
+C:\Projects\TSAPI\TSAPI.Public\obj\Debug\net5.0\TSAPI.Public.pdb

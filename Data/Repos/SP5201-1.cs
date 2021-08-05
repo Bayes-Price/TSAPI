@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Domain.Metadata;
-using Domain;
-using Domain.Interviews;
+using TSAPI.Public.Domain;
+using TSAPI.Public.Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
 
-namespace Data.Repos
+namespace DemoApp.Data.Repos
 {
     public class Sp5201
     {

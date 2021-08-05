@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Linq;
-using Data.Common.Repos;
-using Domain.Interviews;
-using Domain.Metadata;
-using Logic.Query.Queries.NewFolder;
+using DemoApp.Data.Common.Repos;
 using Microsoft.AspNetCore.Mvc;
+using TSAPI.Public.Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
+using TSAPI.Public.Queries;
 
 namespace TSAPI.Controllers
 {
@@ -26,9 +25,7 @@ namespace TSAPI.Controllers
 
         #region "Public Methods"
 
-        /// <summary>
-        /// Lists summary information for all surveys.
-        /// </summary>
+        /// <summary>Lists summary information for all surveys.</summary>
         /// <returns>A serialized array of <c>SurveyDetail.</c></returns>
 		/// <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
         [HttpGet]
@@ -58,7 +55,7 @@ namespace TSAPI.Controllers
         /// <summary>Fetches some interview records for a specific survey</summary>
         [HttpPost]
         [Route("/Surveys/Interviews")]
-        public ActionResult<Interview[]> Interviews(InterviewsQuery query)
+        public ActionResult<Interview[]> Interviews([FromBody] InterviewsQuery query)
         {
             try
             {

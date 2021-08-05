@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
-using Domain.Interviews;
+using TSAPI.Public.Domain.Interviews;
 
 namespace TSAPI.ViewModels.Results
 {

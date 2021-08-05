@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Data.Common.Repos;
-using Domain.Interviews;
-using Domain.Metadata;
-using Logic.Query.Queries.NewFolder;
+using DemoApp.Data.Common.Repos;
+using DemoApp.Data.Repos;
+using TSAPI.Public.Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
+using TSAPI.Public.Queries;
 
 namespace Data.Repos
 {
