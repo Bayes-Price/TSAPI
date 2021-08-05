@@ -1,7 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>1.0.0</Version>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Collaboration</Authors>
+    <Company>TODO Company Name</Company>
+    <Product>TODO Product Name</Product>
+    <Description>Library defining the public classes and interfaces for TSAPI.</Description>
+    <Copyright>TODO © 2021</Copyright>
+    <PackageId>TSAPI.Public</PackageId>
+    <PackageReleaseNotes>TODO Under development</PackageReleaseNotes>
+    <PackageIcon>TSAPI.Public.png</PackageIcon>
+    <DocumentationFile>TSPAI.Public.xml</DocumentationFile>
+    <ApplicationIcon>TSAPI.Public.ico</ApplicationIcon>
+    <PackageIconUrl />
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TSAPI.Public.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="TSAPI.Public.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TSAPI.Public.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

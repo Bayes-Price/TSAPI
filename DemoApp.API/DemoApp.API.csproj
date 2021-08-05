@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Projects\Visual Studio 2019\TSAPI\TSAPI\TSAPI.xml</DocumentationFile>
+    <DocumentationFile>DemoApp.API.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,13 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data.Common\DemoApp.Data.Common.csproj" />
-    <ProjectReference Include="..\Data\DemoApp.Data.csproj" />
+    <ProjectReference Include="..\DemoApp.Data.Common\DemoApp.Data.Common.csproj" />
+    <ProjectReference Include="..\DemoApp.Data\DemoApp.Data.csproj" />
     <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="bin\Release\netcoreapp3.1\" />
   </ItemGroup>
 
 

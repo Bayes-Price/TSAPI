@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.API", "DemoApp.API.csproj", "{1D50E43E-4238-4C9B-B18B-752209B00F18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.API", "DemoApp.API\DemoApp.API.csproj", "{1D50E43E-4238-4C9B-B18B-752209B00F18}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.Data", "..\Data\DemoApp.Data.csproj", "{7FC03694-1394-4CDE-BDF1-15A1D00AE012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.Data", "DemoApp.Data\DemoApp.Data.csproj", "{7FC03694-1394-4CDE-BDF1-15A1D00AE012}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.Data.Common", "..\Data.Common\DemoApp.Data.Common.csproj", "{44CFE7F1-2FB6-4351-AD29-4578877270F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.Data.Common", "DemoApp.Data.Common\DemoApp.Data.Common.csproj", "{44CFE7F1-2FB6-4351-AD29-4578877270F0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSAPI.Public", "..\TSAPI.Public\TSAPI.Public.csproj", "{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSAPI.Public", "TSAPI.Public\TSAPI.Public.csproj", "{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
