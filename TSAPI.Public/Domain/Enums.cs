@@ -14,27 +14,14 @@
             Loop = 8
         }
 
-        public enum ParentType
-        {
-            Grid = 1,
-            Loop = 2,
-            OtherSpecify = 3,
-            //Ranking, numeric list, mixed
-        }
-
         public enum UseType
         {
+            None = 0,
             Serial = 1, 
             Weight = 2,
             System = 3,
             Language = 4
         }
-
-        //public enum Format
-        //{
-        //    Literal = 1, 
-        //    Numeric = 2
-        //}
 
         public enum AltLabelMode
         {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TSAPI.Public.Domain.Metadata;
 
 namespace TSAPI.Public.Domain.Interviews
 {
@@ -6,13 +7,7 @@ namespace TSAPI.Public.Domain.Interviews
     {
         public string Ident { get; set; }
         public List<string> Values { get; set; } = new List<string>();
-        public ParentRef ParentIdent { get; set; }
+        public string GridRowIdent { get; set; }
+        public List<LoopRef> LoopRefs { get; set; }
     }
-
-    public class ParentRef
-    {
-        public string ParentVariableIdent { get; set; }
-        public string ParentValueIdent { get; set; }
-    }
-
 }

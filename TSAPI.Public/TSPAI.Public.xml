@@ -4,5 +4,47 @@
         <name>TSAPI.Public</name>
     </assembly>
     <members>
+        <member name="P:TSAPI.Public.Domain.Metadata.GridRow.Ref">
+            <summary>(Optional) Links this row to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Section">
+            <summary>Represents a logical section within a survey (e.g. Demographics)</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Variable">
+            <summary>A variable or question within a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Ident">
+            <summary>Unique identifier for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Ordinal">
+            <summary>The order of this variable within the overall survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Type">
+            <summary>The type of variable (e.g. Open, closed, loop etc..)</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Name">
+            <summary>Human-readable name for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Label">
+            <summary>Label or question text for the variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Use">
+            <summary>Special use type (e.g. language, weighting) for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Values">
+            <summary>Any pre-defined responses for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.MaxResponses">
+            <summary>Maximum number of responses that can be given for this variable</summary>
+        </member>
+        <member name="F:TSAPI.Public.Domain.Metadata.Variable.LoopedVariables">
+            <summary>Looped child variables for this variable (when type = Loop)</summary>
+        </member>
+        <member name="F:TSAPI.Public.Domain.Metadata.Variable.OtherSpecifyVariables">
+            <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Value.Ref">
+            <summary>(Optional) Links this value to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
+        </member>
     </members>
 </doc>
