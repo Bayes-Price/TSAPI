@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TSAPI.Public.Domain.Metadata;
 
-namespace TSAPI.ViewModels.Results
+namespace DemoApp.API.ViewModels.Results
 {
     public class MetadataResult : ApiResult
     {

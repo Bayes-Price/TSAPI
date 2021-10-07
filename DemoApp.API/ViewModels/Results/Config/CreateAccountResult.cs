@@ -1,4 +1,4 @@
-﻿namespace TSAPI.ViewModels.Results.Config
+﻿namespace DemoApp.API.ViewModels.Results.Config
 {
     public class CreateAccountResult : ApiResult
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TSAPI.Public.Domain.Metadata;
 
-namespace TSAPI.ViewModels.Result
+namespace DemoApp.API.ViewModels.Results
 {
     public class SurveysResult : ApiResult
     {

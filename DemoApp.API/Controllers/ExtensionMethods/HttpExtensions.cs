@@ -1,7 +1,7 @@
 ﻿using System.Security;
 using Microsoft.AspNetCore.Http;
 
-namespace TSAPI.Controllers.ExtensionMethods
+namespace DemoApp.API.Controllers.ExtensionMethods
 {
     public static class HttpExtensions
     {

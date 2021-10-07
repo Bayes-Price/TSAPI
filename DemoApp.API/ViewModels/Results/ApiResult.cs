@@ -1,4 +1,4 @@
-﻿namespace TSAPI.ViewModels
+﻿namespace DemoApp.API.ViewModels.Results
 {
     public abstract class ApiResult
     {
