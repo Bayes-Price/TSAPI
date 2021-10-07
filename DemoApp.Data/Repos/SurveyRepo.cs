@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DemoApp.Data.Common.Repos;
 using DemoApp.Data.Repos;
 using TSAPI.Public.Domain.Interviews;
@@ -9,6 +10,10 @@ using TSAPI.Public.Queries;
 
 namespace Data.Repos
 {
+    /// <summary>
+    /// NOTE: This sample in-memory survey data repository will be replaced with an implementation
+    /// class that queries whatever backing storage the TSAPI publisher uses.
+    /// </summary>
 	public class SurveyRepo : ISurveyRepo
     {
         #region "Constants"
@@ -18,22 +23,22 @@ namespace Data.Repos
 
         #region "Public Methods"
 
-
-        public List<SurveyDetail> ListSurveys()
+        public async Task<SurveyDetail[]> ListSurveys()
         {
-            return new List<SurveyDetail>()
+            var mockSurveys = new SurveyDetail[]
             {
                 new SurveyDetail { Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2", Name = "SP5201-1", Title = "Historic House Exit Survey<br/>First Wave" } //,
                 //new SurveyDetail { Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e", Name = "PR9012-HOUSEHOLD", Title = "Regional Travel Survey<br/>Households"  }
             };
+            return await Task.FromResult(mockSurveys);
         }
         
-        public SurveyMetadata ReadSurveyMetadata(string id)
+        public async Task<SurveyMetadata> ReadSurveyMetadata(string id)
         {
             switch (id.ToString())
             {
                 case SP5201Id:
-                    return Sp5201.ReadMetadata();
+                    return await Task.FromResult(Sp5201.ReadMetadata());
                 //case PR9012Id:
                 //    return PR9012_HOUSEHOLD.ReadMetadata();
                 default:
@@ -41,7 +46,7 @@ namespace Data.Repos
             }
         }
 
-        public List<Interview> ReadSurveydata(InterviewsQuery query)
+        public async Task<Interview[]> ReadSurveydata(InterviewsQuery query)
         {
             if (query.Start == null && query.MaxLength != null || query.Start != null && query.MaxLength == null)
                 throw new ArgumentException("Invalid paging arguments");
@@ -69,10 +74,12 @@ namespace Data.Repos
                 throw new ArgumentException($"Invalid paging arguments");
 
             //Paging
-            return allInterviews
+            var interviews = allInterviews
                 .Skip((query.Start ?? 1) - 1)  //-1 to convert 1-based start argument into zero based skip argument
                 .Take(query.MaxLength ?? allInterviews.Count)
-                .ToList();
+                .ToArray();
+
+            return await Task.FromResult(interviews);
         }
         #endregion
 
@@ -85,7 +92,7 @@ namespace Data.Repos
                 allInterviews = allInterviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
 
             //Date 
-            //TODO:
+            //TODO: return interview date
 
             //Complete
             if (query.CompleteOnly)

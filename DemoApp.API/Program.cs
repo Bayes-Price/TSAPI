@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace TSAPI
+namespace DemoApp.API
 {
     public class Program
     {

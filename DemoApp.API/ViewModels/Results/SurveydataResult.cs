@@ -5,7 +5,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using TSAPI.Public.Domain.Interviews;
 
-namespace TSAPI.ViewModels.Results
+namespace DemoApp.API.ViewModels.Results
 {
     public class SurveydataResult :  ApiResult
     {

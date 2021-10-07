@@ -9,12 +9,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace TSAPI
+namespace DemoApp.API
 {
+    /// <ignore/>
     public class Startup
     {
+        /// <ignore/>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,10 +25,19 @@ namespace TSAPI
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <ignore/>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(c =>
+            {
+                c.Filters.Add(new StandardActionFilter());
+            }).AddXmlSerializerFormatters();
+
+            services.AddLogging(builder =>
+            {
+                builder.AddConsole();
+                builder.AddDebug();
+            });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
@@ -66,34 +78,35 @@ namespace TSAPI
             services.AddScoped<ISurveyRepo, SurveyRepo>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <ignore/>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // The error handling seems to work nicely in the two modes.
+			if (env.IsDevelopment())
+			{
+				app.UseDeveloperExceptionPage();
+			}
+			else
+			{
+				app.UseExceptionHandler("/error");
+			}
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
-            //else
-            //{
-                app.UseExceptionHandler("/error");
-            //}
-
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+			// Enable middleware to serve generated Swagger as a JSON endpoint.
+			app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
             // specifying the Swagger JSON endpoint.
+            // NOTE: The following different endpoints work for Greg in development and when
+            // deployed to Azure, but the values might be not correct in other environments.
+            // Some experimentation might be needed to find the best general purpose values.
             app.UseSwaggerUI(c =>
             {
+#if DEBUG
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TSAPI V1");
+#else
+                c.SwaggerEndpoint("./v1/swagger.json", "TSAPI V1");
+#endif
             });
-
-
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseHttpsRedirection();
 

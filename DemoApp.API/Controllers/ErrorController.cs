@@ -1,16 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TSAPI.Controllers
+namespace DemoApp.API.Controllers
 {
-    [ApiController]
+	/// <ignore/>
+	[ApiController]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorController : ControllerBase
     {
+        /// <ignore/>
         [Route("/error")]
-        public IActionResult Error() => Problem();
+        public IActionResult Error()
+        {
+            var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
+            // TODO Log the global error here and invent the correct generic friendly problem details.
+            Trace.WriteLine(context.Error.ToString());
+            return Problem(statusCode: StatusCodes.Status500InternalServerError, title: "Web Service Request Failed", type: context.Error.GetType().Name, detail: context.Error.Message);
+        }
     }
 }

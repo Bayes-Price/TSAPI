@@ -1,11 +1,13 @@
 ﻿using System;
+using System.Threading.Tasks;
 using DemoApp.Data.Common.Repos;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
 using TSAPI.Public.Queries;
 
-namespace TSAPI.Controllers
+namespace DemoApp.TSAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -25,50 +27,56 @@ namespace TSAPI.Controllers
 
         #region "Public Methods"
 
-        /// <summary>Lists summary information for all surveys.</summary>
-        /// <returns>A serialized array of <c>SurveyDetail.</c></returns>
+        /// <summary>
+        ///   Lists summary information for all surveys.
+        /// </summary>
+        /// <returns>
+        ///   A serialized array of <c>SurveyDetail.</c>
+        /// </returns>
 		/// <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
         [HttpGet]
         [Route("/Surveys/")]
-        public SurveyDetail[] Surveys()
+        [Produces("application/json", "text/xml")]
+        [ProducesResponseType(typeof(SurveyDetail[]), StatusCodes.Status200OK)]
+        public async Task<SurveyDetail[]> Surveys()
         {
-            return _surveyRepo.ListSurveys().ToArray();
+            return await _surveyRepo.ListSurveys();
         }
 
-        /// <summary>Fetches the metadata for a specific survey</summary>
+        /// <summary>
+        ///   Fetches the metadata for a specific survey
+        /// </summary>
+        /// <param name="surveyId">The Id of the survey metadata to retrieve.</param>
+        /// <returns>
+        ///   A serialized <c>SurveyMetadata.</c>
+        /// </returns>
+		/// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
         [HttpGet]
         [Route("/Surveys/{surveyId}/Metadata")]
-        public ActionResult<SurveyMetadata> Metadata(string surveyId)
+        [Produces("application/json", "text/xml")]
+        [ProducesResponseType(typeof(SurveyMetadata), StatusCodes.Status200OK)]
+        public async Task<SurveyMetadata> Metadata(string surveyId)
         {
-            try
-            {
-                var metadata = _surveyRepo.ReadSurveyMetadata(surveyId);
-                return Ok(metadata);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
-            
+            return await _surveyRepo.ReadSurveyMetadata(surveyId);
         }
 
-        /// <summary>Fetches some interview records for a specific survey</summary>
+        /// <summary>
+        ///   Fetches some interview records for a specific survey.
+        /// </summary>
+        /// <param name="query">The request body contains a serialized <c>InterviewsQuery</c> containing filtering parameters.</param>
+        /// <returns>
+        ///   A serialized array of <c>Interview.</c>
+        /// </returns>
+		/// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
         [HttpPost]
         [Route("/Surveys/Interviews")]
-        public ActionResult<Interview[]> Interviews([FromBody] InterviewsQuery query)
+        [Produces("application/json", "text/xml")]
+        [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
+        public async Task<Interview[]> Interviews([FromBody] InterviewsQuery query)
         {
-            try
-            {
-                var data = _surveyRepo.ReadSurveydata(query).ToArray();
-                return Ok(data);
-            }
-            catch (Exception e)
-            {
-                return StatusCode(500, e.Message);
-            }
+            return await _surveyRepo.ReadSurveydata(query);
         }
 
         #endregion
-
     }
 }
