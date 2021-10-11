@@ -1,0 +1,72 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Authors>Orthogonal Programming</Authors>
+    <Company>Red Centre Software</Company>
+    <Product>TSAPI</Product>
+    <Description>A Windows desktop utility for browsing TSAPI endpoints.</Description>
+    <Copyright>© 2021 Red Centre Software</Copyright>
+    <PackageTags>redcentre</PackageTags>
+    <PackageReleaseNotes>Under experimental development.</PackageReleaseNotes>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="App.ico" />
+    <None Remove="Images\AppAlert.png" />
+    <None Remove="Images\NodeDummy.png" />
+    <None Remove="Images\NodeFolderClosed.png" />
+    <None Remove="Images\NodeFolderOpen.png" />
+    <None Remove="Images\NodeSectionClosed.png" />
+    <None Remove="Images\NodeSectionOpen.png" />
+    <None Remove="Images\NodeValue.png" />
+    <None Remove="Images\NodeVariable.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="App.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.97" />
+    <PackageReference Include="Orthogonal.NSettings" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\AppAlert.png" />
+    <Resource Include="Images\NodeDummy.png" />
+    <Resource Include="Images\NodeFolderClosed.png" />
+    <Resource Include="Images\NodeFolderOpen.png" />
+    <Resource Include="Images\NodeSectionClosed.png" />
+    <Resource Include="Images\NodeSectionOpen.png" />
+    <Resource Include="Images\NodeValue.png" />
+    <Resource Include="Images\NodeVariable.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MainController.Generated.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MainController.Generated.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MainController.Generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MainController.Generated.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

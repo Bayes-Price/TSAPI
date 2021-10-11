@@ -1,0 +1,95 @@
+﻿<#@ template debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="System.Windows.Forms" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#
+   string[] Lines = new string[]
+	{
+        "string|StatusMessage|\"Loading...\"",
+        "string|StatusTime|\"00:00:00\"",
+        "string|BusyMessage",
+        "string|AppErrorTitle",
+        "string|AppErrorDetails",
+        "int|AppFontSize|12",
+        "string|Endpoint|\"https://triple-s.azurewebsites.net/swagger\"",
+        "ObservableCollection<SurveyDetail>|ObsSurveys",
+        "ObservableCollection<Interview>|ObsInterviews",
+        "string|InterviewsJsonTemp",
+        "SurveyDetail|SelectedSurvey",
+        "ListCollectionView|ViewSurveys",
+        "string|SurveyQuickFilter",
+        "SurveyMetadata|Metadata",
+        "ObservableCollection<AppNode>|ObsMetaNodes",
+        "AppNode|SelectedMetaNode",
+        "string|ExportMetaUrl",
+        "int?|QueryPagingStart",
+        "int?|QueryPagingCount",
+        "bool|QueryCompleteOnly",
+        "string|QueryVariables",
+        "string|QueryInterviewIds",
+        "DateTime?|QueryDate"
+	};
+#>
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.ObjectModel;
+using System.Windows.Data;
+using TSAPI.Public.Domain.Interviews;
+using TSAPI.Public.Domain.Metadata;
+
+namespace TSAPI.ApiBrowser
+{
+    partial class MainController
+    {
+<#
+    foreach (string line in Lines)
+	{
+        string[] parts = line.Split('|');
+        string type = parts[0];
+        string name = parts[1];
+        string init = parts.ElementAtOrDefault(2);
+        string privname = "_" + name.Substring(0,1).ToLower() + name.Substring(1);
+        string append = !string.IsNullOrEmpty(init) ? " = " + init : "";
+#>
+        <#=type#> <#=privname#><#=append#>;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public <#=type#> <#=name#>
+        {
+            get => <#=privname#>;
+            set
+            {
+<#
+        if (type == "string")
+		{
+#>
+                string newvalue = string.IsNullOrEmpty(value) ? null : value;
+                if (<#=privname#> != newvalue)
+                {
+                    <#=privname#> = newvalue;
+<#
+		}
+        else
+		{
+#>
+                if (<#=privname#> != value)
+                {
+                    <#=privname#> = value;
+<#
+        }
+#>
+					OnPropertyChanged(nameof(<#=name#>));
+                }
+            }
+        }
+
+<#
+	}
+#>
+    }
+}
