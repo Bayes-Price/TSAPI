@@ -26,8 +26,7 @@ namespace DemoApp.Data.Repos
                 {
                     new Section() { Label = new Label("System") },
                     new Section() { Label = new Label("Demographics") },
-                    new Section() { Label = new Label("Main Survey") },
-                    new Section() { Label = new Label("DP") }
+                    new Section() { Label = new Label("Main Survey") }
                 }
             };
 
@@ -406,7 +405,7 @@ namespace DemoApp.Data.Repos
 
 
             //Language
-            metadata.Sections[3].Variables.Add(new Variable
+            metadata.Variables.Add(new Variable
             {
                 Ident = "19",
                 Type = Enums.VariableType.Single,
@@ -425,7 +424,7 @@ namespace DemoApp.Data.Repos
 
 
             //WT
-            metadata.Sections[3].Variables.Add(new Variable
+            metadata.Variables.Add(new Variable
             {
                 Ident = "999999",
                 Type = Enums.VariableType.Quantity,
