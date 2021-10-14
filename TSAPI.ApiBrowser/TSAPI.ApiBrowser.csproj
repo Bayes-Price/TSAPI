@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+    <Version>1.0.0</Version>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Authors>Orthogonal Programming</Authors>
@@ -10,16 +11,20 @@
     <Description>A Windows desktop utility for browsing TSAPI endpoints.</Description>
     <Copyright>© 2021 Red Centre Software</Copyright>
     <PackageTags>redcentre</PackageTags>
-    <PackageReleaseNotes>Under experimental development.</PackageReleaseNotes>
+    <PackageReleaseNotes>The first basic but complete working version that fully exercises the 3 TSAPI methods and displays response data in trees.</PackageReleaseNotes>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="App.ico" />
     <None Remove="Images\AppAlert.png" />
+    <None Remove="Images\NodeDataItem.png" />
     <None Remove="Images\NodeDummy.png" />
     <None Remove="Images\NodeFolderClosed.png" />
     <None Remove="Images\NodeFolderOpen.png" />
+    <None Remove="Images\NodeInterview.png" />
+    <None Remove="Images\NodeInterviewValue.png" />
+    <None Remove="Images\NodeLoopRef.png" />
     <None Remove="Images\NodeSectionClosed.png" />
     <None Remove="Images\NodeSectionOpen.png" />
     <None Remove="Images\NodeValue.png" />
@@ -41,11 +46,15 @@
 
   <ItemGroup>
     <Resource Include="Images\AppAlert.png" />
+    <Resource Include="Images\NodeDataItem.png" />
     <Resource Include="Images\NodeDummy.png" />
     <Resource Include="Images\NodeFolderClosed.png" />
     <Resource Include="Images\NodeFolderOpen.png" />
+    <Resource Include="Images\NodeInterview.png" />
+    <Resource Include="Images\NodeLoopRef.png" />
     <Resource Include="Images\NodeSectionClosed.png" />
     <Resource Include="Images\NodeSectionOpen.png" />
+    <Resource Include="Images\NodeInterviewValue.png" />
     <Resource Include="Images\NodeValue.png" />
     <Resource Include="Images\NodeVariable.png" />
   </ItemGroup>

@@ -63,6 +63,7 @@
                             <Border Padding="6,4" BorderBrush="SteelBlue" BorderThickness="1,1,1,0">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="Survey Filter" VerticalAlignment="Center"/>
+                                    <!-- TODO The planned filter-as-you-type code isn't done yet -->
                                     <TextBox Text="{Binding SurveyQuickFilter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                                              VerticalAlignment="Center" Padding="2,2,2,3" Margin="4,0,0,0" Width="120"
                                              IsEnabled="{Binding ViewSurveys,Converter={StaticResource MainVerter},ConverterParameter=SomeTrue}"/>
@@ -219,10 +220,38 @@
                                                             Command="main:MainCommands.LoadInterviews"/>
                                                 </Grid>
                                             </Border>
-                                            <TextBox Grid.Row="1" IsReadOnly="True" Text="{Binding InterviewsJsonTemp,Mode=OneWay}"
-                                                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                                                     FontFamily="Consolas" FontSize="{Binding AppFontSize}"
-                                                     Background="WhiteSmoke"/>
+                                            <Grid Grid.Row="1">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition MinWidth="100" Width="6*"/>
+                                                    <ColumnDefinition Width="4"/>
+                                                    <ColumnDefinition Width="4*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TreeView ItemsSource="{Binding ObsInterviewNodes}" FontSize="{Binding AppFontSize}" SelectedItemChanged="InterviewTree_SelectedItemChanged">
+                                                    <TreeView.ItemTemplate>
+                                                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                                            <StackPanel Orientation="Horizontal">
+                                                                <Image Style="{StaticResource TreeIconStyle}">
+                                                                    <Image.Source>
+                                                                        <MultiBinding Converter="{StaticResource MainMultiVerter}" ConverterParameter="Icon">
+                                                                            <Binding Path="Type"/>
+                                                                            <Binding Path="IsExpanded"/>
+                                                                        </MultiBinding>
+                                                                    </Image.Source>
+                                                                </Image>
+                                                                <TextBlock Text="{Binding Label}"/>
+                                                            </StackPanel>
+                                                        </HierarchicalDataTemplate>
+                                                    </TreeView.ItemTemplate>
+                                                    <TreeView.ItemContainerStyle>
+                                                        <Style TargetType="TreeViewItem">
+                                                            <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/>
+                                                        </Style>
+                                                    </TreeView.ItemContainerStyle>
+                                                </TreeView>
+                                                <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                                <kit:PropertyGrid Grid.Column="2" ShowSearchBox="False" ShowSortOptions="False" ShowSummary="False" IsReadOnly="True"
+                                                        SelectedObject="{Binding SelectedInterviewNode.Data}"/>
+                                            </Grid>
                                         </Grid>
                                     </TabItem>
 

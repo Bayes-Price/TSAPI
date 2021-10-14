@@ -104,7 +104,7 @@ namespace TSAPI.ApiBrowser
             }
         }
 
-        string _endpoint = "https://triple-s.azurewebsites.net/swagger";
+        string _endpoint = "https://triple-s.azurewebsites.net/";
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public string Endpoint
         {
@@ -146,22 +146,6 @@ namespace TSAPI.ApiBrowser
                 {
                     _obsInterviews = value;
 					OnPropertyChanged(nameof(ObsInterviews));
-                }
-            }
-        }
-
-        string _interviewsJsonTemp;
-		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
-        public string InterviewsJsonTemp
-        {
-            get => _interviewsJsonTemp;
-            set
-            {
-                string newvalue = string.IsNullOrEmpty(value) ? null : value;
-                if (_interviewsJsonTemp != newvalue)
-                {
-                    _interviewsJsonTemp = newvalue;
-					OnPropertyChanged(nameof(InterviewsJsonTemp));
                 }
             }
         }
@@ -242,6 +226,21 @@ namespace TSAPI.ApiBrowser
             }
         }
 
+        ObservableCollection<AppNode> _obsInterviewNodes;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public ObservableCollection<AppNode> ObsInterviewNodes
+        {
+            get => _obsInterviewNodes;
+            set
+            {
+                if (_obsInterviewNodes != value)
+                {
+                    _obsInterviewNodes = value;
+					OnPropertyChanged(nameof(ObsInterviewNodes));
+                }
+            }
+        }
+
         AppNode _selectedMetaNode;
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public AppNode SelectedMetaNode
@@ -253,6 +252,21 @@ namespace TSAPI.ApiBrowser
                 {
                     _selectedMetaNode = value;
 					OnPropertyChanged(nameof(SelectedMetaNode));
+                }
+            }
+        }
+
+        AppNode _selectedInterviewNode;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public AppNode SelectedInterviewNode
+        {
+            get => _selectedInterviewNode;
+            set
+            {
+                if (_selectedInterviewNode != value)
+                {
+                    _selectedInterviewNode = value;
+					OnPropertyChanged(nameof(SelectedInterviewNode));
                 }
             }
         }

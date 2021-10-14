@@ -11,6 +11,10 @@ namespace TSAPI.ApiBrowser
 		Section,
 		Variable,
 		Value,
+		Interview,
+		DataItem,
+		InterviewValue,
+		LoopRef,
 		Dummy
 	}
 

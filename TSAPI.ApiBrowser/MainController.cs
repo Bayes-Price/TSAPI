@@ -20,6 +20,8 @@ namespace TSAPI.ApiBrowser
 {
 	public sealed partial class MainController : INotifyPropertyChanged
 	{
+		readonly JsonSerializerOptions SerOpts = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+
 		public MainController()
 		{
 			Settings = new RegistrySettings();
@@ -37,7 +39,8 @@ namespace TSAPI.ApiBrowser
 			BusyMessage = "Loading survey list...";
 			try
 			{
-				SurveyDetail[] surveyList = await Client.ListSurveys();
+				string json = await Client.GetStringAsync("Surveys");
+				SurveyDetail[] surveyList = JsonSerializer.Deserialize<SurveyDetail[]>(json, SerOpts);
 				ObsSurveys = new ObservableCollection<SurveyDetail>(surveyList);
 				ViewSurveys = new ListCollectionView(_obsSurveys);
 				ViewSurveys.SortDescriptions.Add(new SortDescription(nameof(SurveyDetail.Name), ListSortDirection.Ascending));
@@ -57,7 +60,8 @@ namespace TSAPI.ApiBrowser
 			BusyMessage = $"Loading {_selectedSurvey.Name} metadata...";
 			try
 			{
-				Metadata = await Client.GetMetadata(_selectedSurvey.Id);
+				string json = await Client.GetStringAsync($"Surveys/{_selectedSurvey.Id}/Metadata");
+				Metadata = JsonSerializer.Deserialize<SurveyMetadata>(json, SerOpts);
 				ObsMetaNodes = new ObservableCollection<AppNode>(MetaToNodes());
 			}
 			catch (Exception ex)
@@ -85,9 +89,14 @@ namespace TSAPI.ApiBrowser
 					InterviewIdents = ToList(_queryVariables),
 					Variables = ToList(_queryInterviewIds)
 				};
-				Interview[] interviews = await Client.ListInterviewsFiltered(query);
+				string postjson = JsonSerializer.Serialize(query);
+				var content = new StringContent(postjson, Encoding.UTF8, "Application/json");
+				var response = await Client.PostAsync("Surveys/Interviews", content);
+				response.EnsureSuccessStatusCode();
+				string json = await response.Content.ReadAsStringAsync();
+				var interviews = JsonSerializer.Deserialize<Interview[]>(json, SerOpts);
 				ObsInterviews = new ObservableCollection<Interview>(interviews);
-				InterviewsJsonTemp = JsonSerializer.Serialize(interviews, new JsonSerializerOptions() { WriteIndented = true });
+				ObsInterviewNodes = new ObservableCollection<AppNode>(InterviewsToNodes());
 			}
 			catch (Exception ex)
 			{
@@ -125,7 +134,7 @@ namespace TSAPI.ApiBrowser
 			BusyMessage = null;
 		}
 
-		#region ---- Metadata to node helpers ----
+		#region -------- TSAPI data to node helpers --------
 
 		IEnumerable<AppNode> MetaToNodes()
 		{
@@ -153,6 +162,48 @@ namespace TSAPI.ApiBrowser
 					}
 				}
 				yield return hsNode;
+			}
+		}
+
+		IEnumerable<AppNode> InterviewsToNodes()
+		{
+			var isNode = new AppNode(NodeType.Folder, "Interviews", _obsInterviews, null);
+			isNode.IsExpanded = true;
+			yield return isNode;
+			foreach (var interview in _obsInterviews)
+			{
+				var iNode = new AppNode(NodeType.Interview, interview.Ident, interview, isNode);
+				isNode.AddChild(iNode);
+				if (interview.DataItems != null)
+				{
+					var disNode = new AppNode(NodeType.Folder, "Data Items", interview.DataItems, iNode);
+					iNode.AddChild(disNode);
+					foreach (DataItem di in interview.DataItems)
+					{
+						var diNode = new AppNode(NodeType.DataItem, di.Ident, di, disNode);
+						disNode.AddChild(diNode);
+						var vsNode = new AppNode(NodeType.Folder, "Values", di.Values, diNode);
+						diNode.AddChild(vsNode);
+						if (di.Values != null)
+						{
+							foreach (string value in di.Values)
+							{
+								var vNode = new AppNode(NodeType.InterviewValue, value, value, vsNode);
+								vsNode.AddChild(vNode);
+							}
+						}
+						var lrsNode = new AppNode(NodeType.Folder, "Loop Refs", di.LoopRefs, diNode);
+						diNode.AddChild(lrsNode);
+						if (di.LoopRefs != null)
+						{
+							foreach (LoopRef lr in di.LoopRefs)
+							{
+								var lrNode = new AppNode(NodeType.LoopRef, lr.ValueIdent, lr, lrsNode);
+								lrsNode.AddChild(lrNode);
+							}
+						}
+					}
+				}
 			}
 		}
 
@@ -221,8 +272,19 @@ namespace TSAPI.ApiBrowser
 			AppErrorTitle = AppErrorDetails = null;
 		}
 
-		TsapiClient _client;
-		public TsapiClient Client => LazyInitializer.EnsureInitialized(ref _client, () => new TsapiClient(_endpoint));
+		HttpClient _client;
+		public HttpClient Client => LazyInitializer.EnsureInitialized(ref _client, () =>
+		{
+			if (!Endpoint.EndsWith("/"))
+			{
+				Endpoint += "/";
+			}
+			var client = new HttpClient
+			{
+				BaseAddress = new Uri(_endpoint)
+			};
+			return client;
+		});
 
 		public event PropertyChangedEventHandler PropertyChanged;
 

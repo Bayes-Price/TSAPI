@@ -46,53 +46,5 @@
         <member name="P:TSAPI.Public.Domain.Metadata.Value.Ref">
             <summary>(Optional) Links this value to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
         </member>
-        <member name="T:TSAPI.Public.TsapiClient">
-            <summary>
-            A strongly-typed TSAPI web service client for the convience of .NET developers.
-            </summary>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.#ctor(System.String)">
-            <summary>
-            Constructs a client using a specified service base address string.
-            </summary>
-            <param name="serviceBaseAddress">Service base address.</param>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.#ctor(System.Uri)">
-            <summary>
-            Constructs a client using a specified service base address Uri.
-            </summary>
-            <param name="serviceBaseUri">Service base address.</param>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.Dispose">
-            <ignore/>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.Dispose(System.Boolean)">
-            <ignore/>
-        </member>
-        <member name="P:TSAPI.Public.TsapiClient.ServiceBase">
-            <summary>
-            Gets the service base address.
-            </summary>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.ListSurveys">
-            <summary>
-            Lists summary information for all available surveys.
-            </summary>
-            <returns>An array of <c>SurveyDetail</c> objects.</returns>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.GetMetadata(System.String)">
-            <summary>
-            Gets the metadata for a specific survey.
-            </summary>
-            <param name="surveyId">The Id of the survey to retrieve.</param>
-            <returns>A <c>SurveyMetadata</c> object or null of the <paramref name="surveyId"/> is not found.</returns>
-        </member>
-        <member name="M:TSAPI.Public.TsapiClient.ListInterviewsFiltered(TSAPI.Public.Queries.InterviewsQuery)">
-            <summary>
-            Lists interview results for a specific survey with filtering parameters.
-            </summary>
-            <param name="query">Query filtering parameters.</param>
-            <returns>An array <c>Interview</c> objects or null if the survey Id was not found</returns>
-        </member>
     </members>
 </doc>

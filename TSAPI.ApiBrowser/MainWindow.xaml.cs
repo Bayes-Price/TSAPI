@@ -52,5 +52,11 @@ namespace TSAPI.ApiBrowser
 			var node = (AppNode)e.NewValue;
 			Controller.SelectedMetaNode = node;
 		}
+
+		private void InterviewTree_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+		{
+			var node = (AppNode)e.NewValue;
+			Controller.SelectedInterviewNode = node;
+		}
 	}
 }
