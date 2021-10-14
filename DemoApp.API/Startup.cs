@@ -3,85 +3,50 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Data.Repos;
-using DemoApp.Data.Common.Repos;
+using DemoApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace DemoApp.API
 {
-    /// <ignore/>
-    public class Startup
+    /// <summary>
+    /// See: <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/configuring-aspnet-web-api">Configuring ASP.NET Web API 2</a>.
+    /// </summary>
+	public class Startup
     {
-        /// <ignore/>
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration _)
         {
-            Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
-
-        /// <ignore/>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(c =>
-            {
-                c.Filters.Add(new StandardActionFilter());
-            }).AddXmlSerializerFormatters();
+            services.AddControllers().AddXmlSerializerFormatters();
 
-            services.AddLogging(builder =>
-            {
-                builder.AddConsole();
-                builder.AddDebug();
-            });
-
-            // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TSAPI", Version = "v1" });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-                c.IncludeXmlComments(xmlPath);
-
-                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "basic",
-                    In = ParameterLocation.Header,
-                    Description = "Basic Authorization header using the Bearer scheme."
-                });
-
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
+                    Title = "TSAPI",
+                    Version = "v1",
+                    TermsOfService = new Uri("https://www.sample-company.com/terms/"),
+                    Description = "Sample TSAPI compliant RESTful web service implemented in a Visual Studio 2019 C# .NET Core 3.1 Web API project. This minimal working sample project can be cloned and customised to exchange surveys from different data provider companies. The internal processing and survey backing storage of a customised web service is unspecified, but the sample public API is a contract that must not change so that the service is TSAPI compliant. Return to the <a href=\"../index.html\">Welcome Page</a>.",
+                    Contact = new OpenApiContact()
                     {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "basic"
-                            }
-                        },
-                        new string[] {}
+                        Name = "Sample Company Name",
+                        Url = new Uri("https://www.sample-company.com/"),
+                        Email = "support@sample-company.com"
                     }
                 });
-
-
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
         }
 
-        /// <ignore/>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // The error handling seems to work nicely in the two modes.
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
@@ -91,21 +56,11 @@ namespace DemoApp.API
 				app.UseExceptionHandler("/error");
 			}
 
-			// Enable middleware to serve generated Swagger as a JSON endpoint.
 			app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            // NOTE: The following different endpoints work for Greg in development and when
-            // deployed to Azure, but the values might be not correct in other environments.
-            // Some experimentation might be needed to find the best general purpose values.
             app.UseSwaggerUI(c =>
             {
-#if DEBUG
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "TSAPI V1");
-#else
-                c.SwaggerEndpoint("./v1/swagger.json", "TSAPI V1");
-#endif
             });
 
             app.UseHttpsRedirection();
@@ -119,8 +74,8 @@ namespace DemoApp.API
                 endpoints.MapControllers();
             });
 
-            //Allow serving up of static files
             app.UseDefaultFiles(new DefaultFilesOptions { DefaultFileNames = new List<string> { "index.html" } });
+
             app.UseStaticFiles();
 
         }

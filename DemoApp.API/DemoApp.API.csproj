@@ -4,11 +4,17 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Version>0.0.1</Version>
     <Product>TSAPI</Product>
-    <Description>A demonstration implementation of the TSAPI web service.</Description>
+    <Description>A sample implementation of a TSAPI compliant RESTful web service.</Description>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>DemoApp.API.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn />
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,10 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DemoApp.Data.Common\DemoApp.Data.Common.csproj" />
     <ProjectReference Include="..\DemoApp.Data\DemoApp.Data.csproj" />
     <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj" />
   </ItemGroup>
-
 
 </Project>
