@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DemoApp.API</name>
+    </assembly>
+    <members>
+        <member name="T:DemoApp.API.Controllers.ErrorController">
+            <summary>
+            A simple sample error handler.
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-5.0">Handle errors in ASP.NET Core web APIs</a>.
+            </summary>
+        </member>
+        <member name="T:DemoApp.API.Startup">
+            <summary>
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/configuring-aspnet-web-api">Configuring ASP.NET Web API 2</a>.
+            </summary>
+        </member>
+        <member name="T:DemoApp.TSAPI.Controllers.SurveysController">
+            <summary>
+            <para>
+            A sample Web API controller with a public API that conforms the the TSAPI standard.
+            This minimal class may be expanded to perform whatever internal processing is required
+            to access survey data and handle other cross-cutting concerns such as logging, asynchrony,
+            authentication and authorization. However, the public API must not change.
+            </para>
+            <para>
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0">Create web APIs with ASP.NET Core</a>.
+            </para>
+            </summary>
+        </member>
+        <member name="M:DemoApp.TSAPI.Controllers.SurveysController.Surveys">
+            <summary>
+              Lists summary information for all surveys.
+            </summary>
+            <returns>
+              A serialized array of <c>SurveyDetail.</c>
+            </returns>
+            <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
+        </member>
+        <member name="M:DemoApp.TSAPI.Controllers.SurveysController.Metadata(System.String)">
+            <summary>
+              Fetches the metadata for a specific survey
+            </summary>
+            <param name="surveyId">The Id of the survey metadata to retrieve.</param>
+            <returns>
+              A serialized <c>SurveyMetadata.</c>
+            </returns>
+            <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
+        </member>
+        <member name="M:DemoApp.TSAPI.Controllers.SurveysController.Interviews(TSAPI.Public.Queries.InterviewsQuery)">
+            <summary>
+              Fetches some interview records for a specific survey.
+            </summary>
+            <param name="query">The request body contains a serialized <c>InterviewsQuery</c> containing filtering parameters.</param>
+            <returns>
+              A serialized array of <c>Interview.</c>
+            </returns>
+            <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
+        </member>
+    </members>
+</doc>

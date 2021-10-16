@@ -5,14 +5,11 @@
     <Version>0.0.1</Version>
     <Product>TSAPI</Product>
     <Description>A sample implementation of a TSAPI compliant RESTful web service.</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile></DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <NoWarn />
+    <NoWarn>1591</NoWarn>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>

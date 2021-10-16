@@ -32,15 +32,17 @@ namespace DemoApp.API
                 {
                     Title = "TSAPI",
                     Version = "v1",
-                    TermsOfService = new Uri("https://www.sample-company.com/terms/"),
                     Description = "Sample TSAPI compliant RESTful web service implemented in a Visual Studio 2019 C# .NET Core 3.1 Web API project. This minimal working sample project can be cloned and customised to exchange surveys from different data provider companies. The internal processing and survey backing storage of a customised web service is unspecified, but the sample public API is a contract that must not change so that the service is TSAPI compliant. Return to the <a href=\"../index.html\">Welcome Page</a>.",
                     Contact = new OpenApiContact()
                     {
-                        Name = "Sample Company Name",
-                        Url = new Uri("https://www.sample-company.com/"),
-                        Email = "support@sample-company.com"
+                        Name = "TSASI Demo Service",
+                        Url = new Uri("https://www.tsapi.net/"),
+                        Email = "admin@tsapi.net"
                     }
                 });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
         }
