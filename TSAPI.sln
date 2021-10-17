@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApp.Data.Common", "Demo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSAPI.Public", "TSAPI.Public\TSAPI.Public.csproj", "{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TSAPI.ApiBrowser", "TSAPI.ApiBrowser\TSAPI.ApiBrowser.csproj", "{AD6F169D-A070-45BF-A8DA-417369B8197D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD6F169D-A070-45BF-A8DA-417369B8197D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD6F169D-A070-45BF-A8DA-417369B8197D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD6F169D-A070-45BF-A8DA-417369B8197D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD6F169D-A070-45BF-A8DA-417369B8197D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
