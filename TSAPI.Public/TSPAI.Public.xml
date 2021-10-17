@@ -10,6 +10,15 @@
         <member name="T:TSAPI.Public.Domain.Metadata.Section">
             <summary>Represents a logical section within a survey (e.g. Demographics)</summary>
         </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Variables">
+            <summary>List of variables (if any) defined at the root level of the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Grids">
+            <summary>List of grids (if any) defined at the root level of the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Sections">
+            <summary>List of sub-sections (if any) defined at the root level of the survey</summary>
+        </member>
         <member name="T:TSAPI.Public.Domain.Metadata.Variable">
             <summary>A variable or question within a survey</summary>
         </member>
