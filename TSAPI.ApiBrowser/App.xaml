@@ -1,0 +1,15 @@
+﻿<Application x:Class="TSAPI.ApiBrowser.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:main="clr-namespace:TSAPI.ApiBrowser"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <main:MainConverter x:Key="MainVerter"/>
+        <main:MainMultiConverter x:Key="MainMultiVerter"/>
+        <Style x:Key="TreeIconStyle" TargetType="Image">
+            <Setter Property="Width" Value="16"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Margin" Value="0,0,4,0"/>
+        </Style>
+    </Application.Resources>
+</Application>
