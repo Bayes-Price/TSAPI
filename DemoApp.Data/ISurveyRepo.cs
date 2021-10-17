@@ -2,7 +2,7 @@
 using TSAPI.Public.Domain.Metadata;
 using TSAPI.Public.Queries;
 
-namespace DemoApp.Data.Common.Repos
+namespace DemoApp.Data
 {
 	/// <summary>
 	/// This is a sample interface to a library that acts as a data processor for a custom repository of survey data.

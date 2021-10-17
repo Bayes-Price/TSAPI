@@ -5,35 +5,28 @@
     </assembly>
     <members>
         <member name="T:DemoApp.API.Controllers.ErrorController">
-            <ignore/>
-        </member>
-        <member name="M:DemoApp.API.Controllers.ErrorController.Error">
-            <ignore/>
-        </member>
-        <member name="T:DemoApp.API.StandardActionFilter">
             <summary>
-            NOTE: This class can intercept every request and perform global processing
-            such as inspecting request headers or writing detailed logging. It currently
-            justs logs the request and elapsed time.
+            A simple sample error handler.
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/handle-errors?view=aspnetcore-5.0">Handle errors in ASP.NET Core web APIs</a>.
             </summary>
         </member>
-        <member name="M:DemoApp.API.StandardActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
-            <ignore/>
-        </member>
-        <member name="M:DemoApp.API.StandardActionFilter.OnActionExecuted(Microsoft.AspNetCore.Mvc.Filters.ActionExecutedContext)">
-            <ignore/>
-        </member>
         <member name="T:DemoApp.API.Startup">
-            <ignore/>
+            <summary>
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/advanced/configuring-aspnet-web-api">Configuring ASP.NET Web API 2</a>.
+            </summary>
         </member>
-        <member name="M:DemoApp.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
-            <ignore/>
-        </member>
-        <member name="M:DemoApp.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
-            <ignore/>
-        </member>
-        <member name="M:DemoApp.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
-            <ignore/>
+        <member name="T:DemoApp.TSAPI.Controllers.SurveysController">
+            <summary>
+            <para>
+            A sample Web API controller with a public API that conforms the the TSAPI standard.
+            This minimal class may be expanded to perform whatever internal processing is required
+            to access survey data and handle other cross-cutting concerns such as logging, asynchrony,
+            authentication and authorization. However, the public API must not change.
+            </para>
+            <para>
+            See: <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0">Create web APIs with ASP.NET Core</a>.
+            </para>
+            </summary>
         </member>
         <member name="M:DemoApp.TSAPI.Controllers.SurveysController.Surveys">
             <summary>
