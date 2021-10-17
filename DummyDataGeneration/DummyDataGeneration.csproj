@@ -78,10 +78,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DemoApp.Data\DemoApp.Data.csproj">
-      <Project>{7fc03694-1394-4cde-bdf1-15a1d00ae012}</Project>
-      <Name>DemoApp.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj">
       <Project>{2CE4849D-C7A6-414B-80A2-4A368B60FCAE}</Project>
       <Name>TSAPI.Public</Name>
