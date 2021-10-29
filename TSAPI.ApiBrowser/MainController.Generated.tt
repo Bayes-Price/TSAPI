@@ -17,7 +17,10 @@
         "string|AppErrorTitle",
         "string|AppErrorDetails",
         "int|AppFontSize|12",
+        "ObservableCollection<string>|ObsEndpoints",
+        "string|CompanyName",
         "string|Endpoint|\"https://triple-s.azurewebsites.net/\"",
+        "Dictionary<string,string>|ServiceMetadata",
         "ObservableCollection<SurveyDetail>|ObsSurveys",
         "ObservableCollection<Interview>|ObsInterviews",
         "SurveyDetail|SelectedSurvey",
@@ -39,6 +42,7 @@
 #>
 using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using TSAPI.Public.Domain.Interviews;

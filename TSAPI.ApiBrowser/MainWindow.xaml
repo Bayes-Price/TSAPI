@@ -39,10 +39,13 @@
         <Border Background="PowderBlue" Padding="6,4">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="TSAPI Endpoint" VerticalAlignment="Center"/>
-                <TextBox Width="400" VerticalAlignment="Center" Padding="2,2,2,3" Margin="4,0,0,0"
-                         Text="{Binding Endpoint,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                         IsEnabled="{Binding BusyMessage,Converter={StaticResource MainVerter},ConverterParameter=NoneTrue}"/>
-                <Button Content="Connect" VerticalAlignment="Center" Padding="10,4" Margin="4,0,0,0" Command="Open"/>
+                <ComboBox Width="400" VerticalAlignment="Center" Padding="2,2,2,3" Margin="4,0,0,0" IsEditable="True"
+                        FontSize="{Binding AppFontSize}"
+                        ItemsSource="{Binding ObsEndpoints}"
+                        Text="{Binding Endpoint,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                        IsEnabled="{Binding BusyMessage,Converter={StaticResource MainVerter},ConverterParameter=NoneTrue}"/>
+                <Button Content="Connect" VerticalAlignment="Center" Padding="12,4" Margin="4,0,0,0" Command="Open" FontSize="{Binding AppFontSize}"/>
+                <TextBlock Text="{Binding CompanyName}" VerticalAlignment="Center" FontSize="18" Foreground="SteelBlue" Margin="10,0,0,0"/>
             </StackPanel>
         </Border>
 
@@ -55,29 +58,40 @@
                             <ColumnDefinition Width="4"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Border Padding="6,4" BorderBrush="SteelBlue" BorderThickness="1,1,1,0">
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="Survey Filter" VerticalAlignment="Center"/>
-                                    <!-- TODO The planned filter-as-you-type code isn't done yet -->
-                                    <TextBox Text="{Binding SurveyQuickFilter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                                             VerticalAlignment="Center" Padding="2,2,2,3" Margin="4,0,0,0" Width="120"
-                                             IsEnabled="{Binding ViewSurveys,Converter={StaticResource MainVerter},ConverterParameter=SomeTrue}"/>
-                                </StackPanel>
-                            </Border>
-                            <DataGrid Grid.Row="1" ItemsSource="{Binding ViewSurveys}" SelectedItem="{Binding SelectedSurvey,Mode=TwoWay}"
-                                    FontSize="{Binding AppFontSize}"
-                                    HeadersVisibility="None" AutoGenerateColumns="False" IsReadOnly="True"
-                                    SelectionMode="Single" SelectionUnit="FullRow">
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
-                        </Grid>
+                        <TabControl Margin="0,2,0,0" IsEnabled="{Binding ViewSurveys,Converter={StaticResource MainVerter},ConverterParameter=SomeTrue}">
+                            <TabItem Header="Surveys" Style="{StaticResource DetailTabStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Border Padding="6,4" BorderBrush="SteelBlue">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Filter" VerticalAlignment="Center"/>
+                                            <!-- TODO The planned filter-as-you-type code isn't done yet -->
+                                            <TextBox Text="{Binding SurveyQuickFilter,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                             VerticalAlignment="Center" Padding="2,2,2,3" Margin="4,0,0,0" Width="120"/>
+                                        </StackPanel>
+                                    </Border>
+                                    <DataGrid Grid.Row="1" ItemsSource="{Binding ViewSurveys}" SelectedItem="{Binding SelectedSurvey,Mode=TwoWay}"
+                                            FontSize="{Binding AppFontSize}"
+                                            HeadersVisibility="None" AutoGenerateColumns="False" IsReadOnly="True"
+                                            SelectionMode="Single" SelectionUnit="FullRow">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </TabItem>
+                            <TabItem Header="Metadata" Style="{StaticResource DetailTabStyle}">
+                                <DataGrid ItemsSource="{Binding ServiceMetadata}" IsReadOnly="True" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Key" Binding="{Binding Key}"/>
+                                        <DataGridTextColumn Header="Value" Binding="{Binding Value}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </TabItem>
+                        </TabControl>
 
                         <GridSplitter Grid.Column="1" Width="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
@@ -86,9 +100,9 @@
                                 <TextBlock Text="No Survey Selected" HorizontalAlignment="Center" VerticalAlignment="Center"
                                            FontSize="24" Opacity="0.5"/>
                                 <TabControl Visibility="{Binding SelectedSurvey,Converter={StaticResource MainVerter},ConverterParameter=SomeVisible}">
-                                <!--<TabControl>-->
+                                    <!--<TabControl>-->
 
-                                    <TabItem Header="Metadata" Style="{DynamicResource DetailTabStyle}">
+                                    <TabItem Header="Metadata" Style="{StaticResource DetailTabStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
@@ -144,7 +158,7 @@
                                         </Grid>
                                     </TabItem>
 
-                                    <TabItem Header="Interviews" Style="{DynamicResource DetailTabStyle}">
+                                    <TabItem Header="Interviews" Style="{StaticResource DetailTabStyle}">
                                         <Grid>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>

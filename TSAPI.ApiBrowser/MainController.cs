@@ -7,11 +7,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using Orthogonal.NSettings;
-using TSAPI.Public;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
 using TSAPI.Public.Queries;
@@ -21,10 +19,17 @@ namespace TSAPI.ApiBrowser
 	public sealed partial class MainController : INotifyPropertyChanged
 	{
 		readonly JsonSerializerOptions SerOpts = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+		HttpClient _client;
+		bool supportsErrorResponse;
 
 		public MainController()
 		{
 			Settings = new RegistrySettings();
+			ObsEndpoints = new ObservableCollection<string>(new string[]
+			{
+				"https://triple-s.azurewebsites.net/",
+				"https://rcsapps.azurewebsites.net/rubytsapi/"
+			});
 		}
 
 		public void AppLoaded()
@@ -36,15 +41,43 @@ namespace TSAPI.ApiBrowser
 
 		public async Task OpenEndpoint()
 		{
-			BusyMessage = "Loading survey list...";
+			BusyMessage = "Loading survey list\u2026";
 			try
 			{
-				string json = await Client.GetStringAsync("Surveys");
+				var tempclient = new HttpClient();
+				if (!_endpoint.EndsWith("/")) Endpoint += "/";
+				tempclient.BaseAddress = new Uri(_endpoint);
+
+				#region ------- Metadata --------
+				// EXPERIMENTAL
+				// Probe the service to see if it returns metadata key-value pairs.
+				// If it does, then one of the items tells us if it returns a standard
+				// error reponse for all non-200 responses. This is an API extension
+				// vaguely proposed by Red Centre Software.
+				var message = await tempclient.GetAsync("service/metadata");
+				if (message.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					string metajson = await message.Content.ReadAsStringAsync();
+					var jagged = JsonSerializer.Deserialize<string[][]>(metajson, SerOpts);
+					ServiceMetadata = jagged.ToDictionary(x => x[0], x => x[1]);
+					CompanyName = _serviceMetadata.TryGetValue("Company", out string s1) ? s1 : null;
+					supportsErrorResponse = _serviceMetadata.TryGetValue("ErrorResponseType", out string s2) ? s2 == typeof(ErrorResponse).Name : false;
+				}
+				else
+				{
+					CompanyName = null;
+					supportsErrorResponse = false;
+				}
+				#endregion
+
+				string json = await tempclient.GetStringAsync("Surveys");
 				SurveyDetail[] surveyList = JsonSerializer.Deserialize<SurveyDetail[]>(json, SerOpts);
 				ObsSurveys = new ObservableCollection<SurveyDetail>(surveyList);
 				ViewSurveys = new ListCollectionView(_obsSurveys);
 				ViewSurveys.SortDescriptions.Add(new SortDescription(nameof(SurveyDetail.Name), ListSortDirection.Ascending));
 				StatusMessage = $"Connected - Survey count: {_obsSurveys.Count}";
+				_client = tempclient;
+				CloseAlert();
 			}
 			catch (Exception ex)
 			{
@@ -57,12 +90,27 @@ namespace TSAPI.ApiBrowser
 
 		public async Task LoadMetadata()
 		{
-			BusyMessage = $"Loading {_selectedSurvey.Name} metadata...";
+			BusyMessage = $"Loading {_selectedSurvey.Name} metadata\u2026";
 			try
 			{
-				string json = await Client.GetStringAsync($"Surveys/{_selectedSurvey.Id}/Metadata");
-				Metadata = JsonSerializer.Deserialize<SurveyMetadata>(json, SerOpts);
-				ObsMetaNodes = new ObservableCollection<AppNode>(MetaToNodes());
+				var response = await _client.GetAsync($"Surveys/{_selectedSurvey.Id}/Metadata");
+				if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					string json = await response.Content.ReadAsStringAsync();
+					Metadata = JsonSerializer.Deserialize<SurveyMetadata>(json, SerOpts);
+					ObsMetaNodes = new ObservableCollection<AppNode>(MetaToNodes());
+					CloseAlert();
+				}
+				else
+				{
+					if (supportsErrorResponse)
+					{
+						string json = await response.Content.ReadAsStringAsync();
+						var error = JsonSerializer.Deserialize<ErrorResponse>(json, SerOpts);
+						throw new ApplicationException(error.Message);
+					}
+					response.EnsureSuccessStatusCode();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -75,7 +123,7 @@ namespace TSAPI.ApiBrowser
 
 		public async Task ListInterviews()
 		{
-			BusyMessage = $"Loading {_selectedSurvey.Name} interviews...";
+			BusyMessage = $"Loading {_selectedSurvey.Name} interviews\u2026";
 			List<string> ToList(string value) => value?.Split(",; ".ToCharArray(), StringSplitOptions.RemoveEmptyEntries).ToList();
 			try
 			{
@@ -90,13 +138,26 @@ namespace TSAPI.ApiBrowser
 					Variables = ToList(_queryInterviewIds)
 				};
 				string postjson = JsonSerializer.Serialize(query);
-				var content = new StringContent(postjson, Encoding.UTF8, "Application/json");
-				var response = await Client.PostAsync("Surveys/Interviews", content);
-				response.EnsureSuccessStatusCode();
-				string json = await response.Content.ReadAsStringAsync();
-				var interviews = JsonSerializer.Deserialize<Interview[]>(json, SerOpts);
-				ObsInterviews = new ObservableCollection<Interview>(interviews);
-				ObsInterviewNodes = new ObservableCollection<AppNode>(InterviewsToNodes());
+				var content = new StringContent(postjson, Encoding.UTF8, "application/json");
+				var response = await _client.PostAsync("Surveys/Interviews", content);
+				if (response.StatusCode == System.Net.HttpStatusCode.OK)
+				{
+					string json = await response.Content.ReadAsStringAsync();
+					var interviews = JsonSerializer.Deserialize<Interview[]>(json, SerOpts);
+					ObsInterviews = new ObservableCollection<Interview>(interviews);
+					ObsInterviewNodes = new ObservableCollection<AppNode>(InterviewsToNodes());
+					CloseAlert();
+				}
+				else
+				{
+					if (supportsErrorResponse)
+					{
+						string json = await response.Content.ReadAsStringAsync();
+						var error = JsonSerializer.Deserialize<ErrorResponse>(json, SerOpts);
+						throw new ApplicationException(error.Message);
+					}
+					response.EnsureSuccessStatusCode();
+				}
 			}
 			catch (Exception ex)
 			{
@@ -110,10 +171,9 @@ namespace TSAPI.ApiBrowser
 		/// <summary>
 		/// Experimental 'push' of metadata to a specified receiving web service url.
 		/// </summary>
-		/// <returns></returns>
 		public async Task ExportMetadata()
 		{
-			BusyMessage = "Exporting metadata...";
+			BusyMessage = "Exporting metadata\u2026";
 			try
 			{
 				using (var client = new HttpClient())
@@ -132,6 +192,11 @@ namespace TSAPI.ApiBrowser
 				AppErrorDetails = ex.Message;
 			}
 			BusyMessage = null;
+		}
+
+		public void CloseAlert()
+		{
+			AppErrorTitle = AppErrorDetails = null;
 		}
 
 		#region -------- TSAPI data to node helpers --------
@@ -266,25 +331,6 @@ namespace TSAPI.ApiBrowser
 		}
 
 		#endregion
-
-		public void CloseAlert()
-		{
-			AppErrorTitle = AppErrorDetails = null;
-		}
-
-		HttpClient _client;
-		public HttpClient Client => LazyInitializer.EnsureInitialized(ref _client, () =>
-		{
-			if (!Endpoint.EndsWith("/"))
-			{
-				Endpoint += "/";
-			}
-			var client = new HttpClient
-			{
-				BaseAddress = new Uri(_endpoint)
-			};
-			return client;
-		});
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
