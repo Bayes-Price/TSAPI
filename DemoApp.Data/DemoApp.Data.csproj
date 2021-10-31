@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DemoApp.Data.Common\DemoApp.Data.Common.csproj" />
+    <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj" />
   </ItemGroup>
 
 </Project>

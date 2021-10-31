@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DemoApp.Data.Common\DemoApp.Data.Common.csproj" />
     <ProjectReference Include="..\DemoApp.Data\DemoApp.Data.csproj" />
     <ProjectReference Include="..\TSAPI.Public\TSAPI.Public.csproj" />
   </ItemGroup>
