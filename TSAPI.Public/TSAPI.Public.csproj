@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <Authors>Collaboration</Authors>
     <Company>TODO Company Name</Company>
@@ -14,6 +14,15 @@
     <DocumentationFile>TSPAI.Public.xml</DocumentationFile>
     <ApplicationIcon>TSAPI.Public.ico</ApplicationIcon>
     <PackageIconUrl />
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>TSAPI.Public.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn>1591</NoWarn>
+    <DefineConstants />
   </PropertyGroup>
 
   <ItemGroup>
