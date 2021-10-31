@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using DemoApp.Data.Common.Repos;
+﻿using DemoApp.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TSAPI.Public.Domain.Interviews;
@@ -9,23 +7,28 @@ using TSAPI.Public.Queries;
 
 namespace DemoApp.TSAPI.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    /// <summary>
+    /// <para>
+    /// A sample Web API controller with a public API that conforms the the TSAPI standard.
+    /// This minimal class may be expanded to perform whatever internal processing is required
+    /// to access survey data and handle other cross-cutting concerns such as logging, asynchrony,
+    /// authentication and authorization. However, the public API must not change.
+    /// </para>
+    /// <para>
+    /// See: <a href="https://docs.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-5.0">Create web APIs with ASP.NET Core</a>.
+    /// </para>
+    /// </summary>
+	[ApiController]
     public class SurveysController : ControllerBase
     {
-
-        #region "Member Variables"
         private ISurveyRepo _surveyRepo;
-        #endregion
 
-        #region "Construction"
         public SurveysController(ISurveyRepo surveyRepo)
         {
             _surveyRepo = surveyRepo;
         }
-        #endregion
 
-        #region "Public Methods"
+        #region Public API
 
         /// <summary>
         ///   Lists summary information for all surveys.
@@ -38,9 +41,9 @@ namespace DemoApp.TSAPI.Controllers
         [Route("/Surveys/")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(SurveyDetail[]), StatusCodes.Status200OK)]
-        public async Task<SurveyDetail[]> Surveys()
+        public SurveyDetail[] Surveys()
         {
-            return await _surveyRepo.ListSurveys();
+            return _surveyRepo.ListSurveys();
         }
 
         /// <summary>
@@ -55,9 +58,9 @@ namespace DemoApp.TSAPI.Controllers
         [Route("/Surveys/{surveyId}/Metadata")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(SurveyMetadata), StatusCodes.Status200OK)]
-        public async Task<SurveyMetadata> Metadata(string surveyId)
+        public SurveyMetadata Metadata(string surveyId)
         {
-            return await _surveyRepo.ReadSurveyMetadata(surveyId);
+            return _surveyRepo.ReadSurveyMetadata(surveyId);
         }
 
         /// <summary>
@@ -72,9 +75,9 @@ namespace DemoApp.TSAPI.Controllers
         [Route("/Surveys/Interviews")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
-        public async Task<Interview[]> Interviews([FromBody] InterviewsQuery query)
+        public Interview[] Interviews([FromBody] InterviewsQuery query)
         {
-            return await _surveyRepo.ReadSurveydata(query);
+            return _surveyRepo.ReadSurveydata(query);
         }
 
         #endregion

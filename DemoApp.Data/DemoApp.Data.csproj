@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>1.0.0</Version>
+    <Product>TSAPI</Product>
+    <Description>A sample library that implements survey data processing.</Description>
+    <Authors>Collaboration</Authors>
   </PropertyGroup>
 
   <ItemGroup>
