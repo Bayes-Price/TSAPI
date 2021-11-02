@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using DemoApp.Data;
+using DemoApp.Data.Domain;
 using DemoApp.Data.Repos;
+using Newtonsoft.Json;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
 using TSAPI.Public.Queries;
@@ -47,26 +49,13 @@ namespace Data.Repos
             }
         }
 
-        public Interview[] ReadSurveydata(InterviewsQuery query)
+        public Interview[] ReadSurveydata(InterviewsQuery query, string path)
         {
             if (query.Start == null && query.MaxLength != null || query.Start != null && query.MaxLength == null)
                 throw new ArgumentException("Invalid paging arguments");
 
-            List<Interview> allInterviews;
-
-            // ReSharper disable once ConvertSwitchStatementToSwitchExpression
-            switch (query.SurveyId)
-            {
-                case SP5201Id:
-                    allInterviews = Sp5201.LoadAllInterviews();
-                    break;
-                //case PR9012Id:
-                //    allInterviews = PR9012_HOUSEHOLD.LoadAllInterviews();
-                    //break;
-                default:
-                    throw new ArgumentException($"Unrecognised survey id {query.SurveyId}");
-            }
-
+            //Load in "All Interviews"
+            List<InterviewWrapper> allInterviews = ReadAllInterviews(path);
 
             //Filtering
             allInterviews = ApplyFiltering(allInterviews, query);
@@ -80,36 +69,43 @@ namespace Data.Repos
                 .Take(query.MaxLength ?? allInterviews.Count)
                 .ToArray();
 
+            return interviews.Select(i => i.Interview).ToArray();
+        }
+
+        /// <summary>Simple filtering function</summary>
+        private List<InterviewWrapper> ApplyFiltering(List<InterviewWrapper> interviews, InterviewsQuery query)
+        {
+            //Filter on Interview Ids
+            if (query.InterviewIdents != null && query.InterviewIdents.Any())
+                interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Interview.Ident)).ToList();
+
+            //Filter on Date Last Changed
+            if (query.Date != null)
+                interviews = interviews.Where(i => i.DateLastChanged >= query.Date).ToList();
+
+            //Filter on Complete
+            if (query.CompleteOnly)
+                interviews = interviews.Where(i => i.Complete).ToList();
+
+            //Filter on Questions
+            if (query.Variables != null && query.Variables.Any())
+            {
+                foreach (var interview in interviews)
+                {
+                    interview.Interview.DataItems = interview.Interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
+                }
+            }
+
             return interviews;
         }
 
-        /// <summary>Crude simple filtering function</summary>
-        private List<Interview> ApplyFiltering(List<Interview> allInterviews, InterviewsQuery query)
+        private List<InterviewWrapper> ReadAllInterviews(string path)
         {
-            //Interview Ids
-            if (query.InterviewIdents != null && query.InterviewIdents.Any())
-                allInterviews = allInterviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
-
-            //Date 
-            //TODO: return interview date
-
-            //Complete
-            if (query.CompleteOnly)
-                allInterviews = allInterviews.Where(i => i.Ident != "520001").ToList(); //Pretend that interview 1 is incomplete
-
-            //Questions
-            if (query.Variables != null && query.Variables.Any())
+            using (var streamReader = new System.IO.StreamReader(path))
             {
-                foreach (var interview in allInterviews)
-                {
-                    interview.DataItems = interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
-                }
+                return JsonConvert.DeserializeObject<List<InterviewWrapper>>(streamReader.ReadToEnd());
             }
-            
-            return allInterviews;
-
         }
-
     }
 }
  
