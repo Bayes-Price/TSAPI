@@ -136,7 +136,7 @@ namespace TSAPI.ApiBrowser
             }
         }
 
-        string _endpoint = "https://triple-s.azurewebsites.net/";
+        string _endpoint = "https://tsapi-demo.azurewebsites.net/";
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public string Endpoint
         {
