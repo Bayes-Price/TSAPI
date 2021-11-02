@@ -1,4 +1,5 @@
 ﻿using DemoApp.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TSAPI.Public.Domain.Interviews;
@@ -22,20 +23,18 @@ namespace DemoApp.TSAPI.Controllers
     public class SurveysController : ControllerBase
     {
         private ISurveyRepo _surveyRepo;
+        private IWebHostEnvironment _hostingEnvironment;
 
-        public SurveysController(ISurveyRepo surveyRepo)
+        public SurveysController(ISurveyRepo surveyRepo, IWebHostEnvironment hostingEnvironment)
         {
             _surveyRepo = surveyRepo;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         #region Public API
 
-        /// <summary>
-        ///   Lists summary information for all surveys.
-        /// </summary>
-        /// <returns>
-        ///   A serialized array of <c>SurveyDetail.</c>
-        /// </returns>
+        /// <summary>Lists summary information for all surveys.</summary>
+        /// <returns>A serialized array of <c>SurveyDetail.</c></returns>
 		/// <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
         [HttpGet]
         [Route("/Surveys/")]
@@ -77,7 +76,8 @@ namespace DemoApp.TSAPI.Controllers
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
         public Interview[] Interviews([FromBody] InterviewsQuery query)
         {
-            return _surveyRepo.ReadSurveydata(query);
+            var path = _hostingEnvironment.ContentRootPath + @"\Data\SP5201-1.json";
+            return _surveyRepo.ReadSurveydata(query, path);
         }
 
         #endregion

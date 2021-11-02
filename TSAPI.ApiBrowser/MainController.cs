@@ -27,7 +27,7 @@ namespace TSAPI.ApiBrowser
 			Settings = new RegistrySettings();
 			ObsEndpoints = new ObservableCollection<string>(new string[]
 			{
-				"https://triple-s.azurewebsites.net/",
+				"https://tsapi-demo.azurewebsites.net/",
 				"https://rcsapps.azurewebsites.net/rubytsapi/"
 			});
 		}

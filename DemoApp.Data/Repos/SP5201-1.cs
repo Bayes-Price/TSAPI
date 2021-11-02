@@ -26,8 +26,7 @@ namespace DemoApp.Data.Repos
                 {
                     new Section() { Label = new Label("System") },
                     new Section() { Label = new Label("Demographics") },
-                    new Section() { Label = new Label("Main Survey") },
-                    new Section() { Label = new Label("DP") }
+                    new Section() { Label = new Label("Main Survey") }
                 }
             };
 
@@ -406,7 +405,7 @@ namespace DemoApp.Data.Repos
 
 
             //Language
-            metadata.Sections[3].Variables.Add(new Variable
+            metadata.Variables.Add(new Variable
             {
                 Ident = "19",
                 Type = Enums.VariableType.Single,
@@ -425,7 +424,7 @@ namespace DemoApp.Data.Repos
 
 
             //WT
-            metadata.Sections[3].Variables.Add(new Variable
+            metadata.Variables.Add(new Variable
             {
                 Ident = "999999",
                 Type = Enums.VariableType.Quantity,
@@ -441,100 +440,5 @@ namespace DemoApp.Data.Repos
             return metadata;
         }
         #endregion
-
-        #region "Survey Data"
-        public static List<Interview> LoadAllInterviews()
-        {
-            var interviews = new List<Interview>
-            {
-                MakeDummyInterview1()
-            };
-
-            return interviews;
-        }
-
-        private static Interview MakeDummyInterview1()
-        {
-            return new Interview
-            {
-                Ident = "520001",
-                DataItems = new List<DataItem>
-                {
-                    new DataItem {Ident = "1", Values = new List<string> {"520001"}},
-                    new DataItem {Ident = "2", Values = new List<string> {"20050504"}},
-                    new DataItem {Ident = "3", Values = new List<string> {"112000"}},
-                    new DataItem {Ident = "4", Values = new List<string> {"0"}},
-                    new DataItem {Ident = "5", Values = new List<string> {"1", "3", "5", "9"}},
-                    new DataItem {Ident = "5-os1", Values = new List<string> {"Nottingham Goose Fair"}},  //Other specify 
-                    new DataItem {Ident = "6", Values = new List<string> {"2"}},
-                    new DataItem {Ident = "7", Values = new List<string> {"5", "1"}},
-                    new DataItem {Ident = "8", Values = new List<string> {"25"}},
-                    new DataItem {Ident = "9", Values = new List<string> {"1"}},
-                    new DataItem {Ident = "10", Values = new List<string> {"A"}},
-
-                    //Grid - Q9
-                    new DataItem { Ident = "11", Values = new List<string> { "1"}, GridRowIdent = "r1" },
-                    new DataItem { Ident = "11", Values = new List<string> { "2" }, GridRowIdent = "r2" },
-                    new DataItem { Ident = "11", Values = new List<string> { "1" }, GridRowIdent = "r3" },
-                    new DataItem { Ident = "11", Values = new List<string> { "3" }, GridRowIdent = "r4" },
-                    new DataItem { Ident = "11", Values = new List<string> { "2" }, GridRowIdent = "r5" },
-                    new DataItem { Ident = "11", Values = new List<string> { "1" }, GridRowIdent = "r6" },
-                    new DataItem { Ident = "11", Values = new List<string> { "-66" }, GridRowIdent = "r7" },
-                    new DataItem { Ident = "11", Values = new List<string> { "-66" }, GridRowIdent = "r8" },
-
-
-                    //Grid - Q10-Q13
-                    new DataItem { Ident = "12", Values = new List<string> { "1"}, GridRowIdent = "r1" },
-                    new DataItem { Ident = "12", Values = new List<string> { "0" }, GridRowIdent = "r2" },
-                    new DataItem { Ident = "12", Values = new List<string> { "0" }, GridRowIdent = "r3" },
-                    new DataItem { Ident = "12", Values = new List<string> { "1" }, GridRowIdent = "r4" },
-                    new DataItem { Ident = "12", Values = new List<string> { "1" }, GridRowIdent = "r5" },
-                    new DataItem { Ident = "12", Values = new List<string> { "0" }, GridRowIdent = "r6" },
-                    new DataItem { Ident = "12", Values = new List<string> { "-66" }, GridRowIdent = "r7" },
-                    new DataItem { Ident = "12", Values = new List<string> { "-66" }, GridRowIdent = "r8" },
-
-                    new DataItem { Ident = "13", Values = new List<string> { "1"}, GridRowIdent = "r1" },
-                    new DataItem { Ident = "13", Values = new List<string> { "1" }, GridRowIdent = "r2" },
-                    new DataItem { Ident = "13", Values = new List<string> { "0" }, GridRowIdent = "r3" },
-                    new DataItem { Ident = "13", Values = new List<string> { "1" }, GridRowIdent = "r4" },
-                    new DataItem { Ident = "13", Values = new List<string> { "0" }, GridRowIdent = "r5" },
-                    new DataItem { Ident = "13", Values = new List<string> { "0" }, GridRowIdent = "r6" },
-                    new DataItem { Ident = "13", Values = new List<string> { "-66" }, GridRowIdent = "r7" },
-                    new DataItem { Ident = "13", Values = new List<string> { "-66" }, GridRowIdent = "r8" },
-
-                    new DataItem { Ident = "14", Values = new List<string> { "0"}, GridRowIdent = "r1" },
-                    new DataItem { Ident = "14", Values = new List<string> { "0" }, GridRowIdent = "r2" },
-                    new DataItem { Ident = "14", Values = new List<string> { "0" }, GridRowIdent = "r3" },
-                    new DataItem { Ident = "14", Values = new List<string> { "0" }, GridRowIdent = "r4" },
-                    new DataItem { Ident = "14", Values = new List<string> { "1" }, GridRowIdent = "r5" },
-                    new DataItem { Ident = "14", Values = new List<string> { "0" }, GridRowIdent = "r6" },
-                    new DataItem { Ident = "14", Values = new List<string> { "-66" }, GridRowIdent = "r7" },
-                    new DataItem { Ident = "14", Values = new List<string> { "-66" }, GridRowIdent = "r8" },
-
-                    new DataItem { Ident = "15", Values = new List<string> { "1"}, GridRowIdent = "r1" },
-                    new DataItem { Ident = "15", Values = new List<string> { "0" }, GridRowIdent = "r2" },
-                    new DataItem { Ident = "15", Values = new List<string> { "0" }, GridRowIdent = "r3" },
-                    new DataItem { Ident = "15", Values = new List<string> { "1" }, GridRowIdent = "r4" },
-                    new DataItem { Ident = "15", Values = new List<string> { "0" }, GridRowIdent = "r5" },
-                    new DataItem { Ident = "15", Values = new List<string> { "0" }, GridRowIdent = "r6" },
-                    new DataItem { Ident = "15", Values = new List<string> { "-66" }, GridRowIdent = "r7" },
-                    new DataItem { Ident = "15", Values = new List<string> { "-66" }, GridRowIdent = "r8" },
-
-
-                    //Loop
-                    new DataItem {Ident = "17", Values = new List<string> {"I just love learning about mining!"},  LoopRefs = new List<LoopRef> { new LoopRef { VariableIdent = "16", ValueIdent = "5" } } },
-                    new DataItem {Ident = "17", Values = new List<string> {"I'm a big fan of Robin Hood!"},  LoopRefs = new List<LoopRef> { new LoopRef { VariableIdent = "16", ValueIdent = "1" } } },
-
-                    new DataItem {Ident = "18", Values = new List<string> {"1"},  LoopRefs = new List<LoopRef> { new LoopRef { VariableIdent = "16", ValueIdent = "5" } } },
-                    new DataItem {Ident = "18", Values = new List<string> {"2"},  LoopRefs = new List<LoopRef> { new LoopRef { VariableIdent = "16", ValueIdent = "1" } } },
-
-                    new DataItem {Ident = "22", Values = new List<string> {"EN"}},
-
-                    new DataItem {Ident = "999999", Values = new List<string> {"1.131"}}
-                }
-            };
-        }
-        #endregion
-
     }
 }

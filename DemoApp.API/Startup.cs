@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace DemoApp.API
 {
@@ -45,6 +46,11 @@ namespace DemoApp.API
                 c.IncludeXmlComments(xmlPath);
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
+
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

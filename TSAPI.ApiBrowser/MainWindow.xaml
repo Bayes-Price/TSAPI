@@ -43,8 +43,8 @@
                         FontSize="{Binding AppFontSize}"
                         ItemsSource="{Binding ObsEndpoints}"
                         Text="{Binding Endpoint,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
-                        IsEnabled="{Binding BusyMessage,Converter={StaticResource MainVerter},ConverterParameter=NoneTrue}"/>
-                <Button Content="Connect" VerticalAlignment="Center" Padding="12,4" Margin="4,0,0,0" Command="Open" FontSize="{Binding AppFontSize}"/>
+                        IsEnabled="{Binding BusyMessage,Converter={StaticResource MainVerter},ConverterParameter=NoneTrue}" SelectionChanged="ComboBox_SelectionChanged"/>
+                <Button Content="Connect" VerticalAlignment="Center" Padding="12,4" Margin="4,0,0,0" Command="Open" FontSize="{Binding AppFontSize}" Click="Button_Click"/>
                 <TextBlock Text="{Binding CompanyName}" VerticalAlignment="Center" FontSize="18" Foreground="SteelBlue" Margin="10,0,0,0"/>
             </StackPanel>
         </Border>
