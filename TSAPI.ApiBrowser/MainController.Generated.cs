@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Data;
 using TSAPI.Public.Domain.Interviews;
@@ -104,6 +105,37 @@ namespace TSAPI.ApiBrowser
             }
         }
 
+        ObservableCollection<string> _obsEndpoints;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public ObservableCollection<string> ObsEndpoints
+        {
+            get => _obsEndpoints;
+            set
+            {
+                if (_obsEndpoints != value)
+                {
+                    _obsEndpoints = value;
+					OnPropertyChanged(nameof(ObsEndpoints));
+                }
+            }
+        }
+
+        string _companyName;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public string CompanyName
+        {
+            get => _companyName;
+            set
+            {
+                string newvalue = string.IsNullOrEmpty(value) ? null : value;
+                if (_companyName != newvalue)
+                {
+                    _companyName = newvalue;
+					OnPropertyChanged(nameof(CompanyName));
+                }
+            }
+        }
+
         string _endpoint = "https://triple-s.azurewebsites.net/";
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public string Endpoint
@@ -116,6 +148,21 @@ namespace TSAPI.ApiBrowser
                 {
                     _endpoint = newvalue;
 					OnPropertyChanged(nameof(Endpoint));
+                }
+            }
+        }
+
+        Dictionary<string,string> _serviceMetadata;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public Dictionary<string,string> ServiceMetadata
+        {
+            get => _serviceMetadata;
+            set
+            {
+                if (_serviceMetadata != value)
+                {
+                    _serviceMetadata = value;
+					OnPropertyChanged(nameof(ServiceMetadata));
                 }
             }
         }
