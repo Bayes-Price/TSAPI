@@ -28,11 +28,18 @@ namespace TSAPI.ApiBrowser
 
 		async void LoadMetadataCmdExecuted(object target, ExecutedRoutedEventArgs e) => await Controller.LoadMetadata();
 
-		void LoadInterviewsCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = Controller.SelectedSurvey != null;
+		void LoadInterviewsCanExecute(object sender, CanExecuteRoutedEventArgs e)
+		{
+			if (Controller.BusyMessage != null) e.CanExecute = false;
+			else if (Controller.SelectedSurvey == null) e.CanExecute = false;
+			else if (Controller.QueryPagingStart == null && Controller.QueryPagingCount != null) e.CanExecute = false;
+			else if (Controller.QueryPagingStart != null && Controller.QueryPagingCount == null) e.CanExecute = false;
+			else e.CanExecute = true;
+		}
 
 		async void LoadInterviewsCmdExecuted(object target, ExecutedRoutedEventArgs e) => await Controller.ListInterviews();
 
-		void ExportMetadataCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = IsUri(Controller.ExportMetaUrl);
+		void ExportMetadataCanExecute(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = Controller.Metadata != null && IsUri(Controller.ExportMetaUrl);
 
 		async void ExportMetadataCmdExecuted(object target, ExecutedRoutedEventArgs e) => await Controller.ExportMetadata();
 

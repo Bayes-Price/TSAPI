@@ -15,6 +15,10 @@ namespace TSAPI.ApiBrowser
 		DataItem,
 		InterviewValue,
 		LoopRef,
+		Grid,
+		Row,
+		AltLabel,
+		ValueRef,
 		Dummy
 	}
 

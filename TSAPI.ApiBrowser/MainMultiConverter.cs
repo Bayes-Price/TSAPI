@@ -17,6 +17,9 @@ namespace TSAPI.ApiBrowser
 		static readonly BitmapImage DataItemIcon = new BitmapImage(new Uri("/Images/NodeDataItem.png", UriKind.Relative));
 		static readonly BitmapImage InterviewValueIcon = new BitmapImage(new Uri("/Images/NodeInterviewValue.png", UriKind.Relative));
 		static readonly BitmapImage LoopRefIcon = new BitmapImage(new Uri("/Images/NodeLoopRef.png", UriKind.Relative));
+		static readonly BitmapImage GridIcon = new BitmapImage(new Uri("/Images/NodeGrid.png", UriKind.Relative));
+		static readonly BitmapImage AltLabelIcon = new BitmapImage(new Uri("/Images/NodeAltLabel.png", UriKind.Relative));
+		static readonly BitmapImage ValueRefIcon = new BitmapImage(new Uri("/Images/NodeValueRef.png", UriKind.Relative));
 		static readonly BitmapImage DummyIcon = new BitmapImage(new Uri("/Images/NodeDummy.png", UriKind.Relative));
 
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -34,6 +37,9 @@ namespace TSAPI.ApiBrowser
 				if (type == NodeType.DataItem) return DataItemIcon;
 				if (type == NodeType.InterviewValue) return InterviewValueIcon;
 				if (type == NodeType.LoopRef) return LoopRefIcon;
+				if (type == NodeType.Grid) return LoopRefIcon;
+				if (type == NodeType.AltLabel) return AltLabelIcon;
+				if (type == NodeType.ValueRef) return ValueRefIcon;
 				return DummyIcon;
 			}
 			throw new NotImplementedException(nameof(Convert));

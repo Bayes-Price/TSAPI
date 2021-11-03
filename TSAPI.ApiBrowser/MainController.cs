@@ -28,7 +28,8 @@ namespace TSAPI.ApiBrowser
 			ObsEndpoints = new ObservableCollection<string>(new string[]
 			{
 				"https://tsapi-demo.azurewebsites.net/",
-				"https://rcsapps.azurewebsites.net/rubytsapi/"
+				"https://rcsapps.azurewebsites.net/rubytsapi/",
+				"https://localhost:44389/"
 			});
 		}
 
@@ -201,6 +202,10 @@ namespace TSAPI.ApiBrowser
 
 		#region -------- TSAPI data to node helpers --------
 
+		// The following code is long and repetitive, but it's hard to avoid because it's
+		// converting a nest of classes into a tree display. It could be automated with
+		// attributes and reflection, but that's too much bother for a demo program.
+
 		IEnumerable<AppNode> MetaToNodes()
 		{
 			var baseNode = new AppNode(NodeType.Folder, "Base Information", _metadata, null);
@@ -274,7 +279,52 @@ namespace TSAPI.ApiBrowser
 
 		void UnwindMetaBase(SurveyMetadataBase metabase, AppNode parentNode)
 		{
-			var secsNode = new AppNode(NodeType.Folder, "Sections", null, parentNode);
+			if (metabase.Variables != null)
+			{
+				var varsNode = new AppNode(NodeType.Folder, "Variables", metabase.Variables, parentNode);
+				parentNode.AddChild(varsNode);
+				UnwindVariables(metabase.Variables, varsNode);
+			}
+			if (metabase.Grids != null)
+			{
+				var gridsNode = new AppNode(NodeType.Folder, "Grids", metabase.Grids, parentNode);
+				parentNode.AddChild(gridsNode);
+				foreach (var grid in metabase.Grids)
+				{
+					var gridNode = new AppNode(NodeType.Grid, "Grid", grid, gridsNode);
+					gridsNode.AddChild(gridNode);
+					if (grid.ColumnVariables != null)
+					{
+						var colvarsNode = new AppNode(NodeType.Folder, "Column Variables", grid.ColumnVariables, gridNode);
+						gridNode.AddChild(colvarsNode);
+						UnwindVariables(grid.ColumnVariables, colvarsNode);
+					}
+					if (grid.Rows != null)
+					{
+						var rowsNode = new AppNode(NodeType.Folder, "Rows", grid.Rows, gridNode);
+						gridNode.AddChild(rowsNode);
+						foreach (var row in grid.Rows)
+						{
+							var rowNode = new AppNode(NodeType.Row, row.Ident ?? row.Text, row, rowsNode);
+							rowsNode.AddChild(rowNode);
+							if (row.AltLabels?.Count > 0)
+							{
+								foreach (var alt in row.AltLabels)
+								{
+									var altNode = new AppNode(NodeType.AltLabel, alt.Text, alt, rowNode);
+									rowNode.AddChild(altNode);
+								}
+							}
+							if (row.Ref != null)
+							{
+								var refNode = new AppNode(NodeType.ValueRef, row.Ref.VariableIdent ?? row.Ref.ValueIdent, row.Ref, rowNode);
+								rowNode.AddChild(refNode);
+							}
+						}
+					}
+				}
+			}
+			var secsNode = new AppNode(NodeType.Folder, "Sections", metabase.Sections, parentNode);
 			parentNode.AddChild(secsNode);
 			foreach (var section in metabase.Sections)
 			{
