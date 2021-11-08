@@ -8,5 +8,7 @@ namespace TSAPI.Public.Domain.Metadata
         public Label Label { get; set; }
         public List<Variable> Variables { get; set; } = new List<Variable>();
         public List<Grid> Grids { get; set; } = new List<Grid>();
+        /// <summary>List of sub-sections (if any) within this section</summary>
+        public List<Section> Sections { get; set; }
     }
 }
