@@ -144,7 +144,7 @@ namespace DemoApp.Data.Repos
                         Ident = "5-os1",
                         ParentValueIdent = "9",
                         Type = Enums.VariableType.Character,
-                        Name = "Q3 (Other Specify 1)",
+                        Name = "Q3.OS1",
                         Label = new Label("Other attractions visited")
                     },
                     new OtherSpecifyVariable
@@ -152,7 +152,7 @@ namespace DemoApp.Data.Repos
                         Ident = "5-os2",
                         ParentValueIdent = "10",
                         Type = Enums.VariableType.Character,
-                        Name = "Q3 (Other Specify 2)",
+                        Name = "Q3.OS2",
                         Label = new Label("Other attractions visited")
                     },
                     new OtherSpecifyVariable
@@ -160,7 +160,7 @@ namespace DemoApp.Data.Repos
                         Ident = "5-os3",
                         ParentValueIdent = "11",
                         Type = Enums.VariableType.Character,
-                        Name = "Q3 (Other Specify 3)",
+                        Name = "Q3.OS3",
                         Label = new Label("Other attractions visited")
                     }
                 }
@@ -319,28 +319,28 @@ namespace DemoApp.Data.Repos
                     {
                         Ident = "12",
                         Type = Enums.VariableType.Logical,
-                        Name = "Q10 - Fun",
+                        Name = "Q10.Fun",
                         Label = new Label("Fun")
                     },
                     new Variable
                     {
                         Ident = "13",
                         Type = Enums.VariableType.Logical,
-                        Name = "Q11 - Educational",
+                        Name = "Q11.Educational",
                         Label = new Label("Educational")
                     },
                     new Variable
                     {
                         Ident = "14",
                         Type = Enums.VariableType.Logical,
-                        Name = "Q12 - Boring",
+                        Name = "Q12.Boring",
                         Label = new Label("Boring")
                     },
                     new Variable
                     {
                         Ident = "15",
                         Type = Enums.VariableType.Logical,
-                        Name = "Q13 - Long Queues",
+                        Name = "Q13.LongQueues",
                         Label = new Label("Long Queues")
                     }
                 }

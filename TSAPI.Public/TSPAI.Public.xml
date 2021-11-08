@@ -10,6 +10,9 @@
         <member name="T:TSAPI.Public.Domain.Metadata.Section">
             <summary>Represents a logical section within a survey (e.g. Demographics)</summary>
         </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Section.Sections">
+            <summary>List of sub-sections (if any) within this section</summary>
+        </member>
         <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Variables">
             <summary>List of variables (if any) defined at the root level of the survey</summary>
         </member>
@@ -46,10 +49,10 @@
         <member name="P:TSAPI.Public.Domain.Metadata.Variable.MaxResponses">
             <summary>Maximum number of responses that can be given for this variable</summary>
         </member>
-        <member name="F:TSAPI.Public.Domain.Metadata.Variable.LoopedVariables">
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.LoopedVariables">
             <summary>Looped child variables for this variable (when type = Loop)</summary>
         </member>
-        <member name="F:TSAPI.Public.Domain.Metadata.Variable.OtherSpecifyVariables">
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.OtherSpecifyVariables">
             <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
         </member>
         <member name="P:TSAPI.Public.Domain.Metadata.Value.Ref">
