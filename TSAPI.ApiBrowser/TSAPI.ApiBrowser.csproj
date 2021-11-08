@@ -22,12 +22,15 @@
     <None Remove="Images\NodeDummy.png" />
     <None Remove="Images\NodeFolderClosed.png" />
     <None Remove="Images\NodeFolderOpen.png" />
+    <None Remove="Images\NodeGrid.png" />
     <None Remove="Images\NodeInterview.png" />
     <None Remove="Images\NodeInterviewValue.png" />
     <None Remove="Images\NodeLoopRef.png" />
+    <None Remove="Images\NodeRow.png" />
     <None Remove="Images\NodeSectionClosed.png" />
     <None Remove="Images\NodeSectionOpen.png" />
     <None Remove="Images\NodeValue.png" />
+    <None Remove="Images\NodeValueRef.png" />
     <None Remove="Images\NodeVariable.png" />
   </ItemGroup>
 
@@ -50,12 +53,15 @@
     <Resource Include="Images\NodeDummy.png" />
     <Resource Include="Images\NodeFolderClosed.png" />
     <Resource Include="Images\NodeFolderOpen.png" />
+    <Resource Include="Images\NodeGrid.png" />
     <Resource Include="Images\NodeInterview.png" />
     <Resource Include="Images\NodeLoopRef.png" />
+    <Resource Include="Images\NodeRow.png" />
     <Resource Include="Images\NodeSectionClosed.png" />
     <Resource Include="Images\NodeSectionOpen.png" />
     <Resource Include="Images\NodeInterviewValue.png" />
     <Resource Include="Images\NodeValue.png" />
+    <Resource Include="Images\NodeValueRef.png" />
     <Resource Include="Images\NodeVariable.png" />
   </ItemGroup>
 
