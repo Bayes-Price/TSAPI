@@ -256,9 +256,9 @@ namespace TSAPI.ApiBrowser
 						diNode.AddChild(vsNode);
 						if (di.Values != null)
 						{
-							foreach (string value in di.Values)
+							foreach (object value in di.Values)
 							{
-								var vNode = new AppNode(NodeType.InterviewValue, value, value, vsNode);
+								var vNode = new AppNode(NodeType.InterviewValue, value.ToString(), value, vsNode);
 								vsNode.AddChild(vNode);
 							}
 						}
