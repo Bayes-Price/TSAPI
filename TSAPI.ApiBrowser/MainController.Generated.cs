@@ -334,7 +334,7 @@ namespace TSAPI.ApiBrowser
             }
         }
 
-        int? _queryPagingStart;
+        int? _queryPagingStart = 1;
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public int? QueryPagingStart
         {
@@ -349,7 +349,7 @@ namespace TSAPI.ApiBrowser
             }
         }
 
-        int? _queryPagingCount;
+        int? _queryPagingCount = 200;
 		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
         public int? QueryPagingCount
         {

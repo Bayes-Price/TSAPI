@@ -22,9 +22,9 @@ namespace TSAPI.Public.Domain.Metadata
         /// <summary>Maximum number of responses that can be given for this variable</summary>
         public int MaxResponses { get; set; }
         /// <summary>Looped child variables for this variable (when type = Loop)</summary>
-        public List<Variable> LoopedVariables = new List<Variable>();
+        public List<Variable> LoopedVariables { get; set; }
         /// <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
-        public List<OtherSpecifyVariable> OtherSpecifyVariables = new List<OtherSpecifyVariable>();
+        public List<OtherSpecifyVariable> OtherSpecifyVariables { get; set; }
     }
 
     public class VariableValues
