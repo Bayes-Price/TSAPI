@@ -20,12 +20,9 @@ sample json to use
 }
 ```
 
-json conditions:
+json conditions of Posting:
 
 1. (Start == null && MaxLength != null || Start != null && MaxLength == null) will return Invalid paging arguments
-
 2. date: is filtered as >=
-
 3. interviewIdents: is filtered as contains
-
 4. the rest uses equals to condition
