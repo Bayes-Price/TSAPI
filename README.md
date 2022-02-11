@@ -2,8 +2,11 @@
 PoC for REST API implementation of Triple-S
 
 ### Testing DemoApp.API
+Testing Get /Surveys/{surveyId}/Metadata
+user survey id: 1e6cb0a1-2289-4650-9148-9fc3e6e129b2
+
 Testing Post /Surveys/Interviews
-sample json
+sample json to use
 
 {
   "surveyId": "",
@@ -17,8 +20,7 @@ sample json
 
 json conditions:
 
-1. (Start == null && MaxLength != null || Start != null && MaxLength == null) 
-    return Invalid paging arguments
+1. (Start == null && MaxLength != null || Start != null && MaxLength == null) will return Invalid paging arguments
 
 2. date: is filtered as >=
 
