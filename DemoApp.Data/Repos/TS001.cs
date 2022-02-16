@@ -53,7 +53,7 @@ namespace DemoApp.Data.Repos
                 ),
                 Values = new VariableValues
                 {
-                    Range = new ValueRange { From = "20160101", To = "20161231" }
+                    Range = new ValueRange { From = "20220101", To = "20221231" }
                 }
             });
 
@@ -77,37 +77,23 @@ namespace DemoApp.Data.Repos
                 Name = "Q2",
                 Label = new Label("Frequency of visit",
                     new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Have you visited here before?", LangIdent = "EN" },
-                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before", LangIdent = "EN" },
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Avez-vous déjà visité ici?", LangIdent = "FR" },
-                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visité avant", LangIdent = "FR" }),
+                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before", LangIdent = "EN" }),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
                         new Value { Ident = "0", Code = "0", Label = new Label
-                        {
-                            Text = "No, this is the first visit",
-                            AltLabels = new List<AltLabel>
                             {
-                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "Non, c'est la première visite" }
-                            }
-
-                        } },
+                                Text = "No, this is the first visit"
+                            } 
+                        },
                         new Value { Ident = "1", Code = "1", Label = new Label
                         {
-                            Text = "I visited before within the year",
-                            AltLabels = new List<AltLabel>
-                            {
-                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "J'ai visité avant dans l'année" }
-                            }
+                            Text = "I visited before within the year"
                         }},
                         new Value { Ident = "2", Code = "2", Label = new Label
                         {
-                            Text = "I visited before that",
-                            AltLabels = new List<AltLabel>
-                            {
-                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "J'ai visité avant ça" }
-                            }
+                            Text = "I visited before that"
                         }}
                     }
                 }
@@ -162,7 +148,7 @@ namespace DemoApp.Data.Repos
                         new Value {Ident = "1", Code = "1", Label = new Label {Text = "Museum"}},
                         new Value {Ident = "2", Code = "2", Label = new Label {Text = "Gift Shop"}},
                         new Value {Ident = "3", Code = "3", Label = new Label {Text = "Restaurant"}},
-                        new Value {Ident = "9", Code = "9", Label = new Label {Text = "Other"}}
+                        new Value {Ident = "98", Code = "98", Label = new Label {Text = "Other"}}
                     }
                 },
                 //Q5 - Other Specify
@@ -226,11 +212,20 @@ namespace DemoApp.Data.Repos
                             new Variable
                             {
                                 Ident = "10",
-                                Type = "Logical",
-                                MaxResponses = 4,
+                                Type = "Single",
+                                MaxResponses = 1,
                                 Name = "Q7_2",
-                                Label = new Label("Experience Recomment",
+                                Label = new Label("Experience Recommend",
                                     new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Would you recommend our venue based on your experience of the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]?", LangIdent = "EN" }),
+                                Values = new VariableValues
+                                {
+                                    Values = new List<Value>
+                                    {
+                                        new Value {Ident = "1", Code = "1", Label = new Label {Text = "Yes"}},
+                                        new Value {Ident = "2", Code = "2", Label = new Label {Text = "No"}}
+                                    }
+                                }
+
                             }
                         }
                     }
