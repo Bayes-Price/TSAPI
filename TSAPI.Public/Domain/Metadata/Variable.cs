@@ -10,13 +10,13 @@ namespace TSAPI.Public.Domain.Metadata
         /// <summary>The order of this variable within the overall survey</summary>
         public int Ordinal { get; set; }
         /// <summary>The type of variable (e.g. Open, closed, loop etc..)</summary>
-        public Enums.VariableType Type { get; set; }
+        public string Type { get; set; }
         /// <summary>Human-readable name for this variable</summary>
         public string Name { get; set; }
         /// <summary>Label or question text for the variable</summary>
         public Label Label { get; set; }
         /// <summary>Special use type (e.g. language, weighting) for this variable</summary>
-        public Enums.UseType Use { get; set; }
+        public string Use { get; set; }
         /// <summary>Any pre-defined responses for this variable</summary>
         public VariableValues Values { get; set; }
         /// <summary>Maximum number of responses that can be given for this variable</summary>

@@ -14,9 +14,6 @@ namespace TSAPI.Public.Domain.Metadata
         /// <summary>List of variables (if any) defined at the root level of the survey</summary>
         public List<Variable> Variables { get; set; } = new List<Variable>();
         
-        /// <summary>List of grids (if any) defined at the root level of the survey</summary>
-        public List<Grid> Grids { get; set; } = new List<Grid>();
-
         /// <summary>List of sub-sections (if any) defined at the root level of the survey</summary>
         public List<Section> Sections { get; set; }
     }
