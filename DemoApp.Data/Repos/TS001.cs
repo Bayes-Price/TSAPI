@@ -70,7 +70,7 @@ namespace DemoApp.Data.Repos
             });
 
             //Q2
-            metadata.Sections[2].Variables.Add(new Variable
+            metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "4",
                 Type = "Single",
@@ -114,7 +114,7 @@ namespace DemoApp.Data.Repos
             });
 
             //Q3
-            metadata.Sections[2].Variables.Add(new Variable
+            metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "5",
                 Type = "Quantity",
