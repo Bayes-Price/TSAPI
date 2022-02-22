@@ -4,6 +4,7 @@ using System.Linq;
 using DemoApp.Data;
 using DemoApp.Data.Domain;
 using DemoApp.Data.Repos;
+//using DemoApp.Data.Repos;
 using Newtonsoft.Json;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
@@ -24,15 +25,14 @@ namespace Data.Repos
     /// </summary>
     public class SurveyRepo : ISurveyRepo
     {
-        private const string SP5201Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2";
-        private const string PR9012Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e";
+        private const string CustomerExperienceSurvey = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2";
+        //private const string PR9012Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e";
 
         public SurveyDetail[] ListSurveys()
         {
             return new SurveyDetail[]
             {
-                new SurveyDetail { Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2", Name = "SP5201-1", Title = "Historic House Exit Survey<br/>First Wave" } //,
-                //new SurveyDetail { Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e", Name = "PR9012-HOUSEHOLD", Title = "Regional Travel Survey<br/>Households"  }
+                new SurveyDetail { Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2", Name = "TS-001", Title = "Customer Experience Survey" }
             };
         }
         
@@ -40,10 +40,8 @@ namespace Data.Repos
         {
             switch (id.ToString())
             {
-                case SP5201Id:
-                    return Sp5201.ReadMetadata();
-                //case PR9012Id:
-                //    return PR9012_HOUSEHOLD.ReadMetadata();
+                case CustomerExperienceSurvey:
+                    return TS001.ReadMetadata();
                 default:
                     throw new ArgumentException($"Unrecognised survey id {id}");
             }

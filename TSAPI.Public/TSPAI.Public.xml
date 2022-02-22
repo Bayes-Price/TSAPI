@@ -4,9 +4,6 @@
         <name>TSAPI.Public</name>
     </assembly>
     <members>
-        <member name="P:TSAPI.Public.Domain.Metadata.GridRow.Ref">
-            <summary>(Optional) Links this row to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
-        </member>
         <member name="T:TSAPI.Public.Domain.Metadata.Section">
             <summary>Represents a logical section within a survey (e.g. Demographics)</summary>
         </member>
@@ -15,9 +12,6 @@
         </member>
         <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Variables">
             <summary>List of variables (if any) defined at the root level of the survey</summary>
-        </member>
-        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Grids">
-            <summary>List of grids (if any) defined at the root level of the survey</summary>
         </member>
         <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Sections">
             <summary>List of sub-sections (if any) defined at the root level of the survey</summary>

@@ -7,7 +7,6 @@ namespace TSAPI.Public.Domain.Interviews
     {
         public string Ident { get; set; }
         public List<object> Values { get; set; } = new List<object>();
-        public string GridRowIdent { get; set; }
         public List<LoopRef> LoopRefs { get; set; }
     }
 }
