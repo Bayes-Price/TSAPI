@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DemoApp.Data;
-using DemoApp.Data.Domain;
 using DemoApp.Data.Repos;
-//using DemoApp.Data.Repos;
 using Newtonsoft.Json;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
@@ -53,7 +51,7 @@ namespace Data.Repos
                 throw new ArgumentException("Invalid paging arguments");
 
             //Load in "All Interviews"
-            List<InterviewWrapper> allInterviews = ReadAllInterviews(path);
+            List<Interview> allInterviews = ReadAllInterviews(path);
 
             //Filtering
             allInterviews = ApplyFiltering(allInterviews, query);
@@ -62,24 +60,22 @@ namespace Data.Repos
                 throw new ArgumentException($"Invalid paging arguments");
 
             //Paging
-            var interviews = allInterviews
+            return allInterviews
                 .Skip((query.Start ?? 1) - 1)  //-1 to convert 1-based start argument into zero based skip argument
                 .Take(query.MaxLength ?? allInterviews.Count)
                 .ToArray();
-
-            return interviews.Select(i => i.Interview).ToArray();
         }
 
         /// <summary>Simple filtering function</summary>
-        private List<InterviewWrapper> ApplyFiltering(List<InterviewWrapper> interviews, InterviewsQuery query)
+        private List<Interview> ApplyFiltering(List<Interview> interviews, InterviewsQuery query)
         {
             //Filter on Interview Ids
             if (query.InterviewIdents != null && query.InterviewIdents.Any())
-                interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Interview.Ident)).ToList();
+                interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
 
             //Filter on Date Last Changed
             if (query.Date != null)
-                interviews = interviews.Where(i => i.DateLastChanged >= query.Date).ToList();
+                interviews = interviews.Where(i => i.Date >= query.Date).ToList();
 
             //Filter on Complete
             if (query.CompleteOnly)
@@ -90,18 +86,18 @@ namespace Data.Repos
             {
                 foreach (var interview in interviews)
                 {
-                    interview.Interview.DataItems = interview.Interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
+                    interview.DataItems = interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
                 }
             }
 
             return interviews;
         }
 
-        private List<InterviewWrapper> ReadAllInterviews(string path)
+        private List<Interview> ReadAllInterviews(string path)
         {
             using (var streamReader = new System.IO.StreamReader(path))
             {
-                return JsonConvert.DeserializeObject<List<InterviewWrapper>>(streamReader.ReadToEnd());
+                return JsonConvert.DeserializeObject<List<Interview>>(streamReader.ReadToEnd());
             }
         }
     }
