@@ -243,6 +243,24 @@ namespace DemoApp.Data.Repos
                )            
             });
 
+            metadata.Sections[2].Variables.Add(new Variable
+            {
+                Ident = "12",
+                Type = "Logical",
+                Name = "Q9",
+                Label = new Label("Would come again?",
+                     new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "", LangIdent = "EN" }
+               ),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value { Ident = "1", Code = "1", Label = new Label  { Text = "Yes" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label  { Text = "No" }}
+                    }
+                }
+            });
+
             return metadata;
         }
         #endregion
