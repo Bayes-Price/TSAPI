@@ -262,16 +262,19 @@ namespace TSAPI.ApiBrowser
 								vsNode.AddChild(vNode);
 							}
 						}
-						var lrsNode = new AppNode(NodeType.Folder, "Loop Refs", di.LoopRefs, diNode);
-						diNode.AddChild(lrsNode);
-						if (di.LoopRefs != null)
-						{
-							foreach (LoopRef lr in di.LoopRefs)
-							{
-								var lrNode = new AppNode(NodeType.LoopRef, lr.ValueIdent, lr, lrsNode);
-								lrsNode.AddChild(lrNode);
-							}
-						}
+
+						throw new NotImplementedException();
+
+						//var lrsNode = new AppNode(NodeType.Folder, "Loop Refs", di.LoopRefs, diNode);
+						//diNode.AddChild(lrsNode);
+						//if (di.LoopRefs != null)
+						//{
+						//	foreach (LoopRef lr in di.LoopRefs)
+						//	{
+						//		var lrNode = new AppNode(NodeType.LoopRef, lr.ValueIdent, lr, lrsNode);
+						//		lrsNode.AddChild(lrNode);
+						//	}
+						//}
 					}
 				}
 			}
