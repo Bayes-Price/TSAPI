@@ -45,7 +45,8 @@ namespace DemoApp.API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-            services.AddScoped<ISurveyRepo, SurveyRepo>();
+            //services.AddScoped<ISurveyRepo, SurveyRepo>();
+            services.AddScoped<ISurveyRepo, DemoApp.Data.Repos.TripleS.SurveyRepo>();
 
             services.AddMvc().AddJsonOptions(options =>
             {

@@ -16,9 +16,8 @@ namespace Data.Repos
     /// dependency injection of an interface.
     /// </para>
     /// <para>
-    /// This sample simply processes survey data from in-memory collections of mock values.
-    /// In real life, the repository would be stored in persistent backing storage such as a
-    /// file-system or a database.
+    /// This sample simply processes survey data from in-memory collections of mock values and local json data files.
+    /// In real life, the repository would be stored in persistent backing storage such as a file-system or a database.
     /// </para>
     /// </summary>
     public class SurveyRepo : ISurveyRepo
