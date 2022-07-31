@@ -12,6 +12,6 @@ namespace DemoApp.Data
     {
         SurveyDetail[] ListSurveys();
         SurveyMetadata ReadSurveyMetadata(string id);
-        Interview[] ReadSurveydata(InterviewsQuery query, string path);
+        Interview[] ReadSurveydata(string surveyId, InterviewsQuery query, string path);
     }
 }

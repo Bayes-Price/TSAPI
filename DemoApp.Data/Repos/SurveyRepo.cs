@@ -45,7 +45,7 @@ namespace Data.Repos
             }
         }
 
-        public Interview[] ReadSurveydata(InterviewsQuery query, string path)
+        public Interview[] ReadSurveydata(String surveyId, InterviewsQuery query, string path)
         {
             if (query.Start == null && query.MaxLength != null || query.Start != null && query.MaxLength == null)
                 throw new ArgumentException("Invalid paging arguments");

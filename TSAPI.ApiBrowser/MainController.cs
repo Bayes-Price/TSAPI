@@ -130,7 +130,6 @@ namespace TSAPI.ApiBrowser
 			{
 				var query = new InterviewsQuery()
 				{
-					SurveyId = _selectedSurvey.Id,
 					CompleteOnly = _queryCompleteOnly,
 					Start = _queryPagingStart,
 					MaxLength = _queryPagingCount,
@@ -140,7 +139,7 @@ namespace TSAPI.ApiBrowser
 				};
 				string postjson = JsonSerializer.Serialize(query);
 				var content = new StringContent(postjson, Encoding.UTF8, "application/json");
-				var response = await _client.PostAsync("Surveys/Interviews", content);
+				var response = await _client.PostAsync($"Surveys/{""}Interviews", content);
 				if (response.StatusCode == System.Net.HttpStatusCode.OK)
 				{
 					string json = await response.Content.ReadAsStringAsync();

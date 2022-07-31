@@ -32,7 +32,7 @@ namespace DemoApp.Data.Repos
             metadata.Sections[0].Variables.Add(new Variable
             {
                 Ident = "1",
-                Type = "Quantity",
+                Type = "quantity",
                 Name = "RESPONDENT_ID",
                 Label = new Label("Respondent ID"),
                 Use = "Serial",
@@ -46,10 +46,10 @@ namespace DemoApp.Data.Repos
             metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "2",
-                Type = "Date",
+                Type = "date",
                 Name = "Q1a",
                 Label = new Label("Date of Visit",
-                      new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Please tell us the date of your most recent visit", LangIdent = "EN" }
+                      new AltLabel { Mode = "interview", Text = "Please tell us the date of your most recent visit", LangIdent = "EN" }
                 ),
                 Values = new VariableValues
                 {
@@ -61,10 +61,10 @@ namespace DemoApp.Data.Repos
             metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "3",
-                Type = "Time",
+                Type = "time",
                 Name = "Q1.b",
                 Label = new Label("Time of Visit",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "What time of day was that?", LangIdent = "EN" }
+                    new AltLabel { Mode = "interview", Text = "What time of day was that?", LangIdent = "EN" }
                 ),
                 //implicit range from="000000" to="235959"
             });
@@ -73,11 +73,11 @@ namespace DemoApp.Data.Repos
             metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "4",
-                Type = "Single",
+                Type = "single",
                 Name = "Q2",
                 Label = new Label("Frequency of visit",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Have you visited here before?", LangIdent = "EN" },
-                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before", LangIdent = "EN" }),
+                    new AltLabel { Mode = "interview", Text = "Have you visited here before?", LangIdent = "EN" },
+                    new AltLabel { Mode = "analysis", Text = "Visited before", LangIdent = "EN" }),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
@@ -103,20 +103,20 @@ namespace DemoApp.Data.Repos
             metadata.Sections[1].Variables.Add(new Variable
             {
                 Ident = "5",
-                Type = "Quantity",
+                Type = "quantity",
                 Name = "Q3",
                 Label = new Label("Miles travelled",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "How far have you travelled to get here? ", LangIdent = "EN" })
+                    new AltLabel { Mode = "interview", Text = "How far have you travelled to get here? ", LangIdent = "EN" })
             });
 
             //Q4
             metadata.Sections[2].Variables.Add(new Variable
             {
                 Ident = "6",
-                Type = "Single",
+                Type = "single",
                 Name = "Q4",
                 Label = new Label("Overall impression",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "What was your impression of our wonderful made-up place overall? ", LangIdent = "EN" }
+                    new AltLabel { Mode = "interview", Text = "What was your impression of our wonderful made-up place overall? ", LangIdent = "EN" }
                 ),
                 Values = new VariableValues
                 {
@@ -136,11 +136,11 @@ namespace DemoApp.Data.Repos
             metadata.Sections[2].Variables.Add(new Variable
             {
                 Ident = "7",
-                Type = "Multiple",
+                Type = "multiple",
                 MaxResponses = 4,
                 Name = "Q5",
                 Label = new Label("Attractions visited",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Which attractions have you visited today? ", LangIdent = "EN" }),
+                    new AltLabel { Mode = "interview", Text = "Which attractions have you visited today? ", LangIdent = "EN" }),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
@@ -158,7 +158,7 @@ namespace DemoApp.Data.Repos
                     {
                         Ident = "5other",
                         ParentValueIdent = "9",
-                        Type = "Character",
+                        Type = "character",
                         Name = "Q5Other",
                         Label = new Label("Other attractions visited")
                     }
@@ -169,11 +169,11 @@ namespace DemoApp.Data.Repos
                     new Variable
                     {
                         Ident = "8",
-                        Type = "Multiple",
+                        Type = "multiple",
                         MaxResponses = 4,
                         Name = "Q6",
                         Label = new Label("Experience Elements",
-                            new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Which of these have you experienced in the [ATTRACTION AT Q5] today? ", LangIdent = "EN" }),
+                            new AltLabel { Mode = "interview", Text = "Which of these have you experienced in the [ATTRACTION AT Q5] today? ", LangIdent = "EN" }),
                         Values = new VariableValues
                         {
                             Values = new List<Value>
@@ -190,11 +190,11 @@ namespace DemoApp.Data.Repos
                             new Variable
                             {
                                 Ident = "9",
-                                Type = "Single",
+                                Type = "single",
                                 MaxResponses = 4,
                                 Name = "Q7_1",
                                 Label = new Label("Experience Impression",
-                                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "What was your impression of our the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]? ", LangIdent = "EN" }),
+                                    new AltLabel { Mode = "interview", Text = "What was your impression of our the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]? ", LangIdent = "EN" }),
                                 Values = new VariableValues
                                 {
                                     Values = new List<Value>
@@ -212,11 +212,11 @@ namespace DemoApp.Data.Repos
                             new Variable
                             {
                                 Ident = "10",
-                                Type = "Single",
+                                Type = "single",
                                 MaxResponses = 1,
                                 Name = "Q7_2",
                                 Label = new Label("Experience Recommend",
-                                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Would you recommend our venue based on your experience of the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]?", LangIdent = "EN" }),
+                                    new AltLabel { Mode = "interview", Text = "Would you recommend our venue based on your experience of the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]?", LangIdent = "EN" }),
                                 Values = new VariableValues
                                 {
                                     Values = new List<Value>
@@ -236,10 +236,10 @@ namespace DemoApp.Data.Repos
             metadata.Sections[2].Variables.Add(new Variable
             {
                 Ident = "11",
-                Type = "Character",
+                Type = "character",
                 Name = "Q8",
                 Label = new Label("Other Comments",
-                     new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Do you have any other comments?", LangIdent = "EN" }
+                     new AltLabel { Mode = "interview", Text = "Do you have any other comments?", LangIdent = "EN" }
                )            
             });
 
