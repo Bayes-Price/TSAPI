@@ -65,19 +65,20 @@ namespace DemoApp.TSAPI.Controllers
         /// <summary>
         ///   Fetches some interview records for a specific survey.
         /// </summary>
+        /// <param name="surveyId">The Id of the survey being queried for data</param>
         /// <param name="query">The request body contains a serialized <c>InterviewsQuery</c> containing filtering parameters.</param>
         /// <returns>
         ///   A serialized array of <c>Interview.</c>
         /// </returns>
-		/// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
+        /// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
         [HttpPost]
-        [Route("/Surveys/Interviews")]
+        [Route("/Surveys/{surveyId}/Interviews")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
-        public Interview[] Interviews([FromBody] InterviewsQuery query)
+        public Interview[] Interviews(string surveyId, [FromBody] InterviewsQuery query)
         {
             var path = _hostingEnvironment.ContentRootPath + @"\Data\TS-001.json";
-            return _surveyRepo.ReadSurveydata(query, path);
+            return _surveyRepo.ReadSurveydata(surveyId, query, path);
         }
 
         #endregion

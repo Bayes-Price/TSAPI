@@ -6,7 +6,7 @@ namespace TSAPI.Public.Queries
     public class InterviewsQuery
     {
         //Id
-        public string SurveyId { get; set; } 
+        //public string SurveyId { get; set; } 
 
         //Paging
         public int? Start { get; set; } 
