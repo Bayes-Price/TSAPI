@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
-    <Authors>Collaboration</Authors>
-    <Company>TODO Company Name</Company>
-    <Product>TODO Product Name</Product>
-    <Description>Library defining the public classes and interfaces for TSAPI.</Description>
-    <Copyright>TODO © 2021</Copyright>
+    <Authors>Greg Keogh, Tim Brandwood, TSAPI Steering Group</Authors>
+    <Company>TSAPI.net</Company>
+    <Product>TSAPI</Product>
+    <Description>Library defining the public classes and interfaces for TSAPI specification.</Description>
+    <Copyright>© TSAPI Steering Group 2022</Copyright>
     <PackageId>TSAPI.Public</PackageId>
-    <PackageReleaseNotes>TODO Under development</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIcon>TSAPI.Public.png</PackageIcon>
     <DocumentationFile>TSPAI.Public.xml</DocumentationFile>
     <ApplicationIcon>TSAPI.Public.ico</ApplicationIcon>
@@ -23,6 +23,13 @@
     <WarningsAsErrors />
     <NoWarn>1591</NoWarn>
     <DefineConstants />
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Domain Object Model for TSAPI Specification</Title>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>TSAPI;Market Research;Survey Data Transfer;</PackageTags>
+    <PackageProjectUrl>https://www.tsapi.net/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Bayes-Price/TSAPI</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>

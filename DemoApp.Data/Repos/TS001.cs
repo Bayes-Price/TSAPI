@@ -35,7 +35,7 @@ namespace DemoApp.Data.Repos
                 Type = "quantity",
                 Name = "RESPONDENT_ID",
                 Label = new Label("Respondent ID"),
-                Use = "Serial",
+                Use = "serial",
                 Values = new VariableValues
                 {
                     Range = new ValueRange { From = "1", To = "999999" }
