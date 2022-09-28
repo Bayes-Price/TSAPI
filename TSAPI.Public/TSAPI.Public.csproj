@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Version>1.0.9</Version>
     <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
-    <Authors>Greg Keogh, Tim Brandwood, TSAPI Steering Group</Authors>
+    <Authors>TSAPI Steering Group, Red Centre Software, Digital Taxonomy</Authors>
     <Company>TSAPI.net</Company>
     <Product>TSAPI</Product>
     <Description>Library defining the public classes and interfaces for TSAPI specification.</Description>
