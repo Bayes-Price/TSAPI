@@ -247,7 +247,7 @@ namespace TSAPI.ApiBrowser
 				{
 					var disNode = new AppNode(NodeType.Folder, "Data Items", interview.DataItems, iNode);
 					iNode.AddChild(disNode);
-					foreach (DataItem di in interview.DataItems)
+					foreach (QuestionResponse di in interview.DataItems)
 					{
 						var diNode = new AppNode(NodeType.DataItem, di.Ident, di, disNode);
 						disNode.AddChild(diNode);
