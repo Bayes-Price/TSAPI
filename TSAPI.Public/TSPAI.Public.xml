@@ -4,6 +4,27 @@
         <name>TSAPI.Public</name>
     </assembly>
     <members>
+        <member name="T:TSAPI.Public.Domain.Interviews.VariableData">
+            <summary>Represents the response(s) given to a variable in the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.Ident">
+            <summary>The Ident of the variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.ResponseMetadata">
+            <summary>(For closed-end variables) Provides information about the options used for this variable in the current interview</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.Data">
+            <summary>List of responses given for this variable</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Interviews.VariableValue">
+            <summary>Contains data about the closed-end responses used for a given variable and interview</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableValue.Ident">
+            <summary>Id of a closed end response (refers to Metadata.VariableValues.Ident)</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableValue.Shown">
+            <summary>Flag indicating whether this response was shown for a given interview</summary>
+        </member>
         <member name="T:TSAPI.Public.Domain.Metadata.Section">
             <summary>Represents a logical section within a survey (e.g. Demographics)</summary>
         </member>
@@ -48,9 +69,6 @@
         </member>
         <member name="P:TSAPI.Public.Domain.Metadata.Variable.OtherSpecifyVariables">
             <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
-        </member>
-        <member name="P:TSAPI.Public.Domain.Metadata.Value.Ref">
-            <summary>(Optional) Links this value to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
         </member>
     </members>
 </doc>

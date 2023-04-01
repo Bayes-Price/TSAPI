@@ -17,5 +17,8 @@ namespace TSAPI.Public.Queries
         public List<string> Variables { get; set; }
         public List<string> InterviewIdents { get; set; }
         public DateTime? Date { get; set; }
+
+        //Inclusion
+        public bool IncludeResponseMetadata { get; set; } = false;
     }
 }

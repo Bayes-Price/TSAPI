@@ -18,8 +18,6 @@ namespace DemoApp.Data.Repos
                 {
                     new Language {Ident = "EN", Name = "English"}
                 },
-                NotAsked = "-66",
-                NoAnswer = "-33",
                 Sections = new List<Section>
                 {
                     new Section() { Label = new Label("System") },

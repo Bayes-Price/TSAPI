@@ -77,8 +77,7 @@ namespace DemoApp.TSAPI.Controllers
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
         public Interview[] Interviews(string surveyId, [FromBody] InterviewsQuery query)
         {
-            var path = _hostingEnvironment.ContentRootPath + @"\Data\TS-001.json";
-            return _surveyRepo.ReadSurveydata(surveyId, query, path);
+            return _surveyRepo.ReadSurveydata(surveyId, query, _hostingEnvironment.ContentRootPath);
         }
 
         #endregion
