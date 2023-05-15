@@ -28,7 +28,7 @@ namespace Data.Repos
         {
             return new SurveyDetail[]
             {
-                new SurveyDetail { Id = CustomerExperienceSurvey , Name = "TS-001", Title = "Customer Experience Survey" },
+                //new SurveyDetail { Id = CustomerExperienceSurvey , Name = "TS-001", Title = "Customer Experience Survey" },
                 new SurveyDetail { Id = CerealAwarenessSurvey , Name = "TS-002", Title = "Cereal Awareness Survey" }
             };
         }
@@ -52,7 +52,7 @@ namespace Data.Repos
                 throw new ArgumentException("Invalid paging arguments");
 
             //Load in "All Interviews"
-            List<Interview> allInterviews = ReadAllInterviews(GetInterviewDataPath(rootPath, surveyId, query.IncludeResponseMetadata));
+            List<Interview> allInterviews = ReadAllInterviews(GetInterviewDataPath(rootPath, surveyId));
 
             //Filtering
             allInterviews = ApplyFiltering(allInterviews, query);
@@ -102,15 +102,14 @@ namespace Data.Repos
             }
         }
 
-        private string GetInterviewDataPath(string rootPath, string surveyId, bool includeResponseMetadata)
+        private string GetInterviewDataPath(string rootPath, string surveyId)
         {
-            var metadataSuffix = includeResponseMetadata ? "" : "-no-metadata";
             switch (surveyId)
             {
                 case CustomerExperienceSurvey:
-                    return $"{rootPath}\\Data\\TS-001{metadataSuffix}.json";
+                    return $"{rootPath}\\Data\\TS-001.json";
                 case CerealAwarenessSurvey:
-                    return $"{rootPath}\\Data\\TS-002{metadataSuffix}.json";
+                    return $"{rootPath}\\Data\\TS-002.json";
                 default:
                     throw new ArgumentException($"Unrecognised survey: '{surveyId}'");
             }

@@ -10,9 +10,6 @@
         <member name="P:TSAPI.Public.Domain.Interviews.VariableData.Ident">
             <summary>The Ident of the variable</summary>
         </member>
-        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.ResponseMetadata">
-            <summary>(For closed-end variables) Provides information about the options used for this variable in the current interview</summary>
-        </member>
         <member name="P:TSAPI.Public.Domain.Interviews.VariableData.Data">
             <summary>List of responses given for this variable</summary>
         </member>

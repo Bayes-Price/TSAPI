@@ -8,9 +8,7 @@ namespace TSAPI.Public.Domain.Interviews
         /// <summary>The Ident of the variable</summary>
         public string Ident { get; set; }
 
-        /// <summary>(For closed-end variables) Provides information about the options used for this variable in the current interview</summary>
-        public List<VariableValue> ResponseMetadata { get; set; }
-
+       
         /// <summary>List of responses given for this variable</summary>
         public List<VariableDataItem> Data { get; set; } = new List<VariableDataItem>();
        
