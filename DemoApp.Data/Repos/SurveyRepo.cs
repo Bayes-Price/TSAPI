@@ -28,7 +28,7 @@ namespace Data.Repos
         {
             return new SurveyDetail[]
             {
-                //new SurveyDetail { Id = CustomerExperienceSurvey , Name = "TS-001", Title = "Customer Experience Survey" },
+                new SurveyDetail { Id = CustomerExperienceSurvey , Name = "TS-001", Title = "Customer Experience Survey" },
                 new SurveyDetail { Id = CerealAwarenessSurvey , Name = "TS-002", Title = "Cereal Awareness Survey" }
             };
         }
