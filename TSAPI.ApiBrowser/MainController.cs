@@ -243,19 +243,19 @@ namespace TSAPI.ApiBrowser
 			{
 				var iNode = new AppNode(NodeType.Interview, interview.Ident, interview, isNode);
 				isNode.AddChild(iNode);
-				if (interview.DataItems != null)
+				if (interview.Responses != null)
 				{
-					var disNode = new AppNode(NodeType.Folder, "Data Items", interview.DataItems, iNode);
+					var disNode = new AppNode(NodeType.Folder, "Data Items", interview.Responses, iNode);
 					iNode.AddChild(disNode);
-					foreach (DataItem di in interview.DataItems)
+					foreach (VariableData di in interview.Responses)
 					{
 						var diNode = new AppNode(NodeType.DataItem, di.Ident, di, disNode);
 						disNode.AddChild(diNode);
-						var vsNode = new AppNode(NodeType.Folder, "Values", di.Values, diNode);
+						var vsNode = new AppNode(NodeType.Folder, "Values", di.Data, diNode);
 						diNode.AddChild(vsNode);
-						if (di.Values != null)
+						if (di.Data != null)
 						{
-							foreach (object value in di.Values)
+							foreach (object value in di.Data)
 							{
 								var vNode = new AppNode(NodeType.InterviewValue, value.ToString(), value, vsNode);
 								vsNode.AddChild(vNode);

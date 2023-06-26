@@ -41,7 +41,7 @@ namespace TSAPI.Public.Domain.Metadata
         public float? Score { get; set; }
 
         /// <summary>(Optional) Links this value to a value in another variable, to express "Shared" or "Linked" responses between questions</summary>
-        public ValueRef Ref { get; set; }
+       // public ValueRef Ref { get; set; }
     }
 
     public class ValueRange

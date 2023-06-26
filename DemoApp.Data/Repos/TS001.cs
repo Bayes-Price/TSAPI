@@ -18,8 +18,6 @@ namespace DemoApp.Data.Repos
                 {
                     new Language {Ident = "EN", Name = "English"}
                 },
-                NotAsked = "-66",
-                NoAnswer = "-33",
                 Sections = new List<Section>
                 {
                     new Section() { Label = new Label("System") },
@@ -139,8 +137,7 @@ namespace DemoApp.Data.Repos
                 Type = "multiple",
                 MaxResponses = 4,
                 Name = "Q5",
-                Label = new Label("Attractions visited",
-                    new AltLabel { Mode = "interview", Text = "Which attractions have you visited today? ", LangIdent = "EN" }),
+                Label = new Label("Attractions visited", new AltLabel { Mode = "interview", Text = "Which attractions have you visited today? ", LangIdent = "EN" }),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
@@ -150,14 +147,13 @@ namespace DemoApp.Data.Repos
                         new Value {Ident = "3", Code = "3", Label = new Label {Text = "Restaurant"}},
                         new Value {Ident = "98", Code = "98", Label = new Label {Text = "Other"}}
                     }
-                },
-                //Q5 - Other Specify
+                }, //Q5 - Other Specify
                 OtherSpecifyVariables = new List<OtherSpecifyVariable>
                 {
                     new OtherSpecifyVariable
                     {
-                        Ident = "5other",
-                        ParentValueIdent = "9",
+                        Ident = "7other",
+                        ParentValueIdent = "98",
                         Type = "character",
                         Name = "Q5Other",
                         Label = new Label("Other attractions visited")
