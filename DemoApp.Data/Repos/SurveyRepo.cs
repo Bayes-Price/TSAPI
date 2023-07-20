@@ -10,48 +10,49 @@ using TSAPI.Public.Queries;
 
 namespace Data.Repos
 {
+
     /// <summary>
     /// <para>
-    /// A sample implementation of a survey data repository that is used by a Web API through
-    /// dependency injection of an interface.
+    /// A sample implementation of a survey data repository that is used by a Web API through dependency injection of an interface.
     /// </para>
     /// <para>
-    /// This sample simply processes survey data from in-memory collections of mock values.
-    /// In real life, the repository would be stored in persistent backing storage such as a
-    /// file-system or a database.
+    /// This sample simply serves up data stored in a local file. In real life, the repository would serve up data from a backend system such as a database.
     /// </para>
     /// </summary>
     public class SurveyRepo : ISurveyRepo
     {
         private const string CustomerExperienceSurvey = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2";
-        //private const string PR9012Id = "e36c93b8-d9df-42a9-8d4e-42b647944a5e";
-
+        private const string CerealAwarenessSurvey = "a4bd7eed-88df-4a57-86d6-396e3698022e";
+        
         public SurveyDetail[] ListSurveys()
         {
             return new SurveyDetail[]
             {
-                new SurveyDetail { Id = "1e6cb0a1-2289-4650-9148-9fc3e6e129b2", Name = "TS-001", Title = "Customer Experience Survey" }
+                new SurveyDetail { Id = CustomerExperienceSurvey , Name = "TS-001", Title = "Customer Experience Survey" },
+                new SurveyDetail { Id = CerealAwarenessSurvey , Name = "TS-002", Title = "Cereal Awareness Survey" }
             };
         }
         
         public SurveyMetadata ReadSurveyMetadata(string id)
         {
-            switch (id.ToString())
+            switch (id)
             {
                 case CustomerExperienceSurvey:
                     return TS001.ReadMetadata();
+                case CerealAwarenessSurvey:
+                    return TS002.ReadMetadata();
                 default:
                     throw new ArgumentException($"Unrecognised survey id {id}");
             }
         }
 
-        public Interview[] ReadSurveydata(String surveyId, InterviewsQuery query, string path)
+        public Interview[] ReadSurveydata(string surveyId, InterviewsQuery query, string rootPath)
         {
             if (query.Start == null && query.MaxLength != null || query.Start != null && query.MaxLength == null)
                 throw new ArgumentException("Invalid paging arguments");
 
             //Load in "All Interviews"
-            List<Interview> allInterviews = ReadAllInterviews(path);
+            List<Interview> allInterviews = ReadAllInterviews(GetInterviewDataPath(rootPath, surveyId));
 
             //Filtering
             allInterviews = ApplyFiltering(allInterviews, query);
@@ -86,7 +87,7 @@ namespace Data.Repos
             {
                 foreach (var interview in interviews)
                 {
-                    interview.DataItems = interview.DataItems.Where(d => query.Variables.Contains(d.Ident)).ToList();
+                    interview.Responses = interview.Responses.Where(d => query.Variables.Contains(d.Ident)).ToList();
                 }
             }
 
@@ -98,6 +99,19 @@ namespace Data.Repos
             using (var streamReader = new System.IO.StreamReader(path))
             {
                 return JsonConvert.DeserializeObject<List<Interview>>(streamReader.ReadToEnd());
+            }
+        }
+
+        private string GetInterviewDataPath(string rootPath, string surveyId)
+        {
+            switch (surveyId)
+            {
+                case CustomerExperienceSurvey:
+                    return $"{rootPath}\\Data\\TS-001.json";
+                case CerealAwarenessSurvey:
+                    return $"{rootPath}\\Data\\TS-002.json";
+                default:
+                    throw new ArgumentException($"Unrecognised survey: '{surveyId}'");
             }
         }
     }
