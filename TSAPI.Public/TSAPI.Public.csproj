@@ -1,43 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.8</Version>
-    <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
-    <Authors>Collaboration</Authors>
-    <Company>TODO Company Name</Company>
-    <Product>TODO Product Name</Product>
-    <Description>Library defining the public classes and interfaces for TSAPI.</Description>
-    <Copyright>TODO © 2021</Copyright>
-    <PackageId>TSAPI.Public</PackageId>
-    <PackageReleaseNotes>TODO Under development</PackageReleaseNotes>
-    <PackageIcon>TSAPI.Public.png</PackageIcon>
-    <DocumentationFile>TSPAI.Public.xml</DocumentationFile>
-    <ApplicationIcon>TSAPI.Public.ico</ApplicationIcon>
-    <PackageIconUrl />
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>TSAPI.Public.snk</AssemblyOriginatorKeyFile>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <Version>1.0.11</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>TSAPI Steering Group, Red Centre Software, Digital Taxonomy</Authors>
+    <Company>TSAPI.net</Company>
+    <Product>TSAPI</Product>
+    <Description>Library defining the public classes and interfaces for TSAPI specification.
+TSAPI is an industry standard API definition for transferring Market Research survey data.</Description>
+    <Copyright>© TSAPI Steering Group 2022 - 2023</Copyright>
+    <PackageProjectUrl>https://www.tsapi.net/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Bayes-Price/TSAPI</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>TSAPI;Market Research;Survey Data Transfer;</PackageTags>
   </PropertyGroup>
-
-  <PropertyGroup>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <NoWarn>1591</NoWarn>
-    <DefineConstants />
-  </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="TSAPI.Public.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="TSAPI.Public.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="TSAPI.Public.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
 
 </Project>
