@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
     <TargetFrameworks>netstandard2.0;net462;net472</TargetFrameworks>
     <Authors>TSAPI Steering Group, Red Centre Software, Digital Taxonomy</Authors>
     <Company>TSAPI.net</Company>
     <Product>TSAPI</Product>
     <Description>Library defining the public classes and interfaces for TSAPI specification.</Description>
-    <Copyright>© TSAPI Steering Group 2022</Copyright>
+    <Copyright>© TSAPI Steering Group 2022 - 2023</Copyright>
     <PackageId>TSAPI.Public</PackageId>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageIcon>TSAPI.Public.png</PackageIcon>
