@@ -15,6 +15,9 @@ TSAPI is an industry standard API definition for transferring Market Research su
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryType>git</RepositoryType>
     <PackageTags>TSAPI;Market Research;Survey Data Transfer;</PackageTags>
+    <PackageReleaseNotes>Added a strong name for .NET Framework projects.</PackageReleaseNotes>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\TSAPI.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
