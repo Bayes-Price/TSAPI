@@ -71,11 +71,11 @@ namespace DemoApp.TSAPI.Controllers
         ///   A serialized array of <c>Interview.</c>
         /// </returns>
         /// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
-        [HttpPost]
+        [HttpGet]
         [Route("/Surveys/{surveyId}/Interviews")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
-        public Interview[] Interviews(string surveyId, [FromBody] InterviewsQuery query)
+        public Interview[] Interviews(string surveyId, [FromQuery] InterviewsQuery query)
         {
             return _surveyRepo.ReadSurveydata(surveyId, query, _hostingEnvironment.ContentRootPath);
         }
