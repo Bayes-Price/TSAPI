@@ -74,9 +74,13 @@ namespace Data.Repos
             if (query.InterviewIdents != null && query.InterviewIdents.Any())
                 interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
 
-            //Filter on Date Last Changed
-            if (query.Date != null)
-                interviews = interviews.Where(i => i.Date >= query.Date).ToList();
+            //Filter on Last Changed DateFrom
+            if (query.DateFrom != null)
+                interviews = interviews.Where(i => i.Date >= query.DateFrom).ToList();
+
+            //Filter on Last Changed DateTo
+            if (query.DateTo != null)
+                interviews = interviews.Where(i => i.Date <= query.DateTo).ToList();
 
             //Filter on Complete
             if (query.CompleteOnly)
