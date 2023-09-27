@@ -2,7 +2,7 @@
 {
     public class Level
     {
-        public string Ident { get; set; }
+        public string LevelId { get; set; }
 
     }
 }

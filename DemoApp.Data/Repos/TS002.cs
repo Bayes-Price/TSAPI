@@ -15,7 +15,7 @@ namespace DemoApp.Data.Repos
                 InterviewCount = 10,
                 Languages = new List<Language>
                 {
-                    new Language {Ident = "EN", Name = "English"}
+                    new Language {LanguageId = "EN", Name = "English"}
                 },
                 Sections = new List<Section>
                 {
@@ -27,7 +27,7 @@ namespace DemoApp.Data.Repos
             //Respondent ID
             metadata.Sections[0].Variables.Add(new Variable
             {
-                Ident = "1",
+                VariableId = "1",
                 Type = "quantity",
                 Name = "RESPONDENT_ID",
                 Label = new Label("Respondent ID"),
@@ -41,22 +41,22 @@ namespace DemoApp.Data.Repos
             //Prompted Brand Awareness
             metadata.Sections[1].Variables.Add(new Variable
             {
-                Ident = "2",
+                VariableId = "2",
                 Type = "multiple",
                 Name = "Q1",
                 Label = new Label("Awareness",
-                    new AltLabel { Mode = "interview", Text = "Which of these brands of breakfast cereal have you heard of? ", LangIdent = "EN" }
+                    new AltLabel { Mode = "interview", Text = "Which of these brands of breakfast cereal have you heard of? ", LanguageId = "EN" }
                 ),
 
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Ident = "1", Code = "1", Label = new Label { Text = "Coco Pops" } },
-                        new Value { Ident = "2", Code = "2", Label = new Label { Text = "Rice Krispies" } },
-                        new Value { Ident = "3", Code = "3", Label = new Label { Text = "Frosties" } },
-                        new Value { Ident = "4", Code = "4", Label = new Label { Text = "Shredded Wheat" } },
-                        new Value { Ident = "5", Code = "5", Label = new Label { Text = "Lucky Charms" } },
+                        new Value { ValueId = "1", Code = "1", Label = new Label { Text = "Coco Pops" } },
+                        new Value { ValueId = "2", Code = "2", Label = new Label { Text = "Rice Krispies" } },
+                        new Value { ValueId = "3", Code = "3", Label = new Label { Text = "Frosties" } },
+                        new Value { ValueId = "4", Code = "4", Label = new Label { Text = "Shredded Wheat" } },
+                        new Value { ValueId = "5", Code = "5", Label = new Label { Text = "Lucky Charms" } },
 
                     }
                 }
@@ -65,21 +65,21 @@ namespace DemoApp.Data.Repos
             //Purchasing
             metadata.Sections[1].Variables.Add(new Variable
             {
-                Ident = "3",
+                VariableId = "3",
                 Type = "multiple",
                 Name = "Q2",
                 Label = new Label("Purchase",
-                    new AltLabel { Mode = "interview", Text = "Which of these brands of breakfast cereal have you ever bought? ", LangIdent = "EN" }
+                    new AltLabel { Mode = "interview", Text = "Which of these brands of breakfast cereal have you ever bought? ", LanguageId = "EN" }
                 ),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Ident = "1", Code = "1", Label = new Label { Text = "Coco Pops" } },
-                        new Value { Ident = "2", Code = "2", Label = new Label { Text = "Rice Krispies" } },
-                        new Value { Ident = "3", Code = "3", Label = new Label { Text = "Frosties" } },
-                        new Value { Ident = "4", Code = "4", Label = new Label { Text = "Shredded Wheat" } },
-                        new Value { Ident = "5", Code = "5", Label = new Label { Text = "Lucky Charms" } },
+                        new Value { ValueId = "1", Code = "1", Label = new Label { Text = "Coco Pops" } },
+                        new Value { ValueId = "2", Code = "2", Label = new Label { Text = "Rice Krispies" } },
+                        new Value { ValueId = "3", Code = "3", Label = new Label { Text = "Frosties" } },
+                        new Value { ValueId = "4", Code = "4", Label = new Label { Text = "Shredded Wheat" } },
+                        new Value { ValueId = "5", Code = "5", Label = new Label { Text = "Lucky Charms" } },
 
                     }
                 }

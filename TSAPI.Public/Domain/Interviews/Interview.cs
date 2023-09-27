@@ -5,7 +5,7 @@ namespace TSAPI.Public.Domain.Interviews
 {
     public class Interview
     {
-        public string Ident { get; set; }
+        public string InterviewId { get; set; }
         public DateTime Date { get; set; }
         public bool Complete { get; set; }
 

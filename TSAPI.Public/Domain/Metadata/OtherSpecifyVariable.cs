@@ -2,6 +2,6 @@
 {
     public class OtherSpecifyVariable : Variable
     {
-        public string ParentValueIdent { get; set; }
+        public string ParentValueId { get; set; }
     }
 }

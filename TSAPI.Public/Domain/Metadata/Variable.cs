@@ -6,7 +6,7 @@ namespace TSAPI.Public.Domain.Metadata
     public class Variable 
     {
         /// <summary>Unique identifier for this variable</summary>
-        public string Ident { get; set; }
+        public string VariableId { get; set; }
         /// <summary>The order of this variable within the overall survey</summary>
         public int Ordinal { get; set; }
         /// <summary>The type of variable (e.g. Open, closed, loop etc..)</summary>
@@ -35,7 +35,7 @@ namespace TSAPI.Public.Domain.Metadata
 
     public class Value
     {
-        public string Ident { get; set; }
+        public string ValueId { get; set; }
         public string Code { get; set; }
         public Label Label { get; set; }
         public float? Score { get; set; }
