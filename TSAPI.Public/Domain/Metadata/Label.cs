@@ -17,7 +17,7 @@ namespace TSAPI.Public.Domain.Metadata
     {
         public string Mode { get; set; }
         public string Text { get; set; }
-        public string LangIdent { get; set; }
+        public string LanguageId { get; set; }
 
     }
 }

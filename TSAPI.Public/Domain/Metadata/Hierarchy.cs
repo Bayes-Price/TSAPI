@@ -2,7 +2,7 @@
 {
     public class Hierarchy
     {
-        public string Ident { get; set; }
+        public string HierarchyId { get; set; }
         public ParentDetails Parent { get; set; } = new ParentDetails();
         public SurveyMetadataBase Metadata { get; set; } = new SurveyMetadataBase();
     }
