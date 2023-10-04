@@ -72,7 +72,7 @@ namespace Data.Repos
         {
             //Filter on Interview Ids
             if (query.InterviewIdents != null && query.InterviewIdents.Any())
-                interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.Ident)).ToList();
+                interviews = interviews.Where(i => query.InterviewIdents.Any(ident => ident == i.InterviewId)).ToList();
 
             //Filter on Last Changed DateFrom
             if (query.DateFrom != null)
@@ -91,7 +91,7 @@ namespace Data.Repos
             {
                 foreach (var interview in interviews)
                 {
-                    interview.Responses = interview.Responses.Where(d => query.Variables.Contains(d.Ident)).ToList();
+                    interview.Responses = interview.Responses.Where(d => query.Variables.Contains(d.VariableId)).ToList();
                 }
             }
 
