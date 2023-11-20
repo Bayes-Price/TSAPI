@@ -2,7 +2,7 @@
 
 namespace TSAPI.Public.Domain.Metadata
 {
-    /// <summary>A variable or question within a survey</summary>
+    /// <summary>Object representing a variable or question within a survey</summary>
     public class Variable 
     {
         #region "Member Variables"
@@ -36,9 +36,9 @@ namespace TSAPI.Public.Domain.Metadata
                 }
             } 
         }
-        ///<summary>Human-readable name for this variable</summary>
+        ///<summary>Human-readable name for a variable</summary>
         public string Name { get; set; }
-        ///<summary>Label or question text for the variable</summary>
+        ///<summary>Label or question text for a variable</summary>
         public Label Label { get; set; }
         ///<summary>Special use type for this variable. Valid values are: "serial", "weight", "language", "wave", "translation"</summary>
         public string Use { 
@@ -68,12 +68,13 @@ namespace TSAPI.Public.Domain.Metadata
         public VariableValues Values { get; set; }
         /// <summary>Maximum number of responses that can be given for this variable</summary>
         public int MaxResponses { get; set; }
-        /// <summary>Looped child variables for this variable (when type = Loop)</summary>
+        /// <summary>Looped child variables for this variable</summary>
         public List<Variable> LoopedVariables { get; set; }
         /// <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
         public List<OtherSpecifyVariable> OtherSpecifyVariables { get; set; }
     }
 
+    /// <summary>Object representing an allowable set of values for a variable</summary>
     public class VariableValues
     {
         /// <summary>Identifier for this list of variable values. Can be used to identify value lists that are shared between variables</summary>
@@ -84,13 +85,14 @@ namespace TSAPI.Public.Domain.Metadata
         public List<Value> Values { get; set; }
     }
 
+    /// <summary>Object representing a closed-end question response</summary>
     public class Value
     {
-        /// <summary>Unique identifier for this response value</summary>
+        /// <summary>Unique identifier for a response value</summary>
         public string ValueId { get; set; }
-        /// <summary>Entry code for this response value</summary>
+        /// <summary>Entry code (if-any) for a response value</summary>
         public string Code { get; set; }
-        /// <summary>The human readable label for this response value</summary>
+        /// <summary>The human readable label for a response value</summary>
         public Label Label { get; set; }
         /// <summary>
         /// The optional score attribute can only be used when the variable is of type single.

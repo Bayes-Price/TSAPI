@@ -1,5 +1,6 @@
 ﻿namespace TSAPI.Public.Domain.Metadata
 {
+    /// <summary>Object representing an available survey within the API system</summary>
     public class SurveyDetail
     {
         ///<summary>The unique Id that the API system uses internally to identify a given survey</summary>
