@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>1.0.16</Version>
+    <Version>1.0.17</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>TSAPI Steering Group, Red Centre Software, Digital Taxonomy</Authors>
     <Company>TSAPI.net</Company>
@@ -18,6 +18,10 @@ TSAPI is an industry standard API definition for transferring Market Research su
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DocumentationFile>C:\Projects\TSAPI\TSAPI\TSAPI.Public\TSAPI.Public.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <DocumentationFile>C:\Projects\TSAPI\TSAPI\TSAPI.Public\TSAPI.Public.xml</DocumentationFile>
   </PropertyGroup>
 
