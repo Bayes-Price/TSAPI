@@ -63,9 +63,12 @@
         <member name="P:TSAPI.Public.Domain.Metadata.Hierarchy.Metadata">
             <summary>The metadata (list of questions and variables) for a hierarchy item</summary>
         </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.ParentDetails">
+            <summary>Object defining the parent and child relationship between hierarchical surveys</summary>
+        </member>
         <member name="P:TSAPI.Public.Domain.Metadata.ParentDetails.Level">
             <summary>
-            The level_ident of the associated parent level. For example, in a household-person hierarchy, the
+            The Level of the associated parent level. For example, in a household-person hierarchy, the
             parent_level_ident of the person level would be the level_ident of the
             household level.
             </summary>
@@ -245,11 +248,38 @@
             implies that records having that value code should be omitted from the base for any statistical computation for that variable. 
             </summary>
         </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.ValueRange">
+            <summary>Object representing a range of acceptable values for a variable response, e.g. 1 to 100</summary>
+        </member>
         <member name="P:TSAPI.Public.Domain.Metadata.ValueRange.From">
             <summary>Defines the lower band of a range value. Must be lower than or equal to the "To" value</summary>
         </member>
         <member name="P:TSAPI.Public.Domain.Metadata.ValueRange.To">
             <summary>Defines the upper band of range value. Must be greater than or equal to the "From" value</summary>
+        </member>
+        <member name="T:TSAPI.Public.Queries.InterviewsQuery">
+            <summary>Object containing parameters available for GET /Interviews endpoint</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.Start">
+            <summary>The position of the first record to return. This number is 1-based.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.MaxLength">
+            <summary>The total number of records to return. The API may return fewer if the number of records available is less than MaxLength.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.CompleteOnly">
+            <summary>If True the API will return only interviews considered "complete" by the API system. If False, the API will select from all interviews</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.Variables">
+            <summary>Return data from a subset of variables, specified as an array of variableId values. If empty, returns data for all variables.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.InterviewIdents">
+            <summary>Return data from a subset of interviews, specified as an arrary of interviewId values. If empty, returns data for all interviews.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.DateFrom">
+            <summary>Filter data on interviews created or updated on or after DateFrom</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.DateTo">
+            <summary>Filter data on interviews created or updated on or before DateTo</summary>
         </member>
     </members>
 </doc>

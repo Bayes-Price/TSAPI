@@ -1,6 +1,6 @@
 ﻿namespace TSAPI.Public.Domain
 {
-    public class    Enums
+    internal class Enums
     {
         public enum ResultCode
         {
