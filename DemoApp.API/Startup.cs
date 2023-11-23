@@ -44,6 +44,10 @@ namespace DemoApp.API
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                //Include TSAPI.Public XML comments
+                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "TSAPI.Public.xml"));
+
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
 

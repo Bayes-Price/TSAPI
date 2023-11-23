@@ -103,6 +103,7 @@ namespace TSAPI.Public.Domain.Metadata
         public float? Score { get; set; }
     }
 
+    /// <summary>Object representing a range of acceptable values for a variable response, e.g. 1 to 100</summary>
     public class ValueRange
     {
         /// <summary>Defines the lower band of a range value. Must be lower than or equal to the "To" value</summary>

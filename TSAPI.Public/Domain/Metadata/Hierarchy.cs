@@ -13,10 +13,11 @@
         public SurveyMetadataBase Metadata { get; set; } = new SurveyMetadataBase();
     }
 
+    /// <summary>Object defining the parent and child relationship between hierarchical surveys</summary>
     public class ParentDetails
     {
         /// <summary>
-        /// The level_ident of the associated parent level. For example, in a household-person hierarchy, the
+        /// The Level of the associated parent level. For example, in a household-person hierarchy, the
         /// parent_level_ident of the person level would be the level_ident of the
         /// household level.
         /// </summary>
