@@ -426,5 +426,20 @@ namespace TSAPI.ApiBrowser
             }
         }
 
+        DateTime? _queryDate2;
+		[GeneratedCode("TextTemplatingFileGenerator", "0.0.0.0")]
+        public DateTime? QueryDate2
+        {
+            get => _queryDate2;
+            set
+            {
+                if (_queryDate2 != value)
+                {
+                    _queryDate2 = value;
+					OnPropertyChanged(nameof(QueryDate2));
+                }
+            }
+        }
+
     }
 }

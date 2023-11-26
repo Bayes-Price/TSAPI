@@ -51,13 +51,13 @@ namespace DemoApp.API
             });
             services.AddScoped<ISurveyRepo, SurveyRepo>();
 
-            services.AddMvc().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-            });
-        }
+			services.AddMvc().AddJsonOptions(options =>
+			{
+				options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+			});
+		}
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 			if (env.IsDevelopment())
 			{

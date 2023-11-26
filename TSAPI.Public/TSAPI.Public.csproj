@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <Version>1.0.18</Version>
+    <Version>1.0.19</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>TSAPI Steering Group, Red Centre Software, Digital Taxonomy</Authors>
     <Company>TSAPI.net</Company>
@@ -15,14 +15,16 @@ TSAPI is an industry standard API definition for transferring Market Research su
     <NeutralLanguage>en</NeutralLanguage>
     <RepositoryType>git</RepositoryType>
     <PackageTags>TSAPI;Market Research;Survey Data Transfer;</PackageTags>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <DocumentationFile>TSAPI.Public.xml</DocumentationFile>
+    <PackageIcon>TSAPI.Public.png</PackageIcon>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>Public.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Projects\TSAPI\TSAPI\TSAPI.Public\TSAPI.Public.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Projects\TSAPI\TSAPI\TSAPI.Public\TSAPI.Public.xml</DocumentationFile>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="readme.md" Pack="true" PackagePath="\" />
+    <None Include="TSAPI.Public.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
 </Project>
