@@ -37,7 +37,8 @@
         "bool|QueryCompleteOnly",
         "string|QueryVariables",
         "string|QueryInterviewIds",
-        "DateTime?|QueryDate"
+        "DateTime?|QueryDate",
+        "DateTime?|QueryDate2"
 	};
 #>
 using System;
