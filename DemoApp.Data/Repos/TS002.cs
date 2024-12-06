@@ -10,6 +10,7 @@ namespace DemoApp.Data.Repos
         {
             var metadata = new SurveyMetadata
             {
+                Id = "a4bd7eed-88df-4a57-86d6-396e3698022e",
                 Name = "TS-002",
                 Title = "Cereal Awareness Survey",
                 InterviewCount = 10,

@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TSAPI.Public</name>
+    </assembly>
+    <members>
+        <member name="T:TSAPI.Public.Domain.Interviews.HierarchicalInterview">
+            <summary>Object represents a hierarchical interview with a main parent interview</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.HierarchicalInterview.Level">
+            <summary>Indicates which level of the hierarchy an interview is associated with</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Interviews.Interview">
+            <summary>Object representing a completed interview in a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.Interview.InterviewId">
+            <summary>Unique identifier of an interview</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.Interview.Date">
+            <summary>Date interview was last changed</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.Interview.Complete">
+            <summary>Indicates whether the interview is considered a Complete interview or not</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.Interview.Responses">
+            <summary>List of responses given within the interview</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Interviews.VariableData">
+            <summary>Represents the response(s) given to a variable in the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.VariableId">
+            <summary>The Id of the variable to which a set of variable data relates to</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableData.Data">
+            <summary>List of responses given for this variable</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Interviews.VariableDataItem">
+            <summary>Object representing a data value or response for a variable in an interview</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableDataItem.Value">
+            <summary>A specified variable response</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableDataItem.State">
+            <summary>
+            (Optional) state of a response. Permitted values are "selected", "notSelected", "notShown"
+            Used to provide information about exactly which closed end responses were shown/selected/unselected in a given iterview
+            </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Interviews.VariableDataItem.LoopedVariableData">
+            <summary>
+            (Optional) Data for looped variables which are child responses connected to a VariableDataItem
+            </summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Hierarchy">
+            <summary>Represents a hierarchical sub-questionnaire within a main survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Hierarchy.HierarchyId">
+            <summary>Unique identifier of a hierarchy item</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Hierarchy.Parent">
+            <summary>One or more parent elements may be defined for each level element. </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Hierarchy.Metadata">
+            <summary>The metadata (list of questions and variables) for a hierarchy item</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.ParentDetails">
+            <summary>Object defining the parent and child relationship between hierarchical surveys</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.ParentDetails.Level">
+            <summary>
+            The Level of the associated parent level. For example, in a household-person hierarchy, the
+            parent_level_ident of the person level would be the level_ident of the
+            household level.
+            </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.ParentDetails.LinkVar">
+             <summary>
+             The LinkVar is the name of the linking variable that appears in
+            both child and parent data sets.It must be a quantity or character type
+            variable. This variable must have the same name in the different (parent and
+            child) data sets.The variable used as the linking variable must, at the “parent”
+            level, have unique and unduplicated data values in each record (that is, no two
+            records can have the same value). 
+             </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.ParentDetails.Ordered">
+             <summary>
+             The Ordered is optional and identifies whether the data in the
+            corresponding level is ordered or not. It must be one of:
+               - yes data in the parent level is ordered
+               - no data in the parent level should be treated as unordered
+            If Ordered is not explicitly specified the value "no" is assumed.
+             </summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Label">
+            <summary>Object representing a text label within a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Label.Text">
+            <summary>The main/default text used as a label</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Label.AltLabels">
+            <summary>List of alternative labels use that can be used instead of Text value in certain circumstances</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.AltLabel">
+            <summary>Object representing an alternative text label</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.AltLabel.Mode">
+            <summary>Signals whether a text should be used during interviewing and/or analysis. Two explicit modes are available: “interview” and “analysis”. In the absence of a mode specification, the appropriate text is assumed to be used in both modes. Allowable values are "interview" and "analysis" </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.AltLabel.Text">
+            <summary>Text value to use as an alternative label</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.AltLabel.LanguageId">
+            <summary>Indicates that an alt label should be used when interviewing in a given language</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Language">
+            <summary>Object representing a language in use within a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Language.LanguageId">
+             <summary>
+             The unique Id that is used to refer to a language within the survey metadata and interview data. Although there is no restriction on language id, the intended values of this attribute are described in the official W3C XML version 1.0
+             specification as:- "The values of the attribute are language identifiers as defined by IETF (Internet Engineering Task Force) RFC 3066, "Tags for the Identification of
+             Languages"(http://www.ietf.org/rfc/rfc3066.txt) or its successor on the Standards Track." 
+            </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Language.Name">
+            <summary>The human readable name used to refer to a language</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Language.SubLanguages">
+            <summary>List of sub-languages (if any) that are grouped within the parent language (e.g. English => en-GB, en-US)</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.OtherSpecifyVariable">
+            <summary>Object representing an “other specify” variable within a closed-end variable </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.OtherSpecifyVariable.ParentValueId">
+            <summary>Defines the id of the closed end response that an other-specify is attached to</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Section">
+            <summary>Object representing a section within a survey. Sections are used to partition variables together into logical groups (e.g. Screener, System, Demographics, Main Survey etc…)</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Section.Label">
+            <summary>Human readable label used to name to a section</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Section.Variables">
+            <summary>List of variables </summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Section.Sections">
+            <summary>List of sub-sections (if any) within this section</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.SurveyDetail">
+            <summary>Object representing an available survey within the API system</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyDetail.Id">
+            <summary>The unique Id that the API system uses internally to identify a given survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyDetail.Name">
+            <summary>The human readable identifer assigned to the survey within the API system. For example, this may contain an internal job number such as "TS-002"</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyDetail.Title">
+            <summary>The human-readable name assigned to the survey within the API system. For example, "Restaurant Satisfaction Survey"</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.SurveyMetadata">
+            <summary>Object representing a survey and all of its metadata (information about questionnaire variables)</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadata.Hierarchies">
+            <summary>List of hierarchical questionnaires (if any) within a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Id">
+            <summary>The id of the survey that the metadata relates to.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Name">
+            <summary>The human readable identifer assigned to the survey within the API system. For example, this may contain an internal job number such as "TS-002"</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Title">
+            <summary>The human-readable name assigned to the survey within the API system. For example, "Restaurant Satisfaction Survey"</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.InterviewCount">
+            <summary>The total number of interviews within the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Languages">
+            <summary>List of language objects defining the languages used within the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Variables">
+            <summary>List of variables (if any) defined at the root level of the survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.SurveyMetadataBase.Sections">
+            <summary>List of sub-sections (if any) defined at the root level of the survey</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Variable">
+            <summary>Object representing a variable or question within a survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.VariableId">
+            <summary>Unique identifier for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Ordinal">
+            <summary>The order of this variable within the overall survey</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Type">
+            <summary>The type of variable. Value values are: "single", "multiple", "quantity", "character", "logical", "date", "time"</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Name">
+            <summary>Human-readable name for a variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Label">
+            <summary>Label or question text for a variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Use">
+            <summary>Special use type for this variable. Valid values are: "serial", "weight", "language", "wave", "translation"</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.Values">
+            <summary>List of closed-end responses for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.MaxResponses">
+            <summary>Maximum number of responses that can be given for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.LoopedVariables">
+            <summary>Looped child variables for this variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Variable.OtherSpecifyVariables">
+            <summary>List of other specify child variables for this variable (when type = Single or Multiple)</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.VariableValues">
+            <summary>Object representing an allowable set of values for a variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.VariableValues.ValueListId">
+            <summary>Identifier for this list of variable values. Can be used to identify value lists that are shared between variables</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.VariableValues.Range">
+            <summary>Defines an overall range of legal values for a variable</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.VariableValues.Values">
+            <summary>Defines a set of response values for closed-end variables</summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.Value">
+            <summary>Object representing a closed-end question response</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Value.ValueId">
+            <summary>Unique identifier for a response value</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Value.Code">
+            <summary>Entry code (if-any) for a response value</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Value.Label">
+            <summary>The human readable label for a response value</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.Value.Score">
+            <summary>
+            The optional score attribute can only be used when the variable is of type single.
+            It allows score values to be assigned to the individual code values to be used for computing statistics such as Mean, Standard Deviation etc.
+            The score_value must be a number, and may be positive, negative or zero, with or without a decimal point and decimal places.The omission of a score
+            implies that records having that value code should be omitted from the base for any statistical computation for that variable. 
+            </summary>
+        </member>
+        <member name="T:TSAPI.Public.Domain.Metadata.ValueRange">
+            <summary>Object representing a range of acceptable values for a variable response, e.g. 1 to 100</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.ValueRange.From">
+            <summary>Defines the lower band of a range value. Must be lower than or equal to the "To" value</summary>
+        </member>
+        <member name="P:TSAPI.Public.Domain.Metadata.ValueRange.To">
+            <summary>Defines the upper band of range value. Must be greater than or equal to the "From" value</summary>
+        </member>
+        <member name="T:TSAPI.Public.Queries.InterviewsQuery">
+            <summary>Object containing parameters available for GET /Interviews endpoint</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.Start">
+            <summary>The position of the first record to return. This number is 1-based.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.MaxLength">
+            <summary>The total number of records to return. The API may return fewer if the number of records available is less than MaxLength.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.CompleteOnly">
+            <summary>If True the API will return only interviews considered "complete" by the API system. If False, the API will select from all interviews</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.Variables">
+            <summary>Return data from a subset of variables, specified as an array of variableId values. If empty, returns data for all variables.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.InterviewIdents">
+            <summary>Return data from a subset of interviews, specified as an arrary of interviewId values. If empty, returns data for all interviews.</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.DateFrom">
+            <summary>Filter data on interviews created or updated on or after DateFrom</summary>
+        </member>
+        <member name="P:TSAPI.Public.Queries.InterviewsQuery.DateTo">
+            <summary>Filter data on interviews created or updated on or before DateTo</summary>
+        </member>
+    </members>
+</doc>
