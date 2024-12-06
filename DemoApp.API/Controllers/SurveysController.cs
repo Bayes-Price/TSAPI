@@ -37,7 +37,7 @@ namespace DemoApp.TSAPI.Controllers
         /// <returns>A serialized array of <c>SurveyDetail.</c></returns>
 		/// <response code="200">The response body contains a serialized array of <code>SurveyDetail</code></response>
         [HttpGet]
-        [Route("/Surveys/")]
+        [Route("/surveys/")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(SurveyDetail[]), StatusCodes.Status200OK)]
         public SurveyDetail[] Surveys()
@@ -48,36 +48,36 @@ namespace DemoApp.TSAPI.Controllers
         /// <summary>
         ///   Fetches the metadata for a specific survey
         /// </summary>
-        /// <param name="surveyId">The Id of the survey metadata to retrieve.</param>
+        /// <param name="id">The id of the survey metadata to retrieve.</param>
         /// <returns>
         ///   A serialized <c>SurveyMetadata.</c>
         /// </returns>
 		/// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
         [HttpGet]
-        [Route("/Surveys/{surveyId}/Metadata")]
+        [Route("/surveys/{id}/metadata")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(SurveyMetadata), StatusCodes.Status200OK)]
-        public SurveyMetadata Metadata(string surveyId)
+        public SurveyMetadata Metadata(string id)
         {
-            return _surveyRepo.ReadSurveyMetadata(surveyId);
+            return _surveyRepo.ReadSurveyMetadata(id);
         }
 
         /// <summary>
         ///   Fetches some interview records for a specific survey.
         /// </summary>
-        /// <param name="surveyId">The Id of the survey being queried for data</param>
+        /// <param name="id">The id of the survey being queried for data</param>
         /// <param name="query">The request body contains a serialized <c>InterviewsQuery</c> containing filtering parameters.</param>
         /// <returns>
         ///   A serialized array of <c>Interview.</c>
         /// </returns>
         /// <response code="200">The response body contains a serialized <code>SurveyMetadata</code>.</response>
         [HttpGet]
-        [Route("/Surveys/{surveyId}/Interviews")]
+        [Route("/surveys/{id}/interviews")]
         [Produces("application/json", "text/xml")]
         [ProducesResponseType(typeof(Interview[]), StatusCodes.Status200OK)]
-        public Interview[] Interviews(string surveyId, [FromQuery] InterviewsQuery query)
+        public Interview[] Interviews(string id, [FromQuery] InterviewsQuery query)
         {
-            return _surveyRepo.ReadSurveydata(surveyId, query, _hostingEnvironment.ContentRootPath);
+            return _surveyRepo.ReadSurveydata(id, query, _hostingEnvironment.ContentRootPath);
         }
 
         #endregion
