@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 
 namespace TSAPI.ApiBrowser
@@ -22,7 +20,7 @@ namespace TSAPI.ApiBrowser
 		Dummy
 	}
 
-	public sealed class AppNode
+	public sealed class AppNode : INotifyPropertyChanged
 	{
 		public AppNode(NodeType type, string label, object data, AppNode parent)
 		{
@@ -40,17 +38,11 @@ namespace TSAPI.ApiBrowser
 
 		public void AddChild(AppNode child)
 		{
-			if (Children == null)
-			{
-				Children = new ObservableCollection<AppNode>();
-			}
+			Children ??= new ObservableCollection<AppNode>();
 			Children.Add(child);
 		}
 
-		public override string ToString()
-		{
-			return $"AppNode({Type},{Label},{Data},{Parent?.Label})";
-		}
+		public override string ToString() => $"AppNode({Type},{Label},{Data},{Parent?.Label})";
 
 		bool _isExpanded;
 		public bool IsExpanded
@@ -66,11 +58,22 @@ namespace TSAPI.ApiBrowser
 			}
 		}
 
+		bool _isSelected;
+		public bool IsSelected
+		{
+			get => _isSelected;
+			set
+			{
+				if (_isSelected != value)
+				{
+					_isSelected = value;
+					OnPropertyChanged(nameof(IsSelected));
+				}
+			}
+		}
+
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
+		void OnPropertyChanged(string propertyName) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
 }

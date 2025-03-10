@@ -100,7 +100,7 @@
                                 <TextBlock Text="No Survey Selected" HorizontalAlignment="Center" VerticalAlignment="Center"
                                            FontSize="24" Opacity="0.5"/>
                                 <!--<TabControl Visibility="{Binding SelectedSurvey,Converter={StaticResource MainVerter},ConverterParameter=SomeVisible}">-->
-                                    <TabControl>
+                                <TabControl>
 
                                     <TabItem Header="Metadata" Style="{StaticResource DetailTabStyle}">
                                         <Grid>
@@ -215,24 +215,29 @@
                                                         <TextBox Grid.Column="1" Text="{Binding SelectedSurvey.Id}" IsReadOnly="True" MinWidth="200" Style="{StaticResource QTextStyle}" Background="WhiteSmoke"/>
                                                         <TextBlock Grid.Row="1" Text="Variables" Style="{StaticResource QLabelStyle}"/>
                                                         <TextBox Grid.Row="1" Grid.Column="1" Width="340" Style="{StaticResource QTextStyle}"
-                                                            Text="{Binding QueryVariables,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                                Text="{Binding QueryVariables,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                                         <TextBlock Grid.Row="2" Text="Interview Ids" Style="{StaticResource QLabelStyle}"/>
                                                         <TextBox Grid.Row="2" Grid.Column="1" Width="340" Style="{StaticResource QTextStyle}"
-                                                            Text="{Binding QueryVariables,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                                                        <TextBlock Grid.Row="3" Text="Date" Style="{StaticResource QLabelStyle}"/>
-                                                        <DatePicker Grid.Row="3" Grid.Column="1" Width="100" Style="{StaticResource QDateStyle}"
-                                                            SelectedDate="{Binding QueryDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                                Text="{Binding QueryVariables,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                        <TextBlock Grid.Row="3" Text="Date From" Style="{StaticResource QLabelStyle}"/>
+                                                        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                                                            <DatePicker Width="100" Style="{StaticResource QDateStyle}"
+                                                                    SelectedDate="{Binding QueryDate,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                            <TextBlock Text="To" Style="{StaticResource QLabelStyle}"/>
+                                                            <DatePicker Width="100" Style="{StaticResource QDateStyle}"
+                                                                    SelectedDate="{Binding QueryDate2,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                        </StackPanel>
                                                         <TextBlock Grid.Row="4" Text="Paging Start" Style="{StaticResource QLabelStyle}"/>
                                                         <kit:IntegerUpDown Grid.Row="4" Grid.Column="1" Minimum="1" Maximum="10000" Width="70" Style="{StaticResource QSpinStyle}"
-                                                            Value="{Binding QueryPagingStart,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                                Value="{Binding QueryPagingStart,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                                         <TextBlock Grid.Row="5" Text="Paging Count" Style="{StaticResource QLabelStyle}"/>
                                                         <kit:IntegerUpDown Grid.Row="5" Grid.Column="1" Minimum="1" Maximum="10000" Width="70" Style="{StaticResource QSpinStyle}"
-                                                            Value="{Binding QueryPagingCount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                                Value="{Binding QueryPagingCount,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                                         <TextBlock Grid.Row="6" Text="Completed Only" Style="{StaticResource QLabelStyle}"/>
                                                         <CheckBox Grid.Row="6" Grid.Column="1" Style="{StaticResource QCheckStyle}"
-                                                            IsChecked="{Binding QueryCompleteOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                                                IsChecked="{Binding QueryCompleteOnly,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                                         <TextBlock Grid.Row="7" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="20,6,0,6" TextWrapping="Wrap" Width="300" FontSize="11" Foreground="SlateGray"
-                                                                   Text="There are about 10,000 interviews in the demo data, so it's wise to use the Paging values to avoid poor performance."/>
+                                                                Text="There are about 10,000 interviews in the demo data, so it's wise to use the Paging values to avoid poor performance."/>
                                                     </Grid>
                                                     <Button Content="Run Query" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="10,5" Margin="0,0,4,2"
                                                             Command="main:MainCommands.LoadInterviews"/>

@@ -7,10 +7,10 @@ namespace TSAPI.ApiBrowser
 {
 	internal static class MainCommands
 	{
-		public static RoutedUICommand CloseAlert = new RoutedUICommand("Close Alert", "CloseAlert", typeof(Window));
-		public static RoutedUICommand LoadMetadata = new RoutedUICommand("Load Metadata", "LoadMetadata", typeof(Window));
-		public static RoutedUICommand LoadInterviews = new RoutedUICommand("Load Interviews", "LoadInterviews", typeof(Window));
-		public static RoutedUICommand ExportMetadata = new RoutedUICommand("Export Metadata", "ExportMetadata", typeof(Window));
+		public static RoutedUICommand CloseAlert = new("Close Alert", "CloseAlert", typeof(Window));
+		public static RoutedUICommand LoadMetadata = new("Load Metadata", "LoadMetadata", typeof(Window));
+		public static RoutedUICommand LoadInterviews = new("Load Interviews", "LoadInterviews", typeof(Window));
+		public static RoutedUICommand ExportMetadata = new("Export Metadata", "ExportMetadata", typeof(Window));
 	}
 
 	partial class MainWindow

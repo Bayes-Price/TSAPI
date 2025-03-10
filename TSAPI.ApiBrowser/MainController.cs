@@ -7,8 +7,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Threading;
 using Orthogonal.NSettings;
 using TSAPI.Public.Domain.Interviews;
 using TSAPI.Public.Domain.Metadata;
@@ -16,10 +18,15 @@ using TSAPI.Public.Queries;
 
 namespace TSAPI.ApiBrowser
 {
+	/// <summary>
+	/// This class acts like a state engine and encapsulates the global state of the desktop application.
+	/// All interaction with the UI is attempted to be done using classical binding.
+	/// </summary>
 	public sealed partial class MainController : INotifyPropertyChanged
 	{
 		readonly JsonSerializerOptions SerOpts = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
 		HttpClient _client;
+		readonly DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(1) };
 		bool supportsErrorResponse;
 
 		public MainController()
@@ -28,7 +35,7 @@ namespace TSAPI.ApiBrowser
 			ObsEndpoints = new ObservableCollection<string>(new string[]
 			{
 				"https://tsapi-demo.azurewebsites.net/",
-				"https://rcsapps.azurewebsites.net/rubytsapi/",
+				"https://rcsapps.azurewebsites.net/carbon-tsapi/",
 				"https://localhost:44389/"
 			});
 		}
@@ -36,10 +43,23 @@ namespace TSAPI.ApiBrowser
 		public void AppLoaded()
 		{
 			StatusMessage = "Disconnected";
+			timer.Tick += (s, e) =>
+			{
+				StatusTime = DateTime.Now.ToString("HH:mm:ss");
+			};
+			timer.Start();
 		}
 
 		public ISettingsProcessor Settings { get; }
 
+		#region Service Calls
+
+		/// <summary>
+		/// Attempt to communicate with a TSAPI compliant web service at a specific Uri. Check if the service responds with some useful
+		/// metadata to help adjust some friendly UI behaviour. Call the endpoint that lists available survey summaries. This is the
+		/// sanity check barrier which tells us if a sensible service is responding. The survey summaries are placed in a list for
+		/// user selection and drilling down further.
+		/// </summary>
 		public async Task OpenEndpoint()
 		{
 			BusyMessage = "Loading survey list\u2026";
@@ -48,21 +68,25 @@ namespace TSAPI.ApiBrowser
 				var tempclient = new HttpClient();
 				if (!_endpoint.EndsWith("/")) Endpoint += "/";
 				tempclient.BaseAddress = new Uri(_endpoint);
+				ObsMetaNodes = null;
+				ObsInterviewNodes = null;
 
 				#region ------- Metadata --------
 				// EXPERIMENTAL
-				// Probe the service to see if it returns metadata key-value pairs.
-				// If it does, then one of the items tells us if it returns a standard
-				// error reponse for all non-200 responses. This is an API extension
-				// vaguely proposed by Red Centre Software.
+				// Probe the service to see if it returns some response object. The property pair
+				// [Name,Value] of the root element are extracted and assumed to be metadata
+				// information about the published web service.
 				var message = await tempclient.GetAsync("service/metadata");
 				if (message.StatusCode == System.Net.HttpStatusCode.OK)
 				{
 					string metajson = await message.Content.ReadAsStringAsync();
-					var jagged = JsonSerializer.Deserialize<string[][]>(metajson, SerOpts);
-					ServiceMetadata = jagged.ToDictionary(x => x[0], x => x[1]);
-					CompanyName = _serviceMetadata.TryGetValue("Company", out string s1) ? s1 : null;
-					supportsErrorResponse = _serviceMetadata.TryGetValue("ErrorResponseType", out string s2) ? s2 == typeof(ErrorResponse).Name : false;
+					var jdoc = JsonDocument.Parse(metajson);
+					ServiceMetadata = jdoc.RootElement.EnumerateObject().ToDictionary(jp => jp.Name, jp => jp.Value.ValueKind == JsonValueKind.Null ? null : jp.Value.ToString());
+					// The company name looks nice in the header strip.
+					CompanyName = _serviceMetadata.FirstOrDefault(x => string.Compare(x.Key, "Company", true) == 0).Value?.ToString();
+					// Does this service support the 'standard' error response?
+					string errtype = _serviceMetadata.FirstOrDefault(x => string.Compare(x.Key, "ErrorResponseType", true) == 0).Value?.ToString();
+					supportsErrorResponse = string.Compare(errtype, typeof(ErrorResponse).Name, true) == 0; //_serviceMetadata.TryGetValue("ErrorResponseType", out string s2) ? s2 == typeof(ErrorResponse).Name : false;
 				}
 				else
 				{
@@ -89,6 +113,11 @@ namespace TSAPI.ApiBrowser
 			BusyMessage = null;
 		}
 
+		/// <summary>
+		/// Attempt to load the metadata of the currently selected survey in the list.
+		/// The metadata is unwound into a possibly large tree nodes hierarchy which represents
+		/// the shape of the metadata.
+		/// </summary>
 		public async Task LoadMetadata()
 		{
 			BusyMessage = $"Loading {_selectedSurvey.Name} metadata\u2026";
@@ -122,6 +151,10 @@ namespace TSAPI.ApiBrowser
 			BusyMessage = null;
 		}
 
+		/// <summary>
+		/// Attempt to drill down into the interviews for a selected survey. The results are unwound into
+		/// a large tree node hierarchy which represents the shape of the survey results.
+		/// </summary>
 		public async Task ListInterviews()
 		{
 			BusyMessage = $"Loading {_selectedSurvey.Name} interviews\u2026";
@@ -133,7 +166,8 @@ namespace TSAPI.ApiBrowser
 					CompleteOnly = _queryCompleteOnly,
 					Start = _queryPagingStart,
 					MaxLength = _queryPagingCount,
-					Date = QueryDate,
+					DateFrom = QueryDate,
+					DateTo = QueryDate2,
 					InterviewIdents = ToList(_queryVariables),
 					Variables = ToList(_queryInterviewIds)
 				};
@@ -167,6 +201,8 @@ namespace TSAPI.ApiBrowser
 			}
 			BusyMessage = null;
 		}
+
+		#endregion
 
 		/// <summary>
 		/// Experimental 'push' of metadata to a specified receiving web service url.
@@ -216,16 +252,16 @@ namespace TSAPI.ApiBrowser
 				var hsNode = new AppNode(NodeType.Folder, "Hierarchies", null, baseNode);
 				foreach (var hier in _metadata.Hierarchies)
 				{
-					var hNode = new AppNode(NodeType.Dummy, hier.Ident, hier, hsNode);
+					var hNode = new AppNode(NodeType.Dummy, hier.HierarchyId, hier, hsNode);
 					hsNode.AddChild(hNode);
 					if (hier.Parent != null)
 					{
-						var hpNode = new AppNode(NodeType.Dummy, hier.Ident, hier.Parent, hNode);
+						var hpNode = new AppNode(NodeType.Dummy, hier.HierarchyId, hier.Parent, hNode);
 						hNode.AddChild(hpNode);
 					}
 					if (hier.Metadata != null)
 					{
-						var hmNode = new AppNode(NodeType.Folder, hier.Ident, null, hNode);
+						var hmNode = new AppNode(NodeType.Folder, hier.HierarchyId, null, hNode);
 						hNode.AddChild(hmNode);
 						UnwindMetaBase(hier.Metadata, hmNode);
 					}
@@ -241,7 +277,7 @@ namespace TSAPI.ApiBrowser
 			yield return isNode;
 			foreach (var interview in _obsInterviews)
 			{
-				var iNode = new AppNode(NodeType.Interview, interview.Ident, interview, isNode);
+				var iNode = new AppNode(NodeType.Interview, interview.InterviewId, interview, isNode);
 				isNode.AddChild(iNode);
 				if (interview.Responses != null)
 				{
@@ -249,7 +285,7 @@ namespace TSAPI.ApiBrowser
 					iNode.AddChild(disNode);
 					foreach (VariableData di in interview.Responses)
 					{
-						var diNode = new AppNode(NodeType.DataItem, di.Ident, di, disNode);
+						var diNode = new AppNode(NodeType.DataItem, di.VariableId, di, disNode);
 						disNode.AddChild(diNode);
 						var vsNode = new AppNode(NodeType.Folder, "Values", di.Data, diNode);
 						diNode.AddChild(vsNode);
@@ -335,11 +371,11 @@ namespace TSAPI.ApiBrowser
 				UnwindVariables(section.Variables, secNode);
 			}
 			secsNode.IsExpanded = true;
-			var secexp = secsNode.Children.OrderBy(n => n.Children.Count)?.LastOrDefault();
-			if (secexp != null)
-			{
-				secexp.IsExpanded = true;
-			}
+			//var secexp = secsNode.Children.OrderBy(n => n.Children.Count)?.LastOrDefault();
+			//if (secexp != null)
+			//{
+			//	secexp.IsExpanded = true;
+			//}
 		}
 
 		void UnwindVariables(IEnumerable<Variable> variables, AppNode parentNode)
@@ -350,7 +386,7 @@ namespace TSAPI.ApiBrowser
 				string varlabel = variable.Label.Text;
 				if (variable is OtherSpecifyVariable osv)
 				{
-					varlabel += $" ({osv.ParentValueIdent})";
+					varlabel += $" ({osv.ParentValueId})";
 				}
 				var varNode = new AppNode(NodeType.Variable, varlabel, variable, parentNode);
 				parentNode.AddChild(varNode);

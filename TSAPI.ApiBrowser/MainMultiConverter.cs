@@ -7,20 +7,20 @@ namespace TSAPI.ApiBrowser
 {
 	internal class MainMultiConverter : IMultiValueConverter
 	{
-		static readonly BitmapImage FolderClosedIcon = new BitmapImage(new Uri("/Images/NodeFolderClosed.png", UriKind.Relative));
-		static readonly BitmapImage FolderOpenIcon = new BitmapImage(new Uri("/Images/NodeFolderOpen.png", UriKind.Relative));
-		static readonly BitmapImage SectionClosedIcon = new BitmapImage(new Uri("/Images/NodeSectionClosed.png", UriKind.Relative));
-		static readonly BitmapImage SectionOpenIcon = new BitmapImage(new Uri("/Images/NodeSectionOpen.png", UriKind.Relative));
-		static readonly BitmapImage VariableIcon = new BitmapImage(new Uri("/Images/NodeVariable.png", UriKind.Relative));
-		static readonly BitmapImage ValueIcon = new BitmapImage(new Uri("/Images/NodeValue.png", UriKind.Relative));
-		static readonly BitmapImage InterviewIcon = new BitmapImage(new Uri("/Images/NodeInterview.png", UriKind.Relative));
-		static readonly BitmapImage DataItemIcon = new BitmapImage(new Uri("/Images/NodeDataItem.png", UriKind.Relative));
-		static readonly BitmapImage InterviewValueIcon = new BitmapImage(new Uri("/Images/NodeInterviewValue.png", UriKind.Relative));
-		static readonly BitmapImage LoopRefIcon = new BitmapImage(new Uri("/Images/NodeLoopRef.png", UriKind.Relative));
-		static readonly BitmapImage GridIcon = new BitmapImage(new Uri("/Images/NodeGrid.png", UriKind.Relative));
-		static readonly BitmapImage AltLabelIcon = new BitmapImage(new Uri("/Images/NodeAltLabel.png", UriKind.Relative));
-		static readonly BitmapImage ValueRefIcon = new BitmapImage(new Uri("/Images/NodeValueRef.png", UriKind.Relative));
-		static readonly BitmapImage DummyIcon = new BitmapImage(new Uri("/Images/NodeDummy.png", UriKind.Relative));
+		static readonly BitmapImage FolderClosedIcon = new(new Uri("/Images/NodeFolderClosed.png", UriKind.Relative));
+		static readonly BitmapImage FolderOpenIcon = new(new Uri("/Images/NodeFolderOpen.png", UriKind.Relative));
+		static readonly BitmapImage SectionClosedIcon = new(new Uri("/Images/NodeSectionClosed.png", UriKind.Relative));
+		static readonly BitmapImage SectionOpenIcon = new(new Uri("/Images/NodeSectionOpen.png", UriKind.Relative));
+		static readonly BitmapImage VariableIcon = new(new Uri("/Images/NodeVariable.png", UriKind.Relative));
+		static readonly BitmapImage ValueIcon = new(new Uri("/Images/NodeValue.png", UriKind.Relative));
+		static readonly BitmapImage InterviewIcon = new(new Uri("/Images/NodeInterview.png", UriKind.Relative));
+		static readonly BitmapImage DataItemIcon = new(new Uri("/Images/NodeDataItem.png", UriKind.Relative));
+		static readonly BitmapImage InterviewValueIcon = new(new Uri("/Images/NodeInterviewValue.png", UriKind.Relative));
+		static readonly BitmapImage LoopRefIcon = new(new Uri("/Images/NodeLoopRef.png", UriKind.Relative));
+		static readonly BitmapImage GridIcon = new(new Uri("/Images/NodeGrid.png", UriKind.Relative));
+		static readonly BitmapImage AltLabelIcon = new(new Uri("/Images/NodeAltLabel.png", UriKind.Relative));
+		static readonly BitmapImage ValueRefIcon = new(new Uri("/Images/NodeValueRef.png", UriKind.Relative));
+		static readonly BitmapImage DummyIcon = new(new Uri("/Images/NodeDummy.png", UriKind.Relative));
 
 		public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
 		{
@@ -47,7 +47,7 @@ namespace TSAPI.ApiBrowser
 
 		public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
 		{
-			throw new NotImplementedException(nameof(ConvertBack));
+			throw new NotImplementedException($"{nameof(ConvertBack)} {parameter}");
 		}
 	}
 }
