@@ -125,7 +125,7 @@ namespace DemoApp.Data.Repos
                         new Value { ValueId = "3", Code = "3", Score = 0, Label = new Label  { Text = "OK" }},
                         new Value { ValueId = "4", Code = "4", Score = -1, Label = new Label { Text = "Poor" }},
                         new Value { ValueId = "5", Code = "5", Score = -2, Label = new Label { Text = "Very poor" }},
-                        new Value { ValueId = "6", Code = "9", Label = new Label { Text = "DK/NA" } }
+                        new Value { ValueId = "6", Code = "99", Label = new Label { Text = "DK/NA" } }
                     }
                 }
             });
@@ -188,7 +188,7 @@ namespace DemoApp.Data.Repos
                                 VariableId = "9",
                                 Type = "single",
                                 MaxResponses = 4,
-                                Name = "Q7_1",
+                                Name = "Q7",
                                 Label = new Label("Experience Impression",
                                     new AltLabel { Mode = "interview", Text = "What was your impression of our the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]? ", LanguageId = "EN" }),
                                 Values = new VariableValues
@@ -210,7 +210,7 @@ namespace DemoApp.Data.Repos
                                 VariableId = "10",
                                 Type = "single",
                                 MaxResponses = 1,
-                                Name = "Q7_2",
+                                Name = "Q8",
                                 Label = new Label("Experience Recommend",
                                     new AltLabel { Mode = "interview", Text = "Would you recommend our venue based on your experience of the [Q6 EXPERIENCE] at the [Q5 ATTRACTION]?", LanguageId = "EN" }),
                                 Values = new VariableValues
@@ -221,22 +221,60 @@ namespace DemoApp.Data.Repos
                                         new Value {ValueId = "2", Code = "2", Label = new Label {Text = "No"}}
                                     }
                                 }
-
                             }
                         }
                     }
                 }
             });
 
-            //Q8
+            //Q9
             metadata.Sections[2].Variables.Add(new Variable
             {
                 VariableId = "11",
                 Type = "character",
-                Name = "Q8",
+                Name = "Q9",
                 Label = new Label("Other Comments",
                      new AltLabel { Mode = "interview", Text = "Do you have any other comments?", LanguageId = "EN" }
                )            
+            });
+
+            //Q10
+            metadata.Sections[2].Variables.Add(new Variable
+            {
+                VariableId = "12",
+                Type = "single",
+                Name = "Q10",
+                Label = new Label("Age",
+                     new AltLabel { Mode = "interview", Text = "Which age group do you fit in to?", LanguageId = "EN" }
+               ),
+               Values = new VariableValues
+               {
+                    Values = new List<Value>
+                    {
+                        new Value {ValueId = "1", Code = "1", Label = new Label {Text = "18-34yrs"}},
+                        new Value {ValueId = "2", Code = "2", Label = new Label {Text = "35-54yrs"}},
+                        new Value {ValueId = "2", Code = "3", Label = new Label {Text = "55yrs or over"}}
+                    }
+                }
+            });
+
+            //Q11
+            metadata.Sections[2].Variables.Add(new Variable
+            {
+                VariableId = "13",
+                Type = "single",
+                Name = "Q11",
+                Label = new Label("Visit Children",
+                     new AltLabel { Mode = "interview", Text = "Did you visit with children?", LanguageId = "EN" }
+               ),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value {ValueId = "1", Code = "1", Label = new Label {Text = "Yes"}},
+                        new Value {ValueId = "2", Code = "2", Label = new Label {Text = "No"}}
+                    }
+                }
             });
 
             return metadata;
